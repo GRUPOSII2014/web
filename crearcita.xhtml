@@ -9,7 +9,6 @@
     <ui:define name="titulo">Creación de Citas</ui:define>
     <ui:define name="contenido">            
         <p:tabView id="tabView"> 
-
             <p:tab id="indsa" title="Diagnostico">
                 <p:growl id="growl" sticky="true"  severity="error"/> 
                 <h:form id="form" >
@@ -20,10 +19,8 @@
                         <p:calendar value="#{citaBeansBeans.fecha}" id="popupCal" locale="es" required="true" label="Fecha" requiredMessage="Por favor seleccione una fecha"/>
                         <h:commandButton type="submit" value="Buscar" action="#{citaBeansBeans.buscaPersona()}" />
                     </h:panelGrid>
-
                     <h:panelGroup id="paciente">
                         <c:if test="#{citaBeansBeans.nss!=null}">
-
                             <h:panelGrid rendered="#{citaBeansBeans.persona!=null}" columns="2" class="tabla" width="100%">
                                 <f:facet name="header">
                                     <h:outputLabel value="Información Paciente"/>
@@ -72,7 +69,6 @@
                                     </c:forEach>
                                 </p:selectOneListbox>
                             </h:panelGroup>
-
                         </c:if>
                     </h:panelGroup>
                     <div id="creacion">
@@ -89,7 +85,6 @@
                         <p:calendar value="#{citaBeansBeans.fecha}" id="popupCal" locale="es" required="true" requiredMessage="Seleccione un dia" label="Dia"/>
                         <h:commandButton type="submit" value="Buscar" action="#{citaBeansBeans.buscaPersona()}" />
                     </h:panelGrid>
-
                     <h:panelGroup id="paciente">
                         <c:if test="#{citaBeansBeans.nss!=null}">
                             <h:panelGrid rendered="#{citaBeansBeans.persona!=null}" columns="2" class="tabla" width="100%">
@@ -189,10 +184,6 @@
                 </h:form>
             </p:tab>
         </p:tabView>
-
-
-
     </ui:define>
-
 </ui:composition>
 
