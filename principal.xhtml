@@ -1,0 +1,91 @@
+<ui:composition template="WEB-INF/Plantilla/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="titulo">Principal</ui:define>
+
+    <ui:define name="contenido">
+        <ui:fragment rendered="#{loginControllerBeans.nss != null}">
+            <div id="informacion">
+                <h:panelGrid columns="2" class="tabla" width="100%">
+                    <f:facet name="header">
+                        <h:outputText value="Información" />
+                    </f:facet>
+                    <h:outputText value="Nombre:" />
+                    <h:outputText value="#{principalControllerBeans.administrativo.nombre}" />
+                    <h:outputText value="Primer Apellido:" />
+                    <h:outputText value="#{principalControllerBeans.administrativo.apellido1}" />
+                    <h:outputText value="Segundo Apellido:" />
+                    <h:outputText value="#{principalControllerBeans.administrativo.apellido2}" />
+                    <h:outputText value="Sexo:" />
+                    <h:outputText value="#{principalControllerBeans.administrativo.sexo}" />
+                </h:panelGrid>
+            </div>
+            <div id="alertas">
+                <h:dataTable value="#{principalControllerBeans.alertas}" var="alerta" width="620px" class="tabla">
+                    <f:facet name="header">
+                        <h:outputText value="Alertas" />
+                    </f:facet>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Asunto" />
+                        </f:facet>
+                        <h:outputText value="#{alerta.asunto}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Descripción" />
+                        </f:facet>
+                        <h:outputText value="#{alerta.descripcion}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Fecha" />
+                        </f:facet>
+                        <h:outputText value="#{alerta.fecha}"><f:convertDateTime pattern="dd/MM/yyyy" /></h:outputText>
+                    </h:column>
+                </h:dataTable>
+            </div>
+            <ui:fragment rendered="#{loginControllerBeans.tipoUsuario != 'PACIENTE'}">
+                <div id="mensajes">
+                    <h:dataTable value="#{principalControllerBeans.mensajes}" var="mensaje" width="100%" class="tabla tabla2">
+                        <f:facet name="header">
+                            <h:outputText value="Mensajes" />
+                        </f:facet>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Asunto" />
+                            </f:facet>
+                            <h:outputText value="#{mensaje.asunto}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Mensaje" />
+                            </f:facet>
+                            <h:outputText value="#{mensaje.mensaje}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Fecha" />
+                            </f:facet>
+                            <h:outputText value="#{mensaje.fecha}"><f:convertDateTime pattern="dd/MM/yyyy" /></h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Enviado" />
+                            </f:facet>
+                            <h:outputText value="#{mensaje.from.nombre}" />
+                        </h:column>
+                    </h:dataTable>
+                </div>   
+            </ui:fragment>
+        </ui:fragment>
+        <ui:fragment rendered="#{loginControllerBeans.nss == null}">
+            <p style="color: red; padding: 10px">No tiene permisos para acceder a esta zona</p>
+        </ui:fragment>
+    </ui:define>
+</ui:composition>
