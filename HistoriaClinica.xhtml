@@ -9,61 +9,55 @@
     <ui:define name="titulo">Historia Clínica</ui:define>
 
     <ui:define name="contenido">
-        <ui:fragment rendered="#{loginControllerBeans.nss != null}">
-            <div id="izqui">
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="Numero Seguridad Social: "/><h:outputText value="#{historiaBean.historia.persona.numSegSocial}"/>
-                    <h:outputLabel value="Fecha de nacimiento: "/><h:outputText value="#{historiaBean.historia.fechaNacimiento}"/>
-                    <h:outputLabel value="Grupo Sanguineo: "/><h:outputText value="#{historiaBean.historia.grupoSanguineo}"/>
-                    <h:outputLabel value="Obsevaciones: "/><h:outputText value="#{historiaBean.historia.observaciones}"/>
-                </h:panelGrid>
-                <h:form>
-                    <h:dataTable value="#{historiaBean.informes}" var="informe">
+        <div id="izqui">
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Numero Seguridad Social: "/><h:outputText value="#{historiaBean.historia.persona.numSegSocial}"/>
+                <h:outputLabel value="Fecha de nacimiento: "/><h:outputText value="#{historiaBean.historia.fechaNacimiento}"/>
+                <h:outputLabel value="Grupo Sanguineo: "/><h:outputText value="#{historiaBean.historia.grupoSanguineo}"/>
+                <h:outputLabel value="Obsevaciones: "/><h:outputText value="#{historiaBean.historia.observaciones}"/>
+            </h:panelGrid>
+            <h:form>
+                <h:dataTable value="#{historiaBean.informes}" var="informe">
+                    <h:column>
+                        <f:ajax render=":texto">
+                            <h:commandLink value="Id: #{informe.id} Tipo: #{informe.tipo} Doctor: #{informe.medico.nombre}, #{informe.medico.apellido1} #{informe.medico.apellido2}" action="#{historiaBean.cargaInforme(informe.id)}"/>
+                        </f:ajax>
+                        <h:dataTable value="#{informe.segundasOpiniones}" var="informe2" rendered="#{informe.segundasOpiniones.size()>0}">
+                            <h:column>
+                                <f:ajax render=":texto">
+                                    <h:commandLink class="tabulada" value="Id: #{informe2.id} Tipo: #{informe2.tipo} Doctor: #{informe.medico.nombre}, #{informe.medico.apellido1} #{informe.medico.apellido2}" action="#{historiaBean.cargaInforme(informe2.id)}"/>
+                                </f:ajax>
+                            </h:column>
+                        </h:dataTable>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </div>
+        <div id="dere">
+            <h:panelGroup id="texto">
+                <h:panelGrid columns="2" rendered="#{historiaBean.informe!=null}">
+                    <h:outputLabel value="Id: "/><h:outputText value="#{historiaBean.informe.id}"/>
+                    <h:outputLabel value="Diagnostico: "/><h:outputText value="#{historiaBean.informe.diagnostico}"/>
+                    <h:outputLabel value="Observaciones: "/><h:outputText value="#{historiaBean.informe.observaciones}"/>
+                    <h:outputLabel value="Fecha: "/><h:outputText value="#{historiaBean.informe.fecha}"/>
+                    <h:outputLabel value="Tipo: "/><h:outputText value="#{historiaBean.informe.tipo}"/>
+                    <h:outputLabel value="Doctor: "/><h:outputText value="#{historiaBean.informe.medico.nombre}, #{historiaBean.informe.medico.apellido1} #{historiaBean.informe.medico.apellido2}"/>
+                    <h:outputText  rendered="#{historiaBean.informe.tratamiento != null}" value="Tratamiento: "/><h:outputText value="#{historiaBean.informe.tratamiento.id}"/>
+                    <h:outputText rendered="#{historiaBean.informe.tratamiento != null}" value="Medicamentos"/>
+                    <h:dataTable value="#{historiaBean.informe.tratamiento.cantidades}" var="cant">
                         <h:column>
-                            <f:ajax render=":texto">
-                                <h:commandLink value="Id: #{informe.id} Tipo: #{informe.tipo} Doctor: #{informe.medico.nombre}, #{informe.medico.apellido1} #{informe.medico.apellido2}" action="#{historiaBean.cargaInforme(informe.id)}"/>
-                            </f:ajax>
-                            <h:dataTable value="#{informe.segundasOpiniones}" var="informe2" rendered="#{informe.segundasOpiniones.size()>0}">
-                                <h:column>
-                                    <f:ajax render=":texto">
-                                        <h:commandLink class="tabulada" value="Id: #{informe2.id} Tipo: #{informe2.tipo} Doctor: #{informe.medico.nombre}, #{informe.medico.apellido1} #{informe.medico.apellido2}" action="#{historiaBean.cargaInforme(informe2.id)}"/>
-                                    </f:ajax>
-                                </h:column>
-                            </h:dataTable>
+                            <h:outputText value="#{cant.medicamento.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <h:outputText value="#{cant.cantidad}"/>
+                        </h:column>
+                        <h:column>
+                            <h:outputText value="#{cant.observacion}"/>
                         </h:column>
                     </h:dataTable>
-                </h:form>
-            </div>
-            <div id="dere">
-                <h:panelGroup id="texto">
-                    <h:panelGrid columns="2" rendered="#{historiaBean.informe!=null}">
-                        <h:outputLabel value="Id: "/><h:outputText value="#{historiaBean.informe.id}"/>
-                        <h:outputLabel value="Diagnostico: "/><h:outputText value="#{historiaBean.informe.diagnostico}"/>
-                        <h:outputLabel value="Observaciones: "/><h:outputText value="#{historiaBean.informe.observaciones}"/>
-                        <h:outputLabel value="Fecha: "/><h:outputText value="#{historiaBean.informe.fecha}"/>
-                        <h:outputLabel value="Tipo: "/><h:outputText value="#{historiaBean.informe.tipo}"/>
-                        <h:outputLabel value="Doctor: "/><h:outputText value="#{historiaBean.informe.medico.nombre}, #{historiaBean.informe.medico.apellido1} #{historiaBean.informe.medico.apellido2}"/>
-                        <h:outputText  rendered="#{historiaBean.informe.tratamiento != null}" value="Tratamiento: "/><h:outputText value="#{historiaBean.informe.tratamiento.id}"/>
-                        <h:outputText rendered="#{historiaBean.informe.tratamiento != null}" value="Medicamentos"/>
-                            <h:dataTable value="#{historiaBean.informe.tratamiento.cantidades}" var="cant">
-                                <h:column>
-                                    <h:outputText value="#{cant.medicamento.nombre}"/>
-                                </h:column>
-                                <h:column>
-                                    <h:outputText value="#{cant.cantidad}"/>
-                                </h:column>
-                                <h:column>
-                                    <h:outputText value="#{cant.observacion}"/>
-                                </h:column>
-                            </h:dataTable>
-                    </h:panelGrid>
-                </h:panelGroup>
-            </div>
-        </ui:fragment>
-        <ui:fragment rendered="#{loginControllerBeans.nss == null}">
-            <p style="color: red; padding: 10px">No tiene permisos para acceder a esta zona</p>
-        </ui:fragment>
+                </h:panelGrid>
+            </h:panelGroup>
+        </div>
     </ui:define>
-
 </ui:composition>
 
