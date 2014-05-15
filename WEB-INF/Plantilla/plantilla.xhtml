@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title><ui:insert name="titulo"> Titulo del jsf </ui:insert></title>
-        <h:outputStylesheet library="css" name="estilos.cssln=default&amp;v=1_0" />
+        <h:outputStylesheet library="css" name="estilos.css" />
         <script type="text/javascript">
             PrimeFaces.locales['es'] = {
                 closeText: 'Cerrar',
@@ -44,9 +44,7 @@
                 <h:graphicImage library="img" name="clicSalud.jpg" class="der" alt="Clic Salud" />
             </div>
             <h:form>
-
                 <ui:fragment rendered="#{loginController.nss == null}">
-
                     <ul id="menu">
                         <li><h:link class="menuInicio" value="Home" outcome="index.xhtml" /></li>
                         <li><h:link class="menuInicio" value="Hospitales" outcome="hospitales.xhtml" /></li>
@@ -58,6 +56,7 @@
                         <p:menuitem  value="Principal" icon="/resources/img/home.png" url="index.xhtml"/>
                     </p:stack> 
                 </ui:fragment>
+                <ui:fragment rendered="#{loginController.nss != null}">
                 <ui:fragment rendered="#{loginController.tipoUsuario == 'PACIENTE'}">
                     <ul id="menu">
                         <li ><h:link class="menuPaciente" value="Principal" outcome="principal.xhtml" /></li>
@@ -139,17 +138,14 @@
                         <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
                     </p:stack> 
                 </ui:fragment>
-
-
-
-
+                </ui:fragment>
             </h:form>
             <div id="central">
                 <ui:fragment rendered="#{loginController.nss != null}">
                     <ui:insert name="contenido"> Parte central de la web aquí la implementación de la vista </ui:insert>
                 </ui:fragment>
                 <ui:fragment rendered="#{loginController.nss == null}">
-                    <p style="color: red; padding: 10px">No tiene permisos para acceder a esta zona</p>
+                    <p class="error">No estas autenticado en el sistema</p>
                 </ui:fragment>
             </div>
             <div id="footer">
