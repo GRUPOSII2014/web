@@ -7,37 +7,41 @@
 
     <ui:define name="titulo">Contacto</ui:define>
     <ui:define name="contenido">
-            <div id="login">
-                <h:form>
-                    <h:panelGrid columns="2">
-                        <f:facet name="header">
-                            <h:outputText value="Se requiere Autenticación" />
-                        </f:facet>
-                        <h:outputText value="Nombre de usuario:" />
-                        <h:inputText value="#{indexController.usuario}" maxlength="30" required="true" requiredMessage="Usuario: Se necesita un valor."/>
-                        <h:outputText value="Contraseña:" />
-                        <h:inputSecret value="#{indexController.passwd}" maxlength="12" required="true" requiredMessage="Contraseña: Se necesita un valor."/>
-                        <h:panelGroup>
-                            <h:commandButton class="botonlogin" value="Acceder" styleClass="submit" action="#{indexController.doLogin}" />
-                        </h:panelGroup>
-                    </h:panelGrid>
-                </h:form>
-                <h:messages class="error"/>
-            </div>
-            <div id="noticias">
-                <p:dataTable value="#{indexController.noticias}" var="n" paginator="true" id="dataTable" widgetVar="personasTable"
-                         emptyMessage="No hay noticias" rowsPerPageLabel="25,50,100">
-                    <p:column>
-                        <h:outputText value="#{n.titulo}" class="titulo"/>
-                        <br />
-                        <h:outputText value="#{n.descripcion}" class="cuerpo"/>
-                        <br />
-                        <h:outputText value="Autor - "/>
-                        <h:outputText value="#{n.fecha}">
-                            <f:convertDateTime pattern="dd/MM/yyyy hh:mm" />
-                        </h:outputText>
-                    </p:column>                            
-                </p:dataTable>
-            </div>
+        <div id="login">
+            <p:growl id="growl" sticky="true" showDetail="true" />
+            <h:form>
+                <h:panelGrid columns="2">
+                    <f:facet name="header">
+                        <h:outputText value="Se requiere Autenticación" />
+                    </f:facet>
+                    <h:outputText value="Nombre de usuario:" />
+                    <h:inputText value="#{indexController.usuario}" maxlength="30" required="true" requiredMessage="Usuario: Se necesita un valor."/>
+                    <h:outputText value="Contraseña:" />
+                    <h:inputSecret value="#{indexController.passwd}" maxlength="12" required="true" requiredMessage="Contraseña: Se necesita un valor."/>
+                    <h:panelGroup>
+                        <h:commandButton class="botonlogin" value="Acceder" styleClass="submit" action="#{indexController.doLogin}" />
+                    </h:panelGroup>
+                </h:panelGrid>
+            </h:form>
+            <!--<h:messages class="error"/>-->
+        </div>
+        <div id="noticias">
+            <p:dataTable value="#{indexController.noticias}" var="n" paginator="true" id="dataTable" widgetVar="personasTable"
+                         emptyMessage="No hay noticias" rowsPerPageLabel="25,50,100" paginatorPosition="bottom">
+                <f:facet name="header">
+                    Noticias
+                </f:facet>
+                <p:column>
+                    <h:outputText value="#{n.titulo}" class="titulo"/>
+                    <br />
+                    <h:outputText value="#{n.descripcion}" class="cuerpo"/>
+                    <br />
+                    <h:outputText value="Autor - "/>
+                    <h:outputText value="#{n.fecha}">
+                        <f:convertDateTime pattern="dd/MM/yyyy hh:mm" />
+                    </h:outputText>
+                </p:column>                            
+            </p:dataTable>
+        </div>
     </ui:define>
 </ui:composition>
