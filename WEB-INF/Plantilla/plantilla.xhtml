@@ -57,7 +57,7 @@
                     </p:stack> 
                 </ui:fragment>
                 <ui:fragment rendered="#{loginController.nss != null}">
-                    <ui:fragment rendered="#{loginController.tipoUsuario == 'PACIENTE'}">
+                    <ui:fragment rendered="#{loginController.tipoUsuario == 'P'}">
                         <ul id="menu">
                             <li ><h:link class="menuPaciente" value="Principal" outcome="principal.xhtml" /></li>
                             <li ><h:link class="menuPaciente" value="Mis datos" outcome="MisDatos.xhtml" /></li>
@@ -76,7 +76,7 @@
                             <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
                         </p:stack> 
                     </ui:fragment>
-                    <ui:fragment rendered="#{loginController.tipoUsuario == 'ADMINIS'}">
+                    <ui:fragment rendered="#{loginController.tipoUsuario == 'H'}">
                         <ul id="menu">
                             <li><h:link class="menuAdministracion" value="Principal" outcome="principal.xhtml" /></li>
                             <li><h:link class="menuAdministracion" value="Mis Datos" outcome="MisDatos.xhtml" /></li>
@@ -98,7 +98,7 @@
                             <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
                         </p:stack>  
                     </ui:fragment>
-                    <ui:fragment rendered="#{loginController.tipoUsuario == 'ENFERMERO'}">
+                    <ui:fragment rendered="#{loginController.tipoUsuario == 'E'}">
                         <ul id="menu">
                             <li><h:link class="menuEnfermero" value="Principal" outcome="principal.xhtml" /></li>
                             <li><h:link class="menuEnfermero" value="Mis Datos" outcome="MisDatos.xhtml" /></li>
@@ -117,7 +117,7 @@
                             <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
                         </p:stack> 
                     </ui:fragment>
-                    <ui:fragment rendered="#{loginController.tipoUsuario == 'MEDICO'}">
+                    <ui:fragment rendered="#{loginController.tipoUsuario == 'M'}">
                         <ul id="menu">
                             <li><h:link class="menuMedico" value="Principal" outcome="principal.xhtml" /></li>
                             <li><h:link class="menuMedico" value="Mis Datos" outcome="MisDatos.xhtml" /></li>
