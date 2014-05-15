@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title><ui:insert name="titulo"> Titulo del jsf </ui:insert></title>
-        <h:outputStylesheet library="css" name="estilos.cssln=default&amp;v=1_0" />
+        <h:outputStylesheet library="css" name="estilos.css" />
         <script type="text/javascript">
             PrimeFaces.locales['es'] = {
                 closeText: 'Cerrar',
@@ -139,10 +139,6 @@
                         <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
                     </p:stack> 
                 </ui:fragment>
-
-
-
-
             </h:form>
             <div id="central">
                 <ui:fragment rendered="#{loginController.nss != null}">
@@ -159,4 +155,3 @@
         </div>
     </h:body>
 </html>
-
