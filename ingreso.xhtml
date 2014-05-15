@@ -5,14 +5,12 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:p="http://primefaces.org/ui">
-
     <ui:define name="titulo">Ingreso Paciente</ui:define>
     <ui:define name="contenido">
         <h:form>
             <div id="informacion">
                 <p:messages severity="error" autoUpdate="true" closable="true" />
                 <h:panelGrid columns="3">
-
                     <h:outputText value="NSS: "/>
                     <h:inputText value="#{ingresoBeans.nss}" required="true" label="Número seguridad social" requiredMessage="No has introducido un nss"/>
                     <h:commandButton type="submit" value="Buscar" action="#{ingresoBeans.buscaPersona()}"/>
@@ -33,7 +31,6 @@
                     </h:panelGroup>
                 </h:panelGroup>
             </div>
-
             <div id="alertas">
                 <h:panelGrid rendered="#{ingresoBeans.p1!=null}" columns="2" class="tabla" width="100%" >
                     <f:facet name="header">
@@ -46,17 +43,13 @@
                     <h:outputLabel value="#{ingresoBeans.cama.habitacion.id}"/>
                     <h:outputLabel value="Cama: "/>
                     <h:outputLabel value="#{ingresoBeans.cama.id}"/>
-
                 </h:panelGrid>
             </div>
-
             <div id="creacion">
                 <p align="center">
                     <h:commandButton class="botonenvio" value="Asignar cama" style="submit" action="#{ingresoBeans.asignarCama()}"/>
                 </p>
             </div>
-
         </h:form>
     </ui:define>
-
 </ui:composition>
