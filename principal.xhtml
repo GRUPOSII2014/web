@@ -9,6 +9,10 @@
     <ui:define name="titulo">Principal</ui:define>
 
     <ui:define name="contenido">
+<<<<<<< HEAD
+=======
+        <ui:fragment rendered="#{loginControllerBeans.nss != null}">
+>>>>>>> parent of b93fec8... Revert "Inicial"
             <div id="informacion">
                 <h:panelGrid columns="2" class="tabla" width="100%">
                     <f:facet name="header">
@@ -49,7 +53,11 @@
                     </h:column>
                 </h:dataTable>
             </div>
+<<<<<<< HEAD
             <ui:fragment rendered="#{loginController.tipoUsuario != 'PACIENTE'}">
+=======
+            <ui:fragment rendered="#{loginControllerBeans.tipoUsuario != 'PACIENTE'}">
+>>>>>>> parent of b93fec8... Revert "Inicial"
                 <div id="mensajes">
                     <h:dataTable value="#{principalControllerBeans.mensajes}" var="mensaje" width="100%" class="tabla tabla2">
                         <f:facet name="header">
@@ -82,5 +90,12 @@
                     </h:dataTable>
                 </div>   
             </ui:fragment>
+<<<<<<< HEAD
+=======
+        </ui:fragment>
+        <ui:fragment rendered="#{loginControllerBeans.nss == null}">
+            <p style="color: red; padding: 10px">No tiene permisos para acceder a esta zona</p>
+        </ui:fragment>
+>>>>>>> parent of b93fec8... Revert "Inicial"
     </ui:define>
 </ui:composition>
