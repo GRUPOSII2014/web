@@ -44,9 +44,7 @@
                 <h:graphicImage library="img" name="clicSalud.jpg" class="der" alt="Clic Salud" />
             </div>
             <h:form>
-
                 <ui:fragment rendered="#{loginController.nss == null}">
-
                     <ul id="menu">
                         <li><h:link class="menuInicio" value="Home" outcome="index.xhtml" /></li>
                         <li><h:link class="menuInicio" value="Hospitales" outcome="hospitales.xhtml" /></li>
@@ -58,90 +56,97 @@
                         <p:menuitem  value="Principal" icon="/resources/img/home.png" url="index.xhtml"/>
                     </p:stack> 
                 </ui:fragment>
-                <ui:fragment rendered="#{loginController.tipoUsuario == 'PACIENTE'}">
-                    <ul id="menu">
-                        <li ><h:link class="menuPaciente" value="Principal" outcome="principal.xhtml" /></li>
-                        <li ><h:link class="menuPaciente" value="Mis datos" outcome="MisDatos.xhtml" /></li>
-                        <li ><h:link class="menuPaciente" value="Historia Clínica" outcome="HistoriaClinica.xhtml" /></li>
-                        <li ><h:link class="menuPaciente" value="Citas" outcome="citas.xhtml" /></li>
-                        <li ><h:link class="menuPaciente" value="Contacte con nosotros" outcome="contacto.xhtml" /></li>
-                        <li ><h:link class="menuPaciente" value="Cambiar Contraseña" outcome="Cambiarclave.xhtml" /></li>
-                        <li><h:commandLink class="menuPaciente" value="Salir" action="#{indexController.doLogout()}" /></li>
-                    </ul>
-                    <p:stack icon="/resources/img/stack.png">
-                        <p:menuitem  value="Cambiar Contraseña" icon="/resources/img/llave.png" url="Cambiarclave.xhtml"/>
-                        <p:menuitem  value="Contacta con nosotros" icon="/resources/img/contacto.png" url="contacto.xhtml"/>
-                        <p:menuitem  value="Citas" icon="/resources/img/citas.png" url="citas.xhtml"/>
-                        <p:menuitem  value="Historia Clinica" icon="/resources/img/historiaclinica.png" url="HistoriaClinica.xhtml"/>
-                        <p:menuitem  value="Mis datos" icon="/resources/img/misdatos.png" url="MisDatos.xhtml"/>
-                        <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
-                    </p:stack> 
-                </ui:fragment>
-                <ui:fragment rendered="#{loginController.tipoUsuario == 'ADMINIS'}">
-                    <ul id="menu">
-                        <li><h:link class="menuAdministracion" value="Principal" outcome="principal.xhtml" /></li>
-                        <li><h:link class="menuAdministracion" value="Mis Datos" outcome="MisDatos.xhtml" /></li>
-                        <li><h:link class="menuAdministracion" value="Historia Clínica" outcome="HistoriaClinica.xhtml" /></li>
-                        <li><h:link class="menuAdministracion" value="Crear Cita" outcome="crearcita.xhtml" /></li>
-                        <li><h:link class="menuAdministracion" value="Crear Persona" outcome="Crearpersona.xhtml" /></li>
-                        <li><h:link class="menuAdministracion" value="Citas" outcome="citas.xhtml" /></li>
-                        <li><h:link class="menuAdministracion" value="Ingreso" outcome="ingreso.xhtml" /></li>
-                        <li ><h:link class="menuAdministracion" value="Cambiar Contraseña" outcome="Cambiarclave.xhtml" /></li>
-                        <li><h:commandLink class="menuAdministracion" value="Salir" action="#{indexController.doLogout()}" /></li>
-                    </ul>
-                    <p:stack icon="/resources/img/stack.png">
-                        <p:menuitem  value="Ingreso" icon="/resources/img/ingreso.png" url="ingreso.xhtml"/>
-                        <p:menuitem  value="Citas" icon="/resources/img/citas.png" url="citas.xhtml"/>
-                        <p:menuitem  value="Crear Persona" icon="/resources/img/crearpersona.png" url="Crearpersona.xhtml"/>
-                        <p:menuitem  value="Crear Cita" icon="/resources/img/crearcita.png" url="crearcita.xhtml"/>
-                        <p:menuitem  value="Historia Clinica" icon="/resources/img/historiaclinica.png" url="HistoriaClinica.xhtml"/>
-                        <p:menuitem  value="Mis datos" icon="/resources/img/misdatos.png" url="MisDatos.xhtml"/>
-                        <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
-                    </p:stack>  
-                </ui:fragment>
-                <ui:fragment rendered="#{loginController.tipoUsuario == 'ENFERMERO'}">
-                    <ul id="menu">
-                        <li><h:link class="menuEnfermero" value="Principal" outcome="principal.xhtml" /></li>
-                        <li><h:link class="menuEnfermero" value="Mis Datos" outcome="MisDatos.xhtml" /></li>
-                        <li><h:link class="menuEnfermero" value="Historia Clínica" outcome="HistoriaClinica.xhtml" /></li>
-                        <li><h:link class="menuEnfermero" value="Citas de hoy" outcome="Trabajo.xhtml" /></li>
-                        <li><h:link class="menuEnfermero" value="Citas" outcome="citas.xhtml" /></li>
-                        <li ><h:link class="menuEnfermero" value="Cambiar Contraseña" outcome="Cambiarclave.xhtml" /></li>
-                        <li><h:commandLink class="menuEnfermero" value="Salir" action="#{indexController.doLogout()}" /></li>
-                    </ul>
-                    <p:stack icon="/resources/img/stack.png">
-                        <p:menuitem  value="Cambiar Contraseña" icon="/resources/img/llave.png" url="Cambiarclave.xhtml"/>
-                        <p:menuitem  value="Citas" icon="/resources/img/citas.png" url="citas.xhtml"/>
-                        <p:menuitem  value="Citas de hoy" icon="/resources/img/enfermero.png" url="Trabajo.xhtml"/>
-                        <p:menuitem  value="Historia Clinica" icon="/resources/img/historiaclinica.png" url="HistoriaClinica.xhtml"/>
-                        <p:menuitem  value="Mis datos" icon="/resources/img/misdatos.png" url="MisDatos.xhtml"/>
-                        <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
-                    </p:stack> 
-                </ui:fragment>
-                <ui:fragment rendered="#{loginController.tipoUsuario == 'MEDICO'}">
-                    <ul id="menu">
-                        <li><h:link class="menuMedico" value="Principal" outcome="principal.xhtml" /></li>
-                        <li><h:link class="menuMedico" value="Mis Datos" outcome="MisDatos.xhtml" /></li>
-                        <li><h:link class="menuMedico" value="Historia Clínica" outcome="HistoriaClinica.xhtml" /></li>
-                        <li><h:link class="menuMedico" value="Citas de hoy" outcome="Trabajo.xhtml" /></li>
-                        <li><h:link class="menuMedico" value="Citas" outcome="principal.xhtml" /></li>
-                        <li><h:link class="menuMedico" value="Eventos y Alertas" outcome="gestionalertas.xhtml" /></li>
-                        <li ><h:link class="menuMedico" value="Cambiar Contraseña" outcome="Cambiarclave.xhtml" /></li>
-                        <li><h:commandLink class="menuMedico" value="Salir" action="#{indexController.doLogout()}" /></li>
-                    </ul>
-                    <p:stack icon="/resources/img/stack.png">
-                        <p:menuitem  value="Cambiar Contraseña" icon="/resources/img/llave.png" url="Cambiarclave.xhtml"/>
-                        <p:menuitem  value="Eventos y Alertas" icon="/resources/img/alerta.png" url="gestionalertas.xhtml"/>
-                        <p:menuitem  value="Citas" icon="/resources/img/citas.png" url="citas.xhtml"/>
-                        <p:menuitem  value="Citas de hoy" icon="/resources/img/medico.png" url="Trabajo.xhtml"/>
-                        <p:menuitem  value="Historia Clinica" icon="/resources/img/historiaclinica.png" url="HistoriaClinica.xhtml"/>
-                        <p:menuitem  value="Mis datos" icon="/resources/img/misdatos.png" url="MisDatos.xhtml"/>
-                        <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
-                    </p:stack> 
+                <ui:fragment rendered="#{loginController.nss != null}">
+                    <ui:fragment rendered="#{loginController.tipoUsuario == 'PACIENTE'}">
+                        <ul id="menu">
+                            <li ><h:link class="menuPaciente" value="Principal" outcome="principal.xhtml" /></li>
+                            <li ><h:link class="menuPaciente" value="Mis datos" outcome="MisDatos.xhtml" /></li>
+                            <li ><h:link class="menuPaciente" value="Historia Clínica" outcome="HistoriaClinica.xhtml" /></li>
+                            <li ><h:link class="menuPaciente" value="Citas" outcome="citas.xhtml" /></li>
+                            <li ><h:link class="menuPaciente" value="Contacte con nosotros" outcome="contacto.xhtml" /></li>
+                            <li ><h:link class="menuPaciente" value="Cambiar Contraseña" outcome="Cambiarclave.xhtml" /></li>
+                            <li><h:commandLink class="menuPaciente" value="Salir" action="#{indexController.doLogout()}" /></li>
+                        </ul>
+                        <p:stack icon="/resources/img/stack.png">
+                            <p:menuitem  value="Cambiar Contraseña" icon="/resources/img/llave.png" url="Cambiarclave.xhtml"/>
+                            <p:menuitem  value="Contacta con nosotros" icon="/resources/img/contacto.png" url="contacto.xhtml"/>
+                            <p:menuitem  value="Citas" icon="/resources/img/citas.png" url="citas.xhtml"/>
+                            <p:menuitem  value="Historia Clinica" icon="/resources/img/historiaclinica.png" url="HistoriaClinica.xhtml"/>
+                            <p:menuitem  value="Mis datos" icon="/resources/img/misdatos.png" url="MisDatos.xhtml"/>
+                            <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
+                        </p:stack> 
+                    </ui:fragment>
+                    <ui:fragment rendered="#{loginController.tipoUsuario == 'ADMINIS'}">
+                        <ul id="menu">
+                            <li><h:link class="menuAdministracion" value="Principal" outcome="principal.xhtml" /></li>
+                            <li><h:link class="menuAdministracion" value="Mis Datos" outcome="MisDatos.xhtml" /></li>
+                            <li><h:link class="menuAdministracion" value="Historia Clínica" outcome="HistoriaClinica.xhtml" /></li>
+                            <li><h:link class="menuAdministracion" value="Crear Cita" outcome="crearcita.xhtml" /></li>
+                            <li><h:link class="menuAdministracion" value="Crear Persona" outcome="Crearpersona.xhtml" /></li>
+                            <li><h:link class="menuAdministracion" value="Citas" outcome="citas.xhtml" /></li>
+                            <li><h:link class="menuAdministracion" value="Ingreso" outcome="ingreso.xhtml" /></li>
+                            <li ><h:link class="menuAdministracion" value="Cambiar Contraseña" outcome="Cambiarclave.xhtml" /></li>
+                            <li><h:commandLink class="menuAdministracion" value="Salir" action="#{indexController.doLogout()}" /></li>
+                        </ul>
+                        <p:stack icon="/resources/img/stack.png">
+                            <p:menuitem  value="Ingreso" icon="/resources/img/ingreso.png" url="ingreso.xhtml"/>
+                            <p:menuitem  value="Citas" icon="/resources/img/citas.png" url="citas.xhtml"/>
+                            <p:menuitem  value="Crear Persona" icon="/resources/img/crearpersona.png" url="Crearpersona.xhtml"/>
+                            <p:menuitem  value="Crear Cita" icon="/resources/img/crearcita.png" url="crearcita.xhtml"/>
+                            <p:menuitem  value="Historia Clinica" icon="/resources/img/historiaclinica.png" url="HistoriaClinica.xhtml"/>
+                            <p:menuitem  value="Mis datos" icon="/resources/img/misdatos.png" url="MisDatos.xhtml"/>
+                            <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
+                        </p:stack>  
+                    </ui:fragment>
+                    <ui:fragment rendered="#{loginController.tipoUsuario == 'ENFERMERO'}">
+                        <ul id="menu">
+                            <li><h:link class="menuEnfermero" value="Principal" outcome="principal.xhtml" /></li>
+                            <li><h:link class="menuEnfermero" value="Mis Datos" outcome="MisDatos.xhtml" /></li>
+                            <li><h:link class="menuEnfermero" value="Historia Clínica" outcome="HistoriaClinica.xhtml" /></li>
+                            <li><h:link class="menuEnfermero" value="Citas de hoy" outcome="Trabajo.xhtml" /></li>
+                            <li><h:link class="menuEnfermero" value="Citas" outcome="citas.xhtml" /></li>
+                            <li ><h:link class="menuEnfermero" value="Cambiar Contraseña" outcome="Cambiarclave.xhtml" /></li>
+                            <li><h:commandLink class="menuEnfermero" value="Salir" action="#{indexController.doLogout()}" /></li>
+                        </ul>
+                        <p:stack icon="/resources/img/stack.png">
+                            <p:menuitem  value="Cambiar Contraseña" icon="/resources/img/llave.png" url="Cambiarclave.xhtml"/>
+                            <p:menuitem  value="Citas" icon="/resources/img/citas.png" url="citas.xhtml"/>
+                            <p:menuitem  value="Citas de hoy" icon="/resources/img/enfermero.png" url="Trabajo.xhtml"/>
+                            <p:menuitem  value="Historia Clinica" icon="/resources/img/historiaclinica.png" url="HistoriaClinica.xhtml"/>
+                            <p:menuitem  value="Mis datos" icon="/resources/img/misdatos.png" url="MisDatos.xhtml"/>
+                            <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
+                        </p:stack> 
+                    </ui:fragment>
+                    <ui:fragment rendered="#{loginController.tipoUsuario == 'MEDICO'}">
+                        <ul id="menu">
+                            <li><h:link class="menuMedico" value="Principal" outcome="principal.xhtml" /></li>
+                            <li><h:link class="menuMedico" value="Mis Datos" outcome="MisDatos.xhtml" /></li>
+                            <li><h:link class="menuMedico" value="Historia Clínica" outcome="HistoriaClinica.xhtml" /></li>
+                            <li><h:link class="menuMedico" value="Citas de hoy" outcome="Trabajo.xhtml" /></li>
+                            <li><h:link class="menuMedico" value="Citas" outcome="principal.xhtml" /></li>
+                            <li><h:link class="menuMedico" value="Eventos y Alertas" outcome="gestionalertas.xhtml" /></li>
+                            <li ><h:link class="menuMedico" value="Cambiar Contraseña" outcome="Cambiarclave.xhtml" /></li>
+                            <li><h:commandLink class="menuMedico" value="Salir" action="#{indexController.doLogout()}" /></li>
+                        </ul>
+                        <p:stack icon="/resources/img/stack.png">
+                            <p:menuitem  value="Cambiar Contraseña" icon="/resources/img/llave.png" url="Cambiarclave.xhtml"/>
+                            <p:menuitem  value="Eventos y Alertas" icon="/resources/img/alerta.png" url="gestionalertas.xhtml"/>
+                            <p:menuitem  value="Citas" icon="/resources/img/citas.png" url="citas.xhtml"/>
+                            <p:menuitem  value="Citas de hoy" icon="/resources/img/medico.png" url="Trabajo.xhtml"/>
+                            <p:menuitem  value="Historia Clinica" icon="/resources/img/historiaclinica.png" url="HistoriaClinica.xhtml"/>
+                            <p:menuitem  value="Mis datos" icon="/resources/img/misdatos.png" url="MisDatos.xhtml"/>
+                            <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
+                        </p:stack> 
+                    </ui:fragment>
                 </ui:fragment>
             </h:form>
             <div id="central">
-                <ui:insert name="contenido"> Parte central de la web aquí la implementación de la vista </ui:insert>
+                <ui:fragment rendered="#{loginController.nss == null}">
+                    <ui:insert name="contenido"> Parte central de la web aquí la implementación de la vista </ui:insert>
+                </ui:fragment>
+                <ui:fragment rendered="#{loginController.nss != null}">
+                    <p class="error">Ya estas autenticado en la aplicación</p>
+                </ui:fragment>
             </div>
             <div id="footer">
                 <p>&copy; 2014 Hospital Regional Universitario de Málaga.</p>
