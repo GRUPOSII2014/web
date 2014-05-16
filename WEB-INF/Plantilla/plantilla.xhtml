@@ -70,8 +70,8 @@
                         <p:stack icon="/resources/img/stack.png">
                             <p:menuitem  value="Cambiar Contraseña" icon="/resources/img/llave.png"  url="Cambiarclave.xhtml"/>
                             <p:menuitem  value="Contacta con nosotros" icon="/resources/img/contacto.png" url="contacto.xhtml"/>
-                            <p:menuitem  value="Citas" icon="/resources/img/citas.png" url="citas.xhtml"/>
-                            <p:menuitem  value="Historia Clinica" icon="/resources/img/historiaclinica.png" url="HistoriaClinica.xhtml"/>
+                            <p:menuitem  value="Citas" icon="/resources/img/citas.png" action="#{principalControllerBeans.verMisCitas(loginController.nss)}"/>
+                            <p:menuitem  value="Historia Clinica" icon="/resources/img/historiaclinica.png" action="#{principalControllerBeans.verMiHistoria(loginController.nss)}"/>
                             <p:menuitem  value="Mis datos" icon="/resources/img/misdatos.png" url="MisDatos.xhtml"/>
                             <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
                         </p:stack> 
