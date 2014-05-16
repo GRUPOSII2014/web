@@ -5,10 +5,9 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:p="http://primefaces.org/ui">
-
     <ui:define name="titulo">Historia Clínica</ui:define>
-
     <ui:define name="contenido">
+        <ui:fragment rendered="#{loginController.tipoUsuario == 'P' || loginController.tipoUsuario == 'M'}">
         <div id="izqui">
             <h:panelGrid columns="2">
                 <h:outputLabel value="Numero Seguridad Social: "/><h:outputText value="#{historiaBean.historia.persona.numSegSocial}"/>
@@ -58,6 +57,10 @@
                 </h:panelGrid>
             </h:panelGroup>
         </div>
+        </ui:fragment>
+        <ui:fragment rendered="#{loginController.tipoUsuario != 'P' || loginController.tipoUsuario != 'M'}">
+            <p class="error">No tiene privilegios para acceder a esta página</p>
+        </ui:fragment>
     </ui:define>
 </ui:composition>
 

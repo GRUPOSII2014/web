@@ -15,71 +15,76 @@
                     <h:outputText value="Información" />
                 </f:facet>
                 <h:outputText value="Nombre:" />
-                <h:outputText value="#{principalControllerBeans.administrativo.nombre}" />
+                <h:outputText value="#{principalControllerBeans.persona.nombre}" />
                 <h:outputText value="Primer Apellido:" />
-                <h:outputText value="#{principalControllerBeans.administrativo.apellido1}" />
+                <h:outputText value="#{principalControllerBeans.persona.apellido1}" />
                 <h:outputText value="Segundo Apellido:" />
-                <h:outputText value="#{principalControllerBeans.administrativo.apellido2}" />
+                <h:outputText value="#{principalControllerBeans.persona.apellido2}" />
                 <h:outputText value="Sexo:" />
-                <h:outputText value="#{principalControllerBeans.administrativo.sexo}" />
+                <h:outputText value="#{principalControllerBeans.persona.sexo}" />
             </h:panelGrid>
         </div>
         <div id="alertas">
-            <h:dataTable value="#{principalControllerBeans.alertas}" var="alerta" width="620px" class="tabla">
+            <p:dataTable value="#{principalControllerBeans.alertas}" var="alerta"
+                         paginator="true" id="DTalertas" widgetVar="personasTable"
+                         emptyMessage="No Hay alertas" rowsPerPageLabel="25,50,100" paginatorPosition="bottom">
                 <f:facet name="header">
                     <h:outputText value="Alertas" />
                 </f:facet>
-                <h:column>
+                <p:column>
                     <f:facet name="header">
                         <h:outputText value="Asunto" />
                     </f:facet>
                     <h:outputText value="#{alerta.asunto}" />
-                </h:column>
-                <h:column>
+                </p:column>
+                <p:column>
                     <f:facet name="header">
                         <h:outputText value="Descripción" />
                     </f:facet>
                     <h:outputText value="#{alerta.descripcion}" />
-                </h:column>
-                <h:column>
+                </p:column>
+                <p:column>
                     <f:facet name="header">
                         <h:outputText value="Fecha" />
                     </f:facet>
                     <h:outputText value="#{alerta.fecha}"><f:convertDateTime pattern="dd/MM/yyyy" /></h:outputText>
-                </h:column>
-            </h:dataTable>
+                </p:column>
+            </p:dataTable>
         </div>
-        <ui:fragment rendered="#{loginController.tipoUsuario != 'PACIENTE'}">
+        <ui:fragment rendered="#{loginController.tipoUsuario != 'P'}">
             <div id="mensajes">
-                <h:dataTable value="#{principalController.mensajes}" var="mensaje" width="100%" class="tabla tabla2">
+                <p:dataTable value="#{principalController.mensajes}" var="mensaje"
+                             paginator="true" id="DTmensajes" widgetVar="personasTable"
+                             emptyMessage="No hay mensajes" rowsPerPageLabel="25,50,100" paginatorPosition="bottom"
+                             rows="10">
                     <f:facet name="header">
                         <h:outputText value="Mensajes" />
                     </f:facet>
-                    <h:column>
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="Asunto" />
                         </f:facet>
                         <h:outputText value="#{mensaje.asunto}" />
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="Mensaje" />
                         </f:facet>
                         <h:outputText value="#{mensaje.mensaje}" />
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="Fecha" />
                         </f:facet>
                         <h:outputText value="#{mensaje.fecha}"><f:convertDateTime pattern="dd/MM/yyyy" /></h:outputText>
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column>
                         <f:facet name="header">
                             <h:outputText value="Enviado" />
                         </f:facet>
                         <h:outputText value="#{mensaje.from.nombre}" />
-                    </h:column>
-                </h:dataTable>
+                    </p:column>
+                </p:dataTable>
             </div>   
         </ui:fragment>
     </ui:define>

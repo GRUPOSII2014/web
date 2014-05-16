@@ -7,124 +7,129 @@
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="titulo">Consultas</ui:define>
     <ui:define name="contenido">
-        <p:tabView id="tabView"> 
-            <div class="Listado datagrid">
-                <p:tab title="Citas">
-                    <h2 class="citas">Citas</h2>
-                    <h:form>
-                        <h:dataTable  value="#{trabajosBean.citas(loginController.nss)}" var="cita">
-                            <div class="cita#{cita.atendido}}">
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Hora" />
-                                    </f:facet>
-                                    <h:outputText value="#{cita.fecha}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Nombre" />
-                                    </f:facet>
-                                    <h:outputText value="#{cita.persona.nombre}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Apellido1" />
-                                    </f:facet>
-                                    <h:outputText value="#{cita.persona.apellido1}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Apellido2" />
-                                    </f:facet>
-                                    <h:outputText value="#{cita.persona.apellido2}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Nss" />
-                                    </f:facet>
-                                    <h:outputText value="#{cita.persona.numSegSocial}"/>
-                                </h:column>
-                                <h:column>
-                                    <h:form>
-                                        <c:if test="#{loginControllerBeans.tipoUsuario == 'MEDICO'}">
-                                            <h:commandButton type="submit" value="Diagnostico"  action="#{trabajosBean.doDiagnostico(cita)}"/>
+        <ui:fragment rendered="#{loginController.tipoUsuario == 'M' || loginController.tipoUsuario == 'E'}">
+            <p:tabView id="tabView"> 
+                <div class="Listado datagrid">
+                    <p:tab title="Citas">
+                        <h2 class="citas">Citas</h2>
+                        <h:form>
+                            <h:dataTable  value="#{trabajosBean.citas(loginController.nss)}" var="cita">
+                                <div class="cita#{cita.atendido}}">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Hora" />
+                                        </f:facet>
+                                        <h:outputText value="#{cita.fecha}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Nombre" />
+                                        </f:facet>
+                                        <h:outputText value="#{cita.persona.nombre}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Apellido1" />
+                                        </f:facet>
+                                        <h:outputText value="#{cita.persona.apellido1}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Apellido2" />
+                                        </f:facet>
+                                        <h:outputText value="#{cita.persona.apellido2}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Nss" />
+                                        </f:facet>
+                                        <h:outputText value="#{cita.persona.numSegSocial}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <h:form>
+                                            <c:if test="#{loginControllerBeans.tipoUsuario == 'MEDICO'}">
+                                                <h:commandButton type="submit" value="Diagnostico"  action="#{trabajosBean.doDiagnostico(cita)}"/>
+                                            </c:if>
+                                            <c:if test="#{loginControllerBeans.tipoUsuario == 'ENFERMERO'}">
+                                                <h:commandButton type="submit" value="Tratar" action="#{trabajosBean.doTratar(cita)}"/> 
+                                            </c:if>
+                                        </h:form>
+                                    </h:column>
+                                </div>
+                            </h:dataTable>
+                        </h:form>
+                    </p:tab>
+                    <p:tab title="Urgencias">
+                        <h2 class="citas">Urgencias</h2>
+                        <h:form>
+                            <h:dataTable value="#{trabajosBean.urgencias(loginController.nss)}" var="urg">
+                                <div class="urgencia#{urg.estado}}">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Hora" />
+                                        </f:facet>
+                                        <h:outputText value="#{urg.fecha}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Nombre" />
+                                        </f:facet>
+                                        <h:outputText value="#{urg.persona.nombre}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Apellido1" />
+                                        </f:facet>
+                                        <h:outputText value="#{urg.persona.apellido1}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Apellido2" />
+                                        </f:facet>
+                                        <h:outputText value="#{urg.persona.apellido2}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Nss" />
+                                        </f:facet>
+                                        <h:outputText value="#{urg.persona.numSegSocial}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Estado" />
+                                        </f:facet>
+                                        <h:outputText value="#{urg.estado}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Tipo" />
+                                        </f:facet>
+                                        <h:outputText value="#{urg.tipo}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Observaciones" />
+                                        </f:facet>
+                                        <h:outputText value="#{urg.observaciones}"/>
+                                    </h:column>
+                                    <h:column>
+
+                                        <c:if test="#{loginControllerBeans.tipoUsuario=='MEDICO'}">
+                                            <h:commandButton type="submit" value="Diagnostico"  action="#{trabajosBean.doDiagnosticoUrgencia(urg)}"/>
                                         </c:if>
                                         <c:if test="#{loginControllerBeans.tipoUsuario == 'ENFERMERO'}">
-                                            <h:commandButton type="submit" value="Tratar" action="#{trabajosBean.doTratar(cita)}"/> 
+                                            <h:commandButton type="submit" value="Tratar" action="#{trabajosBean.doTratarUrgencia(urg)}"/> 
                                         </c:if>
-                                    </h:form>
-                                </h:column>
-                            </div>
-                        </h:dataTable>
-                    </h:form>
-                </p:tab>
-                <p:tab title="Urgencias">
-                    <h2 class="citas">Urgencias</h2>
-                    <h:form>
-                        <h:dataTable value="#{trabajosBean.urgencias(loginController.nss)}" var="urg">
-                            <div class="urgencia#{urg.estado}}">
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Hora" />
-                                    </f:facet>
-                                    <h:outputText value="#{urg.fecha}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Nombre" />
-                                    </f:facet>
-                                    <h:outputText value="#{urg.persona.nombre}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Apellido1" />
-                                    </f:facet>
-                                    <h:outputText value="#{urg.persona.apellido1}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Apellido2" />
-                                    </f:facet>
-                                    <h:outputText value="#{urg.persona.apellido2}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Nss" />
-                                    </f:facet>
-                                    <h:outputText value="#{urg.persona.numSegSocial}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Estado" />
-                                    </f:facet>
-                                    <h:outputText value="#{urg.estado}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Tipo" />
-                                    </f:facet>
-                                    <h:outputText value="#{urg.tipo}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Observaciones" />
-                                    </f:facet>
-                                    <h:outputText value="#{urg.observaciones}"/>
-                                </h:column>
-                                <h:column>
-
-                                    <c:if test="#{loginControllerBeans.tipoUsuario=='MEDICO'}">
-                                        <h:commandButton type="submit" value="Diagnostico"  action="#{trabajosBean.doDiagnosticoUrgencia(urg)}"/>
-                                    </c:if>
-                                    <c:if test="#{loginControllerBeans.tipoUsuario == 'ENFERMERO'}">
-                                        <h:commandButton type="submit" value="Tratar" action="#{trabajosBean.doTratarUrgencia(urg)}"/> 
-                                    </c:if>
-                                </h:column>
-                            </div>
-                        </h:dataTable>
-                    </h:form>
-                </p:tab>
-            </div>
-        </p:tabView> 
+                                    </h:column>
+                                </div>
+                            </h:dataTable>
+                        </h:form>
+                    </p:tab>
+                </div>
+            </p:tabView>
+        </ui:fragment>
+        <ui:fragment rendered="#{loginController.tipoUsuario != 'E' || loginController.tipoUsuario != 'M'}">
+            <p class="error">No tiene privilegios para acceder a esta página</p>
+        </ui:fragment>
     </ui:define>
 </ui:composition>
