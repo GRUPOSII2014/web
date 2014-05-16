@@ -15,13 +15,13 @@
                     <h:outputText value="Información" />
                 </f:facet>
                 <h:outputText value="Nombre:" />
-                <h:outputText value="#{principalControllerBeans.administrativo.nombre}" />
+                <h:outputText value="#{principalControllerBeans.persona.nombre}" />
                 <h:outputText value="Primer Apellido:" />
-                <h:outputText value="#{principalControllerBeans.administrativo.apellido1}" />
+                <h:outputText value="#{principalControllerBeans.persona.apellido1}" />
                 <h:outputText value="Segundo Apellido:" />
-                <h:outputText value="#{principalControllerBeans.administrativo.apellido2}" />
+                <h:outputText value="#{principalControllerBeans.persona.apellido2}" />
                 <h:outputText value="Sexo:" />
-                <h:outputText value="#{principalControllerBeans.administrativo.sexo}" />
+                <h:outputText value="#{principalControllerBeans.persona.sexo}" />
             </h:panelGrid>
         </div>
         <div id="alertas">
@@ -49,7 +49,7 @@
                 </h:column>
             </h:dataTable>
         </div>
-        <ui:fragment rendered="#{loginController.tipoUsuario != 'PACIENTE'}">
+        <ui:fragment rendered="#{loginController.tipoUsuario != 'P'}">
             <div id="mensajes">
                 <h:dataTable value="#{principalController.mensajes}" var="mensaje" width="100%" class="tabla tabla2">
                     <f:facet name="header">

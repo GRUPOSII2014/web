@@ -2,14 +2,15 @@
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="titulo">Nuestros Hospitales</ui:define>
     <ui:define name="contenido">
         <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
         <h:dataTable value="#{hospitalesControllerBeans.hospitales}" var="h">
             <h:column>
                 <h:panelGrid columns="2">
-                    <p:gmap center="#{h.localizacion}" zoom="17" type="HYBRID" style="width:350px;height:230px" />
+                    <p:gmap center="#{h.localizacion}" zoom="15" type="ROADMAP" style="width:350px;height:230px" />
                     <h:panelGrid columns="2">
                         <h:outputText value="Nombre: " />
                         <h:outputText value="#{h.nombre}" />
@@ -20,9 +21,13 @@
                         <h:outputText value="Ciudad: " />
                         <h:outputText value="#{h.ciudad}" />
                         <h:outputText value="Hora Apertura: " />
-                        <h:outputText value="#{h.horaApertura}" />
+                        <h:outputText value="#{h.horaApertura}">
+                            <f:convertDateTime pattern="hh:mm" />
+                        </h:outputText>
                         <h:outputText value="Hora Cierre: " />
-                        <h:outputText value="#{h.horaCierre}" />
+                        <h:outputText value="#{h.horaCierre}">
+                            <f:convertDateTime pattern="hh:mm" />
+                        </h:outputText>
                     </h:panelGrid>
                 </h:panelGrid>
             </h:column>
