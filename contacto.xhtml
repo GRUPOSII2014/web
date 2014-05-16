@@ -7,47 +7,48 @@
     <ui:define name="titulo">Contacto</ui:define>
     <ui:define name="contenido">
         <h:form>
+            <p:growl id="growl" showDetail="true" sticky="true" /> 
             <ui:fragment rendered="#{loginController.nss != null}">
-            <div style="margin: 10px; margin-left: 250px; padding: 10px; width: 500px;">
-                <p:growl id="growl" showDetail="true" sticky="true" /> 
-                <h:panelGrid columns="2">
-                    <f:facet name="header">
-                        <h:outputText value="Formulario de contacto" />
-                    </f:facet>
-                    <h:outputText value="Nombre:" />
-                    <h:inputText readonly="readonly" value="#{contactoBean.p.nombre} #{contactoBean.p.apellido1} #{contactoBean.p.apellido2}"/>
-                    <h:outputText value="Correo electrónico:" />
-                    <h:inputText readonly="readonly" value="#{contactoBean.p.email}"/>
-                    <h:outputText value="Asunto:" />
-                    <h:inputText required="true" value="#{contactoBean.asunto}" size="255"  label="Asunto" requiredMessage="Se requiere un asunto"/>
-                    <h:outputText value="Mensaje:" />
-                    <h:inputTextarea required="true" value="#{contactoBean.descripcion}" rows="7" cols="40" label="Descripción" requiredMessage="Se requiere una descripción" />
-                    <h:panelGroup>
-                        <h:commandButton class="envioContacto" value="Enviar" action="#{contactoBean.enviarFormulario()}" />
-                    </h:panelGroup>
-                </h:panelGrid>
-            </div>
+                <ui:fragment rendered="#{contactoBean.inic == 'Iniciado' }">
+                    <div style="margin: 10px; margin-left: 250px; padding: 10px; width: 500px;">
+                        <h:panelGrid columns="2">
+                            <f:facet name="header">
+                                <h:outputText value="Formulario de contacto" />
+                            </f:facet>
+                            <h:outputText value="Nombre:" />
+                            <h:inputText readonly="readonly" value="#{contactoBean.p.nombre} #{contactoBean.p.apellido1} #{contactoBean.p.apellido2}"/>
+                            <h:outputText value="Correo electrónico:" />
+                            <h:inputText readonly="readonly" value="#{contactoBean.p.email}"/>
+                            <h:outputText value="Asunto:" />
+                            <h:inputText required="true" value="#{contactoBean.asunto}" size="50" maxlength="255"  label="Asunto" requiredMessage="Se requiere un asunto"/>
+                            <h:outputText value="Mensaje:" />
+                            <h:inputTextarea required="true" value="#{contactoBean.descripcion}" rows="7" cols="40" label="Descripción" requiredMessage="Se requiere una descripción" />
+                            <h:panelGroup>
+                                <h:commandButton class="envioContacto" value="Enviar" action="#{contactoBean.enviarFormulario()}" />
+                            </h:panelGroup>
+                        </h:panelGrid>
+                    </div>
+                </ui:fragment>
             </ui:fragment>
             <ui:fragment rendered="#{loginController.nss == null}">
                 <div style="margin: 10px; margin-left: 250px; padding: 10px; width: 500px;">
-                <p:growl id="growl" showDetail="true" sticky="true" /> 
-                <h:panelGrid columns="2">
-                    <f:facet name="header">
-                        <h:outputText value="Formulario de contacto" />
-                    </f:facet>
-                    <h:outputText value="Nombre:" />
-                    <h:inputText required="true" value="#{contactoBean.nombre}" label="Nombre" requiredMessage="Se requiere un emisor"/>
-                    <h:outputText value="Correo electrónico:" />
-                    <h:inputText required="true" value="#{contactoBean.email}" label="Email" requiredMessage="Se requiere un email de contacto" />
-                    <h:outputText value="Asunto:" />
-                    <h:inputText required="true" value="#{contactoBean.asunto}" size="255" label="Asunto" requiredMessage="Se requiere un asunto" />
-                    <h:outputText value="Mensaje:" />
-                    <h:inputTextarea required="true" value="#{contactoBean.descripcion}" rows="7" cols="40" />
-                    <h:panelGroup>
-                        <h:commandButton class="envioContacto" value="Enviar" action="#{contactoBean.enviarFormulario()}" />
-                    </h:panelGroup>
-                </h:panelGrid>
-            </div>
+                    <h:panelGrid columns="2">
+                        <f:facet name="header">
+                            <h:outputText value="Formulario de contacto" />
+                        </f:facet>
+                        <h:outputText value="Nombre:" />
+                        <h:inputText required="true" value="#{contactoBean.nombre}" size="50" maxlength="255" label="Nombre" requiredMessage="Se requiere un emisor"/>
+                        <h:outputText value="Correo electrónico:" />
+                        <h:inputText required="true" value="#{contactoBean.email}" size="50" maxlength="255" label="Email" requiredMessage="Se requiere un email de contacto" />
+                        <h:outputText value="Asunto:" />
+                        <h:inputText required="true" value="#{contactoBean.asunto}" size="50" maxlength="255" label="Asunto" requiredMessage="Se requiere un asunto" />
+                        <h:outputText value="Mensaje:" />
+                        <h:inputTextarea required="true" value="#{contactoBean.descripcion}" rows="7" cols="40" />
+                        <h:panelGroup>
+                            <h:commandButton class="envioContacto" value="Enviar" action="#{contactoBean.enviarFormulario()}" />
+                        </h:panelGroup>
+                    </h:panelGrid>
+                </div>
             </ui:fragment>
         </h:form>
     </ui:define>
