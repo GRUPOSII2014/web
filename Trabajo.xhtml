@@ -7,13 +7,13 @@
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="titulo">Consultas</ui:define>
     <ui:define name="contenido">
-        <ui:fragment rendered="#{loginController.tipoUsuario == 'M' || loginController.tipoUsuario == 'E'}">
+        <ui:fragment rendered="#{loginController.tipoUsuario == 'M'}">
             <p:tabView id="tabView"> 
                 <div class="Listado datagrid">
                     <p:tab title="Citas">
                         <h2 class="citas">Citas</h2>
                         <h:form>
-                            <h:dataTable  value="#{trabajosBean.citas(loginController.nss)}" var="cita">
+                            <h:dataTable  value="#{trabajosBean.gteCitas(loginController.nss)}" var="cita">
                                 <div class="cita#{cita.atendido}}">
                                     <h:column>
                                         <f:facet name="header">
@@ -47,10 +47,10 @@
                                     </h:column>
                                     <h:column>
                                         <h:form>
-                                            <c:if test="#{loginControllerBeans.tipoUsuario == 'MEDICO'}">
+                                            <c:if test="#{loginControllerBeans.tipoUsuario == 'M'}">
                                                 <h:commandButton type="submit" value="Diagnostico"  action="#{trabajosBean.doDiagnostico(cita)}"/>
                                             </c:if>
-                                            <c:if test="#{loginControllerBeans.tipoUsuario == 'ENFERMERO'}">
+                                            <c:if test="#{loginControllerBeans.tipoUsuario == 'E'}">
                                                 <h:commandButton type="submit" value="Tratar" action="#{trabajosBean.doTratar(cita)}"/> 
                                             </c:if>
                                         </h:form>
@@ -114,10 +114,10 @@
                                     </h:column>
                                     <h:column>
 
-                                        <c:if test="#{loginControllerBeans.tipoUsuario=='MEDICO'}">
+                                        <c:if test="#{loginControllerBeans.tipoUsuario=='M'}">
                                             <h:commandButton type="submit" value="Diagnostico"  action="#{trabajosBean.doDiagnosticoUrgencia(urg)}"/>
                                         </c:if>
-                                        <c:if test="#{loginControllerBeans.tipoUsuario == 'ENFERMERO'}">
+                                        <c:if test="#{loginControllerBeans.tipoUsuario == 'E'}">
                                             <h:commandButton type="submit" value="Tratar" action="#{trabajosBean.doTratarUrgencia(urg)}"/> 
                                         </c:if>
                                     </h:column>
@@ -128,7 +128,7 @@
                 </div>
             </p:tabView>
         </ui:fragment>
-        <ui:fragment rendered="#{loginController.tipoUsuario != 'E' || loginController.tipoUsuario != 'M'}">
+        <ui:fragment rendered="#{loginController.tipoUsuario != 'M'}">
             <p class="error">No tiene privilegios para acceder a esta página</p>
         </ui:fragment>
     </ui:define>
