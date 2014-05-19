@@ -34,7 +34,6 @@
                 </p:column>
                 <p:column headerText="Acciones">
                     <p:growl id="messages" severity="info" showDetail="true"/>
-                    <p:commandButton alt="ver" image="ui-icon-search" action="#{todasPersonasBeans.verPersona(pers)}"/>
                     <p:commandButton alt="editar" image="ui-icon-pencil" action="#{todasPersonasBeans.editarPersona(pers)}"/>
                     <p:commandButton alt="Eliminar" image="ui-icon-closethick" action="#{todasPersonasBeans.eliminarPersona(pers)}" actionListener="#{todasPersonasBeans.delete}" update="messages">
                         <p:confirm header="Confirmation" message="¿Deseas eliminar esta persona?" icon="ui-icon-alert" />
