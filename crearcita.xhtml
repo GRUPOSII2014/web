@@ -72,7 +72,7 @@
                         </c:if>
                     </h:panelGroup>
                     <div id="creacion">
-                        <h:commandButton class="botonenvio" value="Crear cita" style="submit" action="#{citaBeansBeans.crearCita()}"/>
+                        <h:commandButton class="botonenvio" value="Crear cita" style="submit" action="#{citaBeansBeans.crearCitaD()}"/>
                     </div>
                 </h:form>
             </p:tab>
@@ -83,9 +83,21 @@
                         <h:inputText value="#{citaBeansBeans.nss}" required="true"/>
                         <h:outputText value="Fecha: "/>
                         <p:calendar value="#{citaBeansBeans.fecha}" id="popupCal" locale="es" required="true" requiredMessage="Seleccione un dia" label="Dia"/>
-                        <h:commandButton type="submit" value="Buscar" action="#{citaBeansBeans.buscaPersona()}" />
+                        <h:commandButton type="submit" value="Buscar" action="#{citaBeansBeans.buscaPersonaE()}" />
                     </h:panelGrid>
+
                     <h:panelGroup id="paciente">
+                        <h:panelGroup id="doctores"><!--Como no lo puedo ver, no se como queda, por eso no 
+                            modifico el CSS-->
+                            <f:ajax render="medicoCabecera">
+                                <p:selectOneListbox id="basic" rendered="#{citaBeansBeans.enfermero==null and citaBeansBeans.persona!=null}"  value="#{citaBeansBeans.enfermero}" required="true">
+                                    <c:forEach begin="0" end="#{citaBeansBeans.enfermeros.size()-1}" var="ind">
+                                        <f:selectItem itemLabel="#{citaBeansBeans.enfermeros.get(ind).nombre},#{citaBeansBeans.enfermeros.get(ind).apellido1},#{citaBeansBeans.enfermeros.get(ind).apellido2}" itemValue="#{citaBeansBeans.enfermeros.get(ind)}"/>
+                                    </c:forEach>
+                                </p:selectOneListbox>
+                            </f:ajax>
+                            <f:ajax execute="#{citaBeansBeans.asignarHoras()}"/>
+                        </h:panelGroup>
                         <c:if test="#{citaBeansBeans.nss!=null}">
                             <h:panelGrid rendered="#{citaBeansBeans.persona!=null}" columns="2" class="tabla" width="100%">
                                 <f:facet name="header">
@@ -127,7 +139,7 @@
                         </c:if>
                     </h:panelGroup>
                     <div id="creacion">
-                        <h:commandButton class="botonenvio" value="Crear cita" style="submit" action="#{citaBeansBeans.crearCita()}"/>
+                        <h:commandButton class="botonenvio" value="Crear cita" style="submit" action="#{citaBeansBeans.crearCitaE()}"/>
                     </div>
                 </h:form>
             </p:tab>
@@ -139,6 +151,15 @@
                         <h:commandButton type="submit" value="Buscar" action="#{citaBeansBeans.buscaPersona()}" />
                     </h:panelGrid>
                     <h:panelGroup id="paciente">
+                        <h:panelGroup id="doctores"><!--Como no lo puedo ver, no se como queda, por eso no 
+                            modifico el CSS-->
+                            <f:ajax render="medicoCabecera"><!--Pone medico, pero es enfermero-->
+                                <p:selectOneListbox id="basic" rendered="#{citaBeansBeans.enfermero==null and citaBeansBeans.persona!=null}"  value="#{citaBeansBeans.enfermero}" required="true">
+                                    <c:forEach begin="0" end="#{citaBeansBeans.enfermeros.size()-1}" var="ind">
+                                        <f:selectItem itemLabel="#{citaBeansBeans.enfermeros.get(ind).nombre},#{citaBeansBeans.enfermeros.get(ind).apellido1},#{citaBeansBeans.enfermeros.get(ind).apellido2}" itemValue="#{citaBeansBeans.enfermeros.get(ind)}"/>
+                                    </c:forEach>
+                                </p:selectOneListbox>
+                            </f:ajax>
                         <c:if test="#{citaBeansBeans.nss!=null}">
                             <h:panelGrid rendered="#{citaBeansBeans.persona!=null}" columns="2" class="tabla" width="100%">
                                 <f:facet name="header">
@@ -173,7 +194,7 @@
                                             <h:panelGrid columns="3"  width="100%" class="tabla" >
                                                 <h:outputText value="Observaciones:"/>
                                                 <h:inputTextarea rows="5" cols="65" value="#{citaBeansBeans.urgencia.observaciones}" style="resize: none"/>
-                                                <h:commandButton class="botonenvio" value="Crear urgencia" style="submit" action="#{citaBeansBeans.crearCita()}"/>
+                                                <h:commandButton class="botonenvio" value="Crear urgencia" style="submit" action="#{citaBeansBeans.crearUrgencia()}"/>
                                             </h:panelGrid>
                                         </h:panelGrid>
                                     </h:panelGroup>
