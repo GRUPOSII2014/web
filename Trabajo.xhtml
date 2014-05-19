@@ -7,7 +7,7 @@
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="titulo">Consultas</ui:define>
     <ui:define name="contenido">
-        <ui:fragment rendered="#{loginController.tipoUsuario == 'M'}">
+        <ui:fragment rendered="#{loginController.tipoUsuario == 'M' or loginController.tipoUsuario == 'E'}">
             <p:tabView id="tabView"> 
                 <div class="Listado datagrid">
                     <p:tab title="Citas">
@@ -113,7 +113,6 @@
                                         <h:outputText value="#{urg.observaciones}"/>
                                     </h:column>
                                     <h:column>
-
                                         <c:if test="#{loginControllerBeans.tipoUsuario=='M'}">
                                             <h:commandButton type="submit" value="Diagnostico"  action="#{trabajosBean.doDiagnosticoUrgencia(urg)}"/>
                                         </c:if>
@@ -128,7 +127,7 @@
                 </div>
             </p:tabView>
         </ui:fragment>
-        <ui:fragment rendered="#{loginController.tipoUsuario != 'M'}">
+        <ui:fragment rendered="#{loginController.tipoUsuario != 'M' or loginController.tipoUsuario != 'E'}">
             <p class="error">No tiene privilegios para acceder a esta página</p>
         </ui:fragment>
     </ui:define>
