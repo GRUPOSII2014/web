@@ -1,4 +1,4 @@
-<ui:composition template="WEB-INF/Plantilla/plantilla2.xhtml" 
+<ui:composition template="WEB-INF/Plantilla/plantilla.xhtml" 
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -22,6 +22,8 @@
                     <h:inputText value="#{personaBeans.p.apellido1}" required="true" label="Primer Apellido"/>
                     <h:outputText value="Segundo apellido*:"/>
                     <h:inputText value="#{personaBeans.p.apellido2}" required="true" label="Segundo Apellido"/>
+                    <h:outputText value="Fecha nacimiento (dd/mm/aaaa)*:"/>
+                    <h:inputText value="#{personaBeans.p.fechaNacimiento}" required="true" label="Fecha nacimiento"/>
                     <h:outputText value="Estado civil:"/>
                     <h:selectOneMenu value="#{personaBeans.p.estadoCivil}" label="Estado Civil">
                         <f:selectItem itemLabel="Casado/a"/>
@@ -41,6 +43,8 @@
                         <f:selectItem itemLabel="Varon"/>
                         <f:selectItem itemLabel="Mujer"/>
                     </h:selectOneMenu>
+                     <h:outputText value="Grupo sanguíneo*:"/>
+                     <h:inputText value="#{personaBeans.p.historiaclinica.grupoSanguineo}" required="true" label="Segundo Apellido"/>
                     <h:outputText value="Telefono:"/>
                     <h:inputText value="#{personaBeans.p.telefono}" label="Teléfono"/>
                     <h:outputText value="Direccion:"/>
