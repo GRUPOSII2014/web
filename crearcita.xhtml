@@ -16,8 +16,8 @@
                         <h:outputText value="NSS: "/>
                         <h:inputText value="#{citaBeansBeans.nss}" label="Número de seguridad social" requiredMessage="Introduzca un nss" required="true"/>
                         <h:outputText value="Fecha: "/>
-                        <p:calendar value="#{citaBeansBeans.fecha}" id="popupCal" locale="es" required="true" label="Fecha" requiredMessage="Por favor seleccione una fecha"/>
-                        <h:commandButton type="submit" value="Buscar" action="#{citaBeansBeans.buscaPersona()}" />
+                        <p:calendar value="#{citaBeansBeans.cita.fecha}" id="popupCal" locale="es" required="true" label="Fecha" requiredMessage="Por favor seleccione una fecha"/>
+                        <h:commandButton type="submit" value="Buscar" action="#{citaBeansBeans.buscarPersona()}" />
                     </h:panelGrid>
                     <h:panelGroup id="paciente">
                         <c:if test="#{citaBeansBeans.nss!=null}">
@@ -36,6 +36,9 @@
                                 <h:panelGroup>
                                     <h:panelGroup id="doctores">
                                         <f:ajax render="medicoCabecera">
+                                            <!-- 
+                                                ESTA MIERDA NO SSABEMOS QUE COÑO ES
+                                            -->
                                             <p:selectOneListbox id="basic" rendered="#{citaBeansBeans.persona.medicoCabecera==null and citaBeansBeans.persona!=null}"  value="#{citaBeansBeans.persona.medicoCabecera}" required="true">
                                                 <c:forEach begin="0" end="#{citaBeansBeans.medicosCabecera.size()-1}" var="ind">
                                                     <f:selectItem itemLabel="#{citaBeansBeans.medicosCabecera.get(ind).nombre},#{citaBeansBeans.medicosCabecera.get(ind).apellido1},#{citaBeansBeans.medicosCabecera.get(ind).apellido2}" itemValue="#{citaBeansBeans.medicosCabecera.get(ind)}"/>

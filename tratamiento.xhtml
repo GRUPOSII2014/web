@@ -11,15 +11,15 @@
                     <h:outputText value="Informacion del paciente"/>
                 </f:facet>
                 <h:outputText value="NSS: "/>
-                <h:outputLabel value="#{misDatosControlerBeans.persona.numSegSocial}"/>
+                <h:outputLabel value="#{tratamientoBeans.persona.numSegSocial}"/>
                 <h:outputText value="DNI: "/>
-                <h:outputLabel value="#{misDatosControlerBeans.persona.DNI}"/>
+                <h:outputLabel value="#{tratamientoBeans.persona.DNI}"/>
                 <h:outputText value="Nombre: "/>
-                <h:outputLabel value="#{misDatosControlerBeans.persona.nombre}"/>
+                <h:outputLabel value="#{tratamientoBeans.persona.nombre}"/>
                 <h:outputText value="Primer apellido: "/>
-                <h:outputLabel value="#{misDatosControlerBeans.persona.apellido1}"/>
+                <h:outputLabel value="#{tratamientoBeans.persona.apellido1}"/>
                 <h:outputText value="Segundo apellido: "/>
-                <h:outputLabel value="#{misDatosControlerBeans.persona.apellido2}"/>
+                <h:outputLabel value="#{tratamientoBeans.persona.apellido2}"/>
             </h:panelGrid>
         </div>
         <div id="informacion">
@@ -28,15 +28,15 @@
                     <h:outputText value="Informacion tratamiento"/>
                 </f:facet>
                 <h:outputText value="Nombre: "/>
-                <h:outputLabel value="#{tratamientoBeans.nombre}"/>
+                <h:outputLabel value="#{tratamientoBeans.tratamiento.nombre}"/>
                 <h:outputText value="Inicio: "/>
-                <h:outputLabel value="#{tratamientoBeans.fechaInicio}"/>
+                <h:outputLabel value="#{tratamientoBeans.tratamiento.fechaInicio}"/>
                 <h:outputText value="Fin: "/>
-                <h:outputLabel value="#{tratamientoBeans.fechaFinalizacion}"/>
+                <h:outputLabel value="#{tratamientoBeans.tratamiento.fechaFinalizacion}"/>
                 <h:outputText value="Tipo: "/>
-                <h:outputLabel value="#{tratamientoBeans.tipo}"/>
+                <h:outputLabel value="#{tratamientoBeans.tratamiento.tipo}"/>
                 <h:outputText value="Descripcion: "/>
-                <h:outputLabel value="#{tratamientoBeans.descripcion}"/>
+                <h:outputLabel value="#{tratamientoBeans.tratamiento.descripcion}"/>
             </h:panelGrid>
         </div>
         <div id="informacion">
@@ -64,7 +64,7 @@
             <h:form>
                 <h:panelGrid columns="3" >
                     <h:outputText value="Observaciones:"/>
-                    <h:inputTextarea rows="5" cols="80" value="#{tratamientoBeans.obs}" style="  resize: none" required="true"/>
+                    <h:inputTextarea rows="5" cols="80" value="#{tratamientoBeans.tratamiento.observaciones}" style="  resize: none" required="true"/>
                     <h:commandButton class="botonenvio" value="Terminar tratamiento" action="#{tratamientoBeans.terminarTratamiento()}"/>
                 </h:panelGrid>
             </h:form>
