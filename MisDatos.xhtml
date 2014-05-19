@@ -44,7 +44,7 @@
                                 <h:outputLabel value="Número seguridad Social: "/>
                                 <h:outputText value="#{misDatosControlerBeans.persona.numSegSocial}"/>
                                 <h:outputLabel value="Médico de cabecera: "/>
-                                <h:outputText value="#{misDatosControlerBeans.persona.medicoCabecera}"/>
+                                <h:outputText value="#{misDatosControlerBeans.persona.medicoCabecera} #{misDatosControlerBeans.horarioMedicoCabecera()}"/>
                             </h:panelGrid>
                         </ui:fragment>
                         <ui:fragment rendered="#{misDatosControlerBeans.persona.disc=='M'}">
