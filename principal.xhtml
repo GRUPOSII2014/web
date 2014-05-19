@@ -62,12 +62,6 @@
                     </f:facet>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Asunto" />
-                        </f:facet>
-                        <h:outputText value="#{mensaje.asunto}" />
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
                             <h:outputText value="Mensaje" />
                         </f:facet>
                         <h:outputText value="#{mensaje.mensaje}" />
@@ -85,6 +79,13 @@
                         <h:outputText value="#{mensaje.from.nombre}" />
                     </p:column>
                 </p:dataTable>
+                <h:form>
+                    <p:outputLabel value="Para:" />
+                    <p:autoComplete id="acSimple" value="#{principalControllerBeans.consulta}" completeMethod="#{principalControllerBeans.getTrabajadores}" />
+                    <p:outputLabel value="Mensaje:" />
+                    <h:inputTextarea rows="4" cols="32" style="resize: none"  value="#{principalControllerBeans.mensaje}"/>
+                    <h:commandButton class="botonenvio" value="Enviar Mensaje" type="submit" action="#{principalControllerBeans.enviaMensaje}"/>
+                </h:form>
             </div>   
         </ui:fragment>
     </ui:define>
