@@ -7,71 +7,94 @@
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="titulo">Mis Datos</ui:define>
     <ui:define name="contenido">
-        <div class="datos">
-                <div class="datosFijos">
-                    <h:panelGrid columns="2" class="informacion">
-                        <h:outputLabel value="Nombre: "/>
-                        <h:outputText value="#{misDatosControlerBeans.persona.nombre}"/>
-                        <h:outputLabel value="Primer Apellido: "/>
-                        <h:outputText value="#{misDatosControlerBeans.persona.apellido1}"/>
-                        <h:outputLabel value="Segundo Apellido: "/>
-                        <h:outputText value="#{misDatosControlerBeans.persona.apellido2}"/>
-                        <h:outputLabel value="Sexo: "/>
-                        <h:outputText value="#{misDatosControlerBeans.persona.sexo}"/>
-                        <h:outputLabel value="DNI: "/>
-                        <h:outputText value="#{misDatosControlerBeans.persona.DNI}"/>
-                        <h:outputLabel value="Número seguridad Social: "/>
-                        <h:outputText value="#{misDatosControlerBeans.persona.numSegSocial}"/>
-                        <h:outputLabel value="Médico de cabecera: "/>
-                        <h:outputText value="#{misDatosControlerBeans.persona.medicoCabecera}"/>
-                    </h:panelGrid>
-
-                    <ui:fragment rendered="#{loginControllerBeans.tipoUsuario == 'MEDICO'}">
-                        <h:panelGrid columns="2" class="informacion">
-                            <h:outputLabel value="Especialidades: "/>
-                            <h:dataTable value="#{MedicoBean.especialidades}" var="especialidad">
-                                <h:column>
-                                    <h:outputText value="#{especialidad.nombre}"/>
-                                </h:column>
-                            </h:dataTable>
-                            <h:outputLabel value="Departamento: "/>
-                            <h:outputText value="#{MedicoBean.medico.departamento.nombre}"/>
-                            <h:outputLabel value="Despacho: "/>
-                            <h:outputText value="#{MedicoBean.medico.despacho}"/>
-                            <h:outputLabel value="Activo: "/>
-                            <h:outputText value="#{MedicoBean.medico.activo}"/>
-                            <h:outputLabel value="Salario/Hora: "/>
-                            <h:outputText value="#{MedicoBean.medico.precioHora}"/>
-                            <h:outputLabel value="Salario Mensual: "/>
-                            <h:outputText value="#{MedicoBean.medico.salario}"/> 
-                        </h:panelGrid>
-                    </ui:fragment>
+        <ui:fragment rendered="#{loginController.tipoUsuario!='E'}">
+            <ui:fragment rendered="#{loginController.tipoUsuario!='M'}">
+                <div class="datos">
+                    <div class="datosFijos">
+                        <ui:fragment rendered="#{loginControllerBeans.tipoUsuario != 'A'}">
+                            <h:panelGrid columns="2" class="informacion">
+                                <h:outputLabel value="Nombre: "/>
+                                <h:inputText value="#{misDatosControlerBeans.persona.nombre}"/>
+                                <h:outputLabel value="Primer Apellido: "/>
+                                <h:inputText value="#{misDatosControlerBeans.persona.apellido1}"/>
+                                <h:outputLabel value="Segundo Apellido: "/>
+                                <h:inputText value="#{misDatosControlerBeans.persona.apellido2}"/>
+                                <h:outputLabel value="Sexo: "/>
+                                <h:inputText value="#{misDatosControlerBeans.persona.sexo}"/>
+                                <h:outputLabel value="DNI: "/>
+                                <h:outputText value="#{misDatosControlerBeans.persona.DNI}"/>
+                                <h:outputLabel value="Número seguridad Social: "/>
+                                <h:outputText value="#{misDatosControlerBeans.persona.numSegSocial}"/>
+                                <h:outputLabel value="Médico de cabecera: "/>
+                                <h:outputText value="#{misDatosControlerBeans.persona.medicoCabecera}"/>
+                            </h:panelGrid>
+                        </ui:fragment>
+                        <ui:fragment rendered="#{loginControllerBeans.tipoUsuario == 'A'}">
+                            <h:panelGrid columns="2" class="informacion">
+                                <h:outputLabel value="Nombre: "/>
+                                <h:outputText value="#{misDatosControlerBeans.persona.nombre}"/>
+                                <h:outputLabel value="Primer Apellido: "/>
+                                <h:outputText value="#{misDatosControlerBeans.persona.apellido1}"/>
+                                <h:outputLabel value="Segundo Apellido: "/>
+                                <h:outputText value="#{misDatosControlerBeans.persona.apellido2}"/>
+                                <h:outputLabel value="Sexo: "/>
+                                <h:outputText value="#{misDatosControlerBeans.persona.sexo}"/>
+                                <h:outputLabel value="DNI: "/>
+                                <h:outputText value="#{misDatosControlerBeans.persona.DNI}"/>
+                                <h:outputLabel value="Número seguridad Social: "/>
+                                <h:outputText value="#{misDatosControlerBeans.persona.numSegSocial}"/>
+                                <h:outputLabel value="Médico de cabecera: "/>
+                                <h:outputText value="#{misDatosControlerBeans.persona.medicoCabecera} #{misDatosControlerBeans.horarioMedicoCabecera()}"/>
+                            </h:panelGrid>
+                        </ui:fragment>
+                        <ui:fragment rendered="#{misDatosControlerBeans.persona.disc=='M'}">
+                            <h:panelGrid columns="2" class="informacion">
+                                <h:outputLabel value="Especialidades: "/>
+                                <h:dataTable value="#{MedicoBean.especialidades}" var="especialidad">
+                                    <h:column>
+                                        <h:outputText value="#{especialidad.nombre}"/>
+                                    </h:column>
+                                </h:dataTable>
+                                <h:outputLabel value="Departamento: "/>
+                                <h:outputText value="#{MedicoBean.medico.departamento.nombre}"/>
+                                <h:outputLabel value="Despacho: "/>
+                                <h:outputText value="#{MedicoBean.medico.despacho}"/>
+                                <h:outputLabel value="Activo: "/>
+                                <h:outputText value="#{MedicoBean.medico.activo}"/>
+                                <h:outputLabel value="Salario/Hora: "/>
+                                <h:outputText value="#{MedicoBean.medico.precioHora}"/>
+                                <h:outputLabel value="Salario Mensual: "/>
+                                <h:outputText value="#{MedicoBean.medico.salario}"/> 
+                            </h:panelGrid>
+                        </ui:fragment>
+                    </div>
+                    <p:growl id="growl" sticky="true" />   
+                    <h:form id="modifica" >
+                        <div class="datosModificables">
+                            <h:panelGrid columns="2" class="tabla">
+                                <h:outputLabel value="Telefono: "/>
+                                <h:inputText value="#{misDatosControlerBeans.persona.telefono}" label="Telefono" maxlength="15" required="true"/>
+                                <h:outputLabel value="Ciudad: "/>
+                                <h:inputText value="#{misDatosControlerBeans.persona.ciudad}" label="Ciudad" maxlength="30" required="true"/>
+                                <h:outputLabel value="Codigo Postal: "/>
+                                <h:inputText value="#{misDatosControlerBeans.persona.codigoPostal}" label="Codigo Postal" maxlength="5" required="true"/>
+                                <h:outputLabel value="Direccion: "/>
+                                <h:inputText value="#{misDatosControlerBeans.persona.direccion}" label="Direccion" maxlength="60" required="true"/>
+                                <h:outputLabel value="Estado Civil: "/>
+                                <h:inputText value="#{misDatosControlerBeans.persona.estadoCivil}" label="Estado Civil" maxlength="20" required="true"/>
+                                <h:outputLabel value="Email: "/>
+                                <h:inputText value="#{misDatosControlerBeans.persona.email}" label="Email" maxlength="255" required="true"/>
+                                <h:outputText value="Contraseña"/>
+                                <h:inputSecret value="#{misDatosControlerBeans.persona.password}" label="Contraseña" required="true" requiredMessage="Has de introducir tu contraseña para cambiar tus datos personales"/>
+                            </h:panelGrid>
+                        </div>
+                        <div class="botonDatos">
+                            <h:commandButton type="submit" class="botonenvio" value="Modificar Mis datos" action="#{misDatosControlerBeans.doChanges()}"/>
+                        </div>
+                    </h:form>
                 </div>
-            <p:growl id="growl" sticky="true" />   
-            <h:form id="modifica" >
-                <div class="datosModificables">
-                    <h:panelGrid columns="2" class="tabla">
-                        <h:outputLabel value="Telefono: "/>
-                        <h:inputText value="#{misDatosControlerBeans.persona.telefono}" label="Telefono" maxlength="15" required="true"/>
-                        <h:outputLabel value="Ciudad: "/>
-                        <h:inputText value="#{misDatosControlerBeans.persona.ciudad}" label="Ciudad" maxlength="30" required="true"/>
-                        <h:outputLabel value="Codigo Postal: "/>
-                        <h:inputText value="#{misDatosControlerBeans.persona.codigoPostal}" label="Codigo Postal" maxlength="5" required="true"/>
-                        <h:outputLabel value="Direccion: "/>
-                        <h:inputText value="#{misDatosControlerBeans.persona.direccion}" label="Direccion" maxlength="60" required="true"/>
-                        <h:outputLabel value="Estado Civil: "/>
-                        <h:inputText value="#{misDatosControlerBeans.persona.estadoCivil}" label="Estado Civil" maxlength="20" required="true"/>
-                        <h:outputLabel value="Email: "/>
-                        <h:inputText value="#{misDatosControlerBeans.persona.email}" label="Email" maxlength="255" required="true"/>
-                        <h:outputText value="Contraseña"/>
-                        <h:inputSecret value="#{misDatosControlerBeans.persona.password}" label="Contraseña" required="true" requiredMessage="Has de introducir tu contraseña para cambiar tus datos personales"/>
-                    </h:panelGrid>
-                </div>
-                <div class="botonDatos">
-                    <h:commandButton type="submit" class="botonenvio" value="Modificar Mis datos" action="#{misDatosControlerBeans.doChanges()}"/>
-                </div>
-            </h:form>
-        </div>
+            </ui:fragment>
+        </ui:fragment>
     </ui:define>
 </ui:composition>
 

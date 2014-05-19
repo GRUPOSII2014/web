@@ -60,7 +60,7 @@
                     <ui:fragment rendered="#{loginController.tipoUsuario == 'P'}">
                         <ul id="menu">
                             <li><h:link class="menuPaciente" value="Principal" outcome="principal.xhtml"/></li>
-                            <li><h:link class="menuPaciente" value="Mis datos" outcome="MisDatos.xhtml"/></li>
+                            <li><h:commandLink class="menuPaciente" value="Mis datos" action="#{principalControllerBeans.verMisDatos()}"/></li>
                             <li><h:commandLink class="menuPaciente" value="Historia Clínica" action="#{principalControllerBeans.verMiHistoria(loginController.nss)}"/></li>
                             <li><h:commandLink class="menuPaciente" value="Citas" action="#{principalControllerBeans.verMisCitas(loginController.nss)}"/></li>
                             <li><h:link class="menuPaciente" value="Contacte con nosotros" outcome="contacto.xhtml"/></li>
@@ -72,7 +72,7 @@
                             <p:menuitem  value="Contacta con nosotros" icon="/resources/img/contacto.png" url="contacto.xhtml"/>
                             <p:menuitem  value="Citas" icon="/resources/img/citas.png" action="#{principalControllerBeans.verMisCitas(loginController.nss)}"/>
                             <p:menuitem  value="Historia Clinica" icon="/resources/img/historiaclinica.png" action="#{principalControllerBeans.verMiHistoria(loginController.nss)}"/>
-                            <p:menuitem  value="Mis datos" icon="/resources/img/misdatos.png" url="MisDatos.xhtml"/>
+                            <p:menuitem  value="Mis datos" icon="/resources/img/misdatos.png" action="#{principalControllerBeans.verMisDatos()}"/>
                             <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
                         </p:stack> 
                     </ui:fragment>
