@@ -27,28 +27,19 @@
         <div id="alertas">
             <p:dataTable value="#{principalControllerBeans.alertas}" var="alerta"
                          paginator="true" id="DTalertas" widgetVar="personasTable"
-                         emptyMessage="No Hay alertas" rowsPerPageLabel="25,50,100" paginatorPosition="bottom">
+                         emptyMessage="No Hay alertas" rowsPerPageLabel="25,50,100" paginatorPosition="bottom"
+                         rows="5">
                 <f:facet name="header">
                     <h:outputText value="Alertas" />
                 </f:facet>
                 <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Asunto" />
-                    </f:facet>
-                    <h:outputText value="#{alerta.asunto}" />
-                </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Descripción" />
-                    </f:facet>
+                    <h:outputText value="Asunto: " />
+                    <b><h:outputText value="#{alerta.asunto}" /></b>
+                    <br />
                     <h:outputText value="#{alerta.descripcion}" />
-                </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Fecha" />
-                    </f:facet>
+                    <br />
                     <h:outputText value="#{alerta.fecha}"><f:convertDateTime pattern="dd/MM/yyyy" /></h:outputText>
-                </p:column>
+                </p:column>                
             </p:dataTable>
         </div>
         <ui:fragment rendered="#{loginController.tipoUsuario != 'P'}">
@@ -61,31 +52,26 @@
                         <h:outputText value="Mensajes" />
                     </f:facet>
                     <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Mensaje" />
-                        </f:facet>
                         <h:outputText value="#{mensaje.mensaje}" />
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Fecha" />
-                        </f:facet>
-                        <h:outputText value="#{mensaje.fecha}"><f:convertDateTime pattern="dd/MM/yyyy" /></h:outputText>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Enviado" />
-                        </f:facet>
-                        <h:outputText value="#{mensaje.from.nombre}" />
-                    </p:column>
+                        <br />
+                        <br />
+                        <h:outputText value="#{mensaje.fecha}"><f:convertDateTime pattern="dd/MM/yyyy hh:mm:ss" /></h:outputText>
+                        <b><h:outputText value=" - #{mensaje.from.nombre}" /></b>
+                    </p:column>                    
                 </p:dataTable>
-                <h:form>
-                    <p:outputLabel value="Para:" />
-                    <p:autoComplete id="acSimple" value="#{principalControllerBeans.consulta}" completeMethod="#{principalControllerBeans.getTrabajadores}" />
-                    <p:outputLabel value="Mensaje:" />
-                    <h:inputTextarea rows="4" cols="32" style="resize: none"  value="#{principalControllerBeans.mensaje}"/>
-                    <h:commandButton class="botonenvio" value="Enviar Mensaje" type="submit" action="#{principalControllerBeans.enviaMensaje}"/>
-                </h:form>
+                <div style="margin-left: 50px; margin-top: 10px;">
+                    <h:form>
+                        <p:outputLabel value="Para:" />
+                        <br />
+                        <p:autoComplete id="acSimple" value="#{principalControllerBeans.consulta}" completeMethod="#{principalControllerBeans.getTrabajadores}" />
+                        <br />
+                        <p:outputLabel value="Mensaje:" />
+                        <br />
+                        <h:inputTextarea rows="4" cols="50" style="resize: none"  value="#{principalControllerBeans.mensaje}"/>
+                        <br />
+                        <h:commandButton class="botonenvio" value="Enviar Mensaje" type="submit" action="#{principalControllerBeans.enviaMensaje}"/>
+                    </h:form>
+                </div>
             </div>   
         </ui:fragment>
     </ui:define>
