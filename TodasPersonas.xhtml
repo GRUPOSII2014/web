@@ -4,9 +4,10 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="titulo">Todas Las Personas</ui:define>
-    <ui:fragment rendered = "#{loginController.tipoUsuario != 'E'}">
-        <ui:fragment rendered ="#{loginController.tipoUsuario != 'P'}">
-            <ui:define name="contenido">
+    <ui:define name="contenido">
+
+        <ui:fragment rendered = "#{loginController.tipoUsuario != 'E'}">
+            <ui:fragment rendered ="#{loginController.tipoUsuario != 'P'}">
                 <h:form id="personas">
                     <p:dataTable styleClass="tabla" value="#{todasPersonasBeans.personas}" var="pers" paginator="true" id="dataTable" widgetVar="personasTable"
                                  emptyMessage="No existen personas con ese criterio de busqueda" rowsPerPageLabel="25,50,100">
@@ -53,7 +54,8 @@
                     <h:commandButton class="botonenvio" value="Crear Enfermero" action="#{todasPersonasBeans.creaEnfermero()}"/>
                     <h:commandButton class="botonenvio" value="Crear Administrativo" action="#{todasPersonasBeans.creaAdministrativo()}"/>
                 </h:form>
-            </ui:define>
+
+            </ui:fragment>
         </ui:fragment>
-    </ui:fragment>
+    </ui:define>
 </ui:composition>
