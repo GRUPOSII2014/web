@@ -16,8 +16,6 @@
                         <h:panelGrid columns="2" width="100%">
                             <h:outputText value="NSS: "/>
                             <h:inputText value="#{citaBeansBeans.nss}" label="Número de seguridad social" requiredMessage="Introduzca un nss" required="true"/>
-                            <h:outputText value="Fecha: "/>
-                            <p:calendar value="#{citaBeansBeans.fecha}" id="popupCal" locale="es" required="true" label="Fecha" requiredMessage="Por favor seleccione una fecha"/>
                             <h:commandButton type="submit" value="Buscar" action="#{citaBeansBeans.buscaPersona()}" />
                         </h:panelGrid>
                         <h:panelGroup id="paciente">
@@ -34,16 +32,9 @@
                                     <h:outputText value="#{citaBeansBeans.persona.apellido2}"/>
                                 </h:panelGrid>
                                 <h:panelGroup id="doctor">
-                                    <h:panelGroup>
-                                        <h:panelGroup id="doctores">
-                                            <f:ajax render="medicoCabecera">
-                                                <p:selectOneListbox id="basic" rendered="#{citaBeansBeans.persona.medicoCabecera==null and citaBeansBeans.persona!=null}"  value="#{citaBeansBeans.persona.medicoCabecera}" required="true">
-                                                    <c:forEach begin="0" end="#{citaBeansBeans.medicosCabecera.size()-1}" var="ind">
-                                                        <f:selectItem itemLabel="#{citaBeansBeans.medicosCabecera.get(ind).nombre},#{citaBeansBeans.medicosCabecera.get(ind).apellido1},#{citaBeansBeans.medicosCabecera.get(ind).apellido2}" itemValue="#{citaBeansBeans.medicosCabecera.get(ind)}"/>
-                                                    </c:forEach>
-                                                </p:selectOneListbox>
-                                            </f:ajax>
-                                        </h:panelGroup>
+                                        <h:selectOneListbox value="#{citaBeansBeans.medicoBuscado}" rendered="#{citaBeansBeans.persona.medicoCabecera==null}">
+                                            <f:selectItems value="#{citaBeansBeans.medicosCabecera}" var="med" itemLabel="#{med.nombre} #{med.apellido1} #{med.apellido2}" itemValue="#{med}"/> 
+                                        </h:selectOneListbox>
                                         <h:panelGroup id="medicoCabecera">
                                             <h:panelGrid rendered="#{citaBeansBeans.persona.medicoCabecera!=null}" columns="2" class="tabla" width="100%" >
                                                 <f:facet name="header">
@@ -61,14 +52,6 @@
                                                 <h:outputText value="#{citaBeansBeans.dias}"/>
                                             </h:panelGrid>
                                         </h:panelGroup>
-                                    </h:panelGroup>
-                                </h:panelGroup>
-                                <h:panelGroup id="horasdisponibles" >
-                                    <p:selectOneListbox rendered="#{citaBeansBeans.horas.size()!=null}" id="basic2" value="#{citaBeansBeans.horas}" required="true" requiredMessage="Seleccione una hora" label="Hora de la cita">  
-                                        <c:forEach  begin="0" end="#{citaBeansBeans.horas.size()-1}" var="ind">
-                                            <f:selectItem  itemLabel="#{citaBeansBeans.horas.get(ind)}" itemValue="#{citaBeansBeans.horas.get(ind)}"/>
-                                        </c:forEach>
-                                    </p:selectOneListbox>
                                 </h:panelGroup>
                             </c:if>
                         </h:panelGroup>
@@ -89,14 +72,13 @@
 
                         <h:panelGroup id="paciente">
                             <h:panelGroup id="doctores">
-                                <f:ajax render="medicoCabecera">
+                                <f:ajax render="pacientew">
                                     <p:selectOneListbox id="basic" rendered="#{citaBeansBeans.enfermero==null and citaBeansBeans.persona!=null}"  value="#{citaBeansBeans.enfermero}" required="true">
                                         <c:forEach begin="0" end="#{citaBeansBeans.enfermeros.size()-1}" var="ind">
                                             <f:selectItem itemLabel="#{citaBeansBeans.enfermeros.get(ind).nombre},#{citaBeansBeans.enfermeros.get(ind).apellido1},#{citaBeansBeans.enfermeros.get(ind).apellido2}" itemValue="#{citaBeansBeans.enfermeros.get(ind)}"/>
                                         </c:forEach>
                                     </p:selectOneListbox>
                                 </f:ajax>
-                                <ui:fragment rendered="#{citaBeansBeans.asignarHoras()}"></ui:fragment>
                             </h:panelGroup>
                             <c:if test="#{citaBeansBeans.nss!=null}">
                                 <h:panelGrid rendered="#{citaBeansBeans.persona!=null}" columns="2" class="tabla" width="100%">

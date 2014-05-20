@@ -127,12 +127,7 @@
                 </ui:fragment>
             </h:form>
             <div id="central">
-                <ui:fragment rendered="#{loginController.nss == null}">
-                    <ui:insert name="contenido"> Parte central de la web aquí la implementación de la vista </ui:insert>
-                </ui:fragment>
-                <ui:fragment rendered="#{loginController.nss != null}">
-                    <p class="error">Ya estas autenticado en la aplicación</p>
-                </ui:fragment>
+                <ui:insert name="contenido"> Parte central de la web aquí la implementación de la vista </ui:insert>
             </div>
             <div id="footer">
                 <p>&copy; 2014 Hospital Regional Universitario de Málaga.</p>

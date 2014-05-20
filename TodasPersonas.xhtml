@@ -4,34 +4,33 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="titulo">Todas Las Personas</ui:define>
-    <ui:fragment rendered = "#{loginController.tipoUsuario != 'E'}">
-        <ui:fragment rendered ="#{loginController.tipoUsuario != 'P'}">
-            <ui:define name="contenido">
+    <ui:define name="contenido">
+        <ui:fragment rendered = "#{loginController.tipoUsuario == 'A'}">
                 <h:form id="personas">
                     <p:dataTable styleClass="tabla" value="#{todasPersonasBeans.personas}" var="pers" paginator="true" id="dataTable" widgetVar="personasTable"
                                  emptyMessage="No existen personas con ese criterio de busqueda" rowsPerPageLabel="25,50,100">
-                        <p:column headerText="NSS" sortBy="numSegSocial" filterBy="numSegSocial" filterMatchMode="contains">
+                        <p:column headerText="NSS"  filterBy="numSegSocial" filterMatchMode="contains">
                             <h:outputText value="#{pers.numSegSocial}"/>
                         </p:column>
-                        <p:column headerText="Nombre" sortBy="nombre" filterBy="nombre" filterMatchMode="contains">
+                        <p:column headerText="Nombre" filterBy="nombre" filterMatchMode="contains">
                             <h:outputText value="#{pers.nombre}"/>
                         </p:column>
-                        <p:column headerText="Apellido" sortBy="apellido1" filterBy="apellido1" filterMatchMode="contains">
+                        <p:column headerText="Apellido"  filterBy="apellido1" filterMatchMode="contains">
                             <h:outputText value="#{pers.apellido1}"/>
                         </p:column>
-                        <p:column headerText="Apellido 2" sortBy="apellido2" filterBy="apellido2" filterMatchMode="contains">
+                        <p:column headerText="Apellido 2"  filterBy="apellido2" filterMatchMode="contains">
                             <h:outputText value="#{pers.apellido2}"/>
                         </p:column>
-                        <p:column headerText="DNI" sortBy="DNI" filterBy="DNI" filterMatchMode="contains">
+                        <p:column headerText="DNI"  filterBy="DNI" filterMatchMode="contains">
                             <h:outputText value="#{pers.DNI}"/>
                         </p:column> 
-                        <p:column headerText="Sexo" sortBy="sexo" filterBy="sexo" filterMatchMode="contains">
+                        <p:column headerText="Sexo"  filterBy="sexo" filterMatchMode="contains">
                             <h:outputText value="#{pers.sexo}"/>
                         </p:column>
-                        <p:column headerText="Telefono" sortBy="telefono" filterBy="telefono" filterMatchMode="contains">
+                        <p:column headerText="Telefono"  filterBy="telefono" filterMatchMode="contains">
                             <h:outputText value="#{pers.telefono}"/>
                         </p:column>
-                        <p:column headerText="Nacimiento" sortBy="fechaNacimiento" filterBy="fechaNacimiento" filterMatchMode="contains">
+                        <p:column headerText="Nacimiento"  filterBy="fechaNacimiento" filterMatchMode="contains">
                             <h:outputText value="#{pers.fechaNacimiento}"/>
                         </p:column>
                         <p:column headerText="Acciones">
@@ -53,7 +52,6 @@
                     <h:commandButton class="botonenvio" value="Crear Enfermero" action="#{todasPersonasBeans.creaEnfermero()}"/>
                     <h:commandButton class="botonenvio" value="Crear Administrativo" action="#{todasPersonasBeans.creaAdministrativo()}"/>
                 </h:form>
-            </ui:define>
         </ui:fragment>
-    </ui:fragment>
+    </ui:define>
 </ui:composition>

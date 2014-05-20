@@ -6,7 +6,8 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="titulo">Ingreso Paciente</ui:define>
-    <ui:fragment rendered="#{ingresoBeans.inic() == "inic"}">
+<<<<<<< HEAD
+    <ui:fragment rendered="#{ingresoBeans.inic() == 'inic'}">
         <ui:fragment rendered="#{loginController.tipoUsuario != 'M'}">
             <ui:fragment rendered="#{loginController.tipoUsuario != 'E'}">
                 <ui:fragment rendered="#{loginController.tipoUsuario != 'P'}">
@@ -37,27 +38,62 @@
                             </div>
                             <div id="alertas">
                                 <h:panelGrid rendered="#{ingresoBeans.persona!=null}" columns="2" class="tabla" width="100%" >
-                                    <f:facet name="header">
-                                        <h:outputLabel value="Cama Disponible"/>
-                                    </f:facet>
+=======
 
-                                    <h:outputLabel value="Planta: "/> 
-                                    <h:outputLabel value="#{ingresoBeans.cama.habitacion.planta.id}"/>
-                                    <h:outputLabel value="Habitación: "/>
-                                    <h:outputLabel value="#{ingresoBeans.cama.habitacion.id}"/>
-                                    <h:outputLabel value="Cama: "/>
-                                    <h:outputLabel value="#{ingresoBeans.cama.id}"/>
+    <ui:define name="contenido">
+        <ui:fragment rendered="#{ingresoBeans.inic() != 'inc'}">
+            <ui:fragment rendered="#{loginController.tipoUsuario == 'H'}">
+                <h:form>
+                    <div id="informacion">
+                        <p:messages severity="error" autoUpdate="true" closable="true" />
+                        <h:panelGrid columns="3">
+                            <h:outputText value="NSS: "/>
+                            <h:inputText value="#{ingresoBeans.nss}" required="true" label="Número seguridad social" requiredMessage="No has introducido un nss"/>
+                            <h:commandButton type="submit" value="Buscar" action="#{ingresoBeans.buscaPersona()}"/>
+                        </h:panelGrid>
+                        <h:panelGroup id="persona" >
+                            <h:panelGroup rendered="#{ingresoBeans.persona!=null}">
+                                <h:panelGrid columns="2" class="tabla" width="100%">
+>>>>>>> c7ff828b0bcc1fb9414c086ef0965cfec53b1a6c
+                                    <f:facet name="header">
+                                        <h:outputLabel value="Información Paciente"/>
+                                    </f:facet>
+                                    <h:outputText value="Nombre: "/>
+                                    <h:outputText value="#{ingresoBeans.persona.nombre}"/>
+                                    <h:outputText value="Primer apellido: "/>
+                                    <h:outputText value="#{ingresoBeans.persona.apellido1}"/>
+                                    <h:outputText value="Segundo apellido: "/>
+                                    <h:outputText value="#{ingresoBeans.persona.apellido2}"/>
                                 </h:panelGrid>
-                            </div>
-                            <div id="creacion">
-                                <p align="center">
-                                    <h:commandButton class="botonenvio" value="Asignar cama" style="submit" action="#{ingresoBeans.asignarCama()}"/>
-                                </p>
-                            </div>
-                        </h:form>
-                    </ui:define>
-                </ui:fragment>
+                            </h:panelGroup>
+                        </h:panelGroup>
+                    </div>
+                    <div id="alertas">
+                        <h:panelGrid rendered="#{ingresoBeans.persona!=null}" columns="2" class="tabla" width="100%" >
+                            <f:facet name="header">
+                                <h:outputLabel value="Cama Disponible"/>
+                            </f:facet>
+
+                            <h:outputLabel value="Planta: "/> 
+                            <h:outputLabel value="#{ingresoBeans.cama.habitacion.planta.id}"/>
+                            <h:outputLabel value="Habitación: "/>
+                            <h:outputLabel value="#{ingresoBeans.cama.habitacion.id}"/>
+                            <h:outputLabel value="Cama: "/>
+                            <h:outputLabel value="#{ingresoBeans.cama.id}"/>
+                        </h:panelGrid>
+                    </div>
+                    <div id="creacion">
+                        <p align="center">
+                            <h:commandButton class="botonenvio" value="Asignar cama" style="submit" action="#{ingresoBeans.asignarCama()}"/>
+                        </p>
+                    </div>
+                </h:form>
+            </ui:fragment>
+            <ui:fragment rendered="#{loginController.tipoUsuario!='H'}">
+                <p class="error">No tienes Privilegios para acceder a esta zona</p>
             </ui:fragment>
         </ui:fragment>
-    </ui:fragment>
+    </ui:define>
+
+
 </ui:composition>

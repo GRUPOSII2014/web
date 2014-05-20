@@ -8,7 +8,7 @@
     <ui:define name="titulo">Contacto</ui:define>
     <ui:define name="contenido">
         <div id="login">
-            <p:growl id="growl" sticky="true" showDetail="true" />
+            <p:growl id="growl" sticky="true" showDetail="true" severity="error" />
             <h:form>
                 <h:panelGrid columns="2">
                     <f:facet name="header">
@@ -23,7 +23,6 @@
                     </h:panelGroup>
                 </h:panelGrid>
             </h:form>
-            <!--<h:messages class="error"/>-->
         </div>
         <div id="noticias">
             <p:dataTable value="#{indexController.noticias}" var="n" paginator="true" id="dataTable" widgetVar="personasTable"
@@ -36,8 +35,8 @@
                     <br />
                     <h:outputText value="#{n.descripcion}" class="cuerpo"/>
                     <br />
-                    <h:outputText value="Autor - "/>
-                    <h:outputText value="#{n.fecha}">
+                    <h:outputText value="Autor - #{n.escritoPor.nombre} ("/>
+                    <h:outputText value="#{n.fecha})">
                         <f:convertDateTime pattern="dd/MM/yyyy hh:mm" />
                     </h:outputText>
                 </p:column>                            
