@@ -1,0 +1,27 @@
+<ui:composition template="WEB-INF/Plantilla/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="titulo">Crear Hospital</ui:define>
+    <ui:define name="contenido">
+        <ui:fragment rendered="#{loginController.tipoUsuario=='A'}">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Id: "/>
+                    <h:inputText value="#{habitacionBean.id}"/>
+                    <h:outputText value="Número: "/>
+                    <h:inputText value="#{habitacionBean.numero}"/>
+                    <h:outputText value="Tipo: "/>
+                    <h:inputText value="#{habitacionBean.tipo}"/>
+                    <h:outputText value="Planta: "/>
+                    <h:selectOneMenu value="#{habitacionBean.planta}">
+                        <f:selectItems itemValue="#{habitacionBean.plantas}" itemLabel="#{habitacionBean.plantas}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandButton class="botonenvio" value="Crear Habitación" action="#{habitacionBean.crearHabitacion()}"/>
+            </h:form>
+        </ui:fragment>
+    </ui:define>
+</ui:composition>
