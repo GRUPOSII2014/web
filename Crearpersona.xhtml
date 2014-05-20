@@ -7,10 +7,9 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="titulo">Creación de una persona</ui:define>
-    <ui:fragment rendered="#{loginController.tipoUsuario != 'M'}">
             <ui:define name="contenido"> 
                 <h:form>
-                    <h2 class="Listado">Crear Persona</h2>
+                    <p:growl id="growl" sticky="true"/>
                     <div id="mitadIz">
                         <h:panelGrid columns="2" class="tabla" title="Crear Persona">
                             <h:outputText value="DNI*:"/>
@@ -37,7 +36,6 @@
                         </h:panelGrid> 
                     </div>
                     <div id="mitadDer">
-                        <p:growl id="growl" sticky="true"/> 
                         <h:panelGrid columns="2" class="tabla">
                             <h:outputText value="Sexo*:"/>
                             <h:selectOneMenu value="#{personaBeans.p.sexo}" required="true" label="Sexo">
@@ -56,17 +54,9 @@
                             <h:inputText value="#{personaBeans.p.ciudad}" label="Ciudad"/>
                             <h:outputText value="País:"/>
                             <h:inputText value="#{personaBeans.p.pais}" label="País"/>
-                            <p:commandButton value="Crear Persona" actionListener="#{personaBeans.crear(action)}" update="growl"/>
+                            <p:commandButton value="Crear Persona" action="#{personaBeans.crear()}" update="growl"/>
                         </h:panelGrid>
                     </div>
-                </h:form>
-            </ui:define>
-    </ui:fragment>
-
-    <ui:define name="contenido"> 
-        <h:form>
-           
-            <h2 class="Listado">Crear Persona</h2>
              <ui:fragment rendered="#{loginController.tipoCrearPersona=='Persona'}">
             <div id="mitadIz">
                 <h:panelGrid columns="2" class="tabla" title="Crear Persona">
@@ -95,7 +85,6 @@
                 </h:panelGrid> 
             </div>
             <div id="mitadDer">
-                <p:growl id="growl" sticky="true"/> 
                 <h:panelGrid columns="2" class="tabla">
                     <h:outputText value="Sexo*:"/>
                     <h:selectOneMenu value="#{personaBeans.p.sexo}" required="true" label="Sexo">
@@ -150,7 +139,6 @@
                 </h:panelGrid> 
             </div>
             <div id="mitadDer">
-                <p:growl id="growl" sticky="true"/> 
                 <h:panelGrid columns="2" class="tabla">
                     <h:outputText value="Sexo*:"/>
                     <h:selectOneMenu value="#{pMedicoBean.m.sexo}" required="true" label="Sexo">
@@ -210,7 +198,6 @@
                 </h:panelGrid> 
             </div>
             <div id="mitadDer">
-                <p:growl id="growl" sticky="true"/> 
                 <h:panelGrid columns="2" class="tabla">
                     <h:outputText value="Sexo*:"/>
                     <h:selectOneMenu value="#{enfermeroBeans.enf.sexo}" required="true" label="Sexo">
@@ -270,7 +257,6 @@
                 </h:panelGrid> 
             </div>
             <div id="mitadDer">
-                <p:growl id="growl" sticky="true"/> 
                 <h:panelGrid columns="2" class="tabla">
                     <h:outputText value="Sexo*:"/>
                     <h:selectOneMenu value="#{adminBean.adm.sexo}" required="true" label="Sexo">
@@ -298,6 +284,6 @@
             </ui:fragment>
         </h:form>
    
-    </ui:define>
-
+            </ui:define>
+    
 </ui:composition>
