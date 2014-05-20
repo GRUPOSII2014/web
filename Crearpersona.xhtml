@@ -10,53 +10,6 @@
             <ui:define name="contenido"> 
                 <h:form>
                     <p:growl id="growl" sticky="true"/>
-                    <div id="mitadIz">
-                        <h:panelGrid columns="2" class="tabla" title="Crear Persona">
-                            <h:outputText value="DNI*:"/>
-                            <h:inputText value="#{personaBeans.p.DNI}" maxlength="9" required="true" label="DNI"/>
-                            <h:outputText value="NSS*:"/>
-                            <h:inputText value="#{personaBeans.p.numSegSocial}" maxlength="12" required="true" label="Número seguridad social"/>
-                            <h:outputText value="Nombre*:"/>
-                            <h:inputText value="#{personaBeans.p.nombre}" required="true" label="Nombre"/>
-                            <h:outputText value="Primer apellido*:"/>
-                            <h:inputText value="#{personaBeans.p.apellido1}" required="true" label="Primer Apellido"/>
-                            <h:outputText value="Segundo apellido*:"/>
-                            <h:inputText value="#{personaBeans.p.apellido2}" required="true" label="Segundo Apellido"/>
-                            <h:outputText value="Fecha nacimiento (dd/mm/aaaa)*:"/>
-                            <h:inputText value="#{personaBeans.p.fechaNacimiento}" required="true" label="Fecha nacimiento"/>
-                            <h:outputText value="Estado civil:"/>
-                            <h:selectOneMenu value="#{personaBeans.p.estadoCivil}" label="Estado Civil">
-                                <f:selectItem itemLabel="Casado/a"/>
-                                <f:selectItem itemLabel="Soltero/a"/>
-                                <f:selectItem itemLabel="Viudo/a"/>
-                                <f:selectItem itemLabel="Divorciado/a"/>
-                            </h:selectOneMenu>
-                            <h:outputText value="Correo*:" />
-                            <h:inputText value="#{personaBeans.p.email}" required="true" label="Email"/>
-                        </h:panelGrid> 
-                    </div>
-                    <div id="mitadDer">
-                        <h:panelGrid columns="2" class="tabla">
-                            <h:outputText value="Sexo*:"/>
-                            <h:selectOneMenu value="#{personaBeans.p.sexo}" required="true" label="Sexo">
-                                <f:selectItem itemLabel="Varon"/>
-                                <f:selectItem itemLabel="Mujer"/>
-                            </h:selectOneMenu>
-                            <h:outputText value="Grupo sanguíneo*:"/>
-                            <h:inputText value="#{personaBeans.p.historiaclinica.grupoSanguineo}" required="true" label="Segundo Apellido"/>
-                            <h:outputText value="Telefono:"/>
-                            <h:inputText value="#{personaBeans.p.telefono}" label="Teléfono"/>
-                            <h:outputText value="Direccion:"/>
-                            <h:inputText value="#{personaBeans.p.direccion}" label="Dirección"/>
-                            <h:outputText value="Código postal:"/>
-                            <h:inputText value="#{personaBeans.p.codigoPostal}" label="Código Postal"/>
-                            <h:outputText value="Ciudad:"/>
-                            <h:inputText value="#{personaBeans.p.ciudad}" label="Ciudad"/>
-                            <h:outputText value="País:"/>
-                            <h:inputText value="#{personaBeans.p.pais}" label="País"/>
-                            <p:commandButton value="Crear Persona" action="#{personaBeans.crear()}" update="growl"/>
-                        </h:panelGrid>
-                    </div>
              <ui:fragment rendered="#{loginController.tipoCrearPersona=='Persona'}">
             <div id="mitadIz">
                 <h:panelGrid columns="2" class="tabla" title="Crear Persona">
@@ -105,7 +58,7 @@
                     <h:inputText value="#{personaBeans.p.pais}" label="País"/>
                     <h:outputText value="Password*:"/>
                     <h:inputText value="#{personaBeans.p.password}" label="password"/>
-                    <p:commandButton value="Crear Persona" actionListener="#{personaBeans.crear(action)}" update="growl"/>
+                    <p:commandButton value="Crear Persona" actionListener="#{personaBeans.crear}" update="growl"/>
                 </h:panelGrid>
             </div>
             </ui:fragment>
@@ -164,7 +117,7 @@
                     <p:commandButton id="especialidadSubmit" value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" />
                     <h:outputText value="Password*:"/>
                     <h:inputText value="#{MedicoBean.m.password}" required="true" label="password"/>
-                    <p:commandButton value="Crear Persona" actionListener="#{personaBeans.crear(action)}" update="growl"/>
+                    <p:commandButton value="Crear Medico" actionListener="#{personaBeans.crear}" update="growl"/>
                 </h:panelGrid>
             </div>
         </ui:fragment>
@@ -222,7 +175,7 @@
                     <h:inputText value="#{enfermeroBeans.enf.salario}" required="true" label="salario"/>
                     <h:outputText value="Password*:"/>
                     <h:inputText value="#{enfermeroBeans.enf.password}" required="true" label="password"/>
-                    <p:commandButton value="Crear Persona" actionListener="#{personaBeans.crear(action)}" update="growl"/>
+                    <p:commandButton value="Crear Enfermero" actionListener="#{personaBeans.crear}" update="growl"/>
                 </h:panelGrid>
             </div>
             
@@ -277,7 +230,7 @@
                     <h:inputText value="#{adminBean.adm.pais}" label="Ciudad"/>
                     <h:outputText value="Password*:"/>
                     <h:inputText value="#{adminBean.adm.password}" required="true" label="password"/>
-                    <p:commandButton value="Crear Persona" actionListener="#{adminBean.crearAdmin()}" update="growl"/>
+                    <p:commandButton value="Crear Administrativo" actionListener="#{adminBean.crearAdmin}" update="growl"/>
                 </h:panelGrid>
             </div>
             

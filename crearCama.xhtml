@@ -19,6 +19,8 @@
                                 <h:selectOneMenu value="#{crearCama.c.habitacion}">
                                     <f:selectItems #{crearCama.todasHabitaciones()}>
                                 </h:selectOneMenu>
+                                <p:commandButton value="Crear cama" actionListener="#{crearCama.crearCama}"/>
+                                
                             </h:panelGrid>
                         </div>
                         
