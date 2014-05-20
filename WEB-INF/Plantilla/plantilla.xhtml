@@ -120,6 +120,19 @@
                             <p:menuitem  value="Principal" icon="/resources/img/home.png" url="principal.xhtml"/>
                         </p:stack> 
                     </ui:fragment>
+                    <ui:fragment rendered="#{loginController.tipoUsuario == 'A'}">
+                        <ul id="menu">
+                            <li><h:link class="menuPaciente" value="Crear Persona" outcome="principal.xhtml" /></li>
+                            <li><h:link class="menuPaciente" value="Crear Hospital" outcome="crearHospital.xhtml" /></li>
+                            <li><h:link class="menuPaciente" value="Crear Planta" outcome="crearPlanta.xhtml" /></li>
+                            <li><h:link class="menuPaciente" value="Crear Habitaciones" outcome="crearHabitacion.xhtml" /></li>
+                            <li><h:link class="menuPaciente" value="Crear Camas " outcome="crearCama.xhtml" /></li>
+                            <li><h:link class="menuPaciente" value="Crear Noticias" outcome="crearnoticia.xhtml" /></li>
+                            <li><h:link class="menuPaciente" value="Crear Departamentos" outcome="gestionalertas.xhtml" /></li>
+                            <li><h:link class="menuPaciente" value="Crear Especialidad" outcome="gestionalertas.xhtml" /></li>
+                            <li><h:commandLink class="menuPaciente" value="Salir" action="#{indexController.doLogout()}" /></li>
+                        </ul>
+                    </ui:fragment>
                 </ui:fragment>
             </h:form>
             <div id="central">
