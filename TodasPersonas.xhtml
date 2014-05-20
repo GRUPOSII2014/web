@@ -5,8 +5,7 @@
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="titulo">Todas Las Personas</ui:define>
     <ui:define name="contenido">
-        <h:outputText value="#{loginController.tipoUsuario}"/>
-        <ui:fragment rendered = "#{loginController.tipoUsuario == 'P'}">
+        <ui:fragment rendered = "#{loginController.tipoUsuario == 'A'}">
                 <h:form id="personas">
                     <p:dataTable styleClass="tabla" value="#{todasPersonasBeans.personas}" var="pers" paginator="true" id="dataTable" widgetVar="personasTable"
                                  emptyMessage="No existen personas con ese criterio de busqueda" rowsPerPageLabel="25,50,100">

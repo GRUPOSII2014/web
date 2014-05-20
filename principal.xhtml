@@ -9,6 +9,7 @@
     <ui:define name="titulo">Principal</ui:define>
 
     <ui:define name="contenido">
+        <ui:fragment rendered="#{loginController.nss!=null}"/>
         <div id="informacion">
             <h:panelGrid columns="2" class="tabla" width="100%">
                 <f:facet name="header">
