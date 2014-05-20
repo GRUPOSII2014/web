@@ -7,11 +7,70 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="titulo">Creación de una persona</ui:define>
+    <ui:fragment rendered="#{loginController.tipoUsuario != 'M'}">
+            <ui:define name="contenido"> 
+                <h:form>
+                    <h2 class="Listado">Crear Persona</h2>
+                    <div id="mitadIz">
+                        <h:panelGrid columns="2" class="tabla" title="Crear Persona">
+                            <h:outputText value="DNI*:"/>
+                            <h:inputText value="#{personaBeans.p.DNI}" maxlength="9" required="true" label="DNI"/>
+                            <h:outputText value="NSS*:"/>
+                            <h:inputText value="#{personaBeans.p.numSegSocial}" maxlength="12" required="true" label="Número seguridad social"/>
+                            <h:outputText value="Nombre*:"/>
+                            <h:inputText value="#{personaBeans.p.nombre}" required="true" label="Nombre"/>
+                            <h:outputText value="Primer apellido*:"/>
+                            <h:inputText value="#{personaBeans.p.apellido1}" required="true" label="Primer Apellido"/>
+                            <h:outputText value="Segundo apellido*:"/>
+                            <h:inputText value="#{personaBeans.p.apellido2}" required="true" label="Segundo Apellido"/>
+                            <h:outputText value="Fecha nacimiento (dd/mm/aaaa)*:"/>
+                            <h:inputText value="#{personaBeans.p.fechaNacimiento}" required="true" label="Fecha nacimiento"/>
+                            <h:outputText value="Estado civil:"/>
+                            <h:selectOneMenu value="#{personaBeans.p.estadoCivil}" label="Estado Civil">
+                                <f:selectItem itemLabel="Casado/a"/>
+                                <f:selectItem itemLabel="Soltero/a"/>
+                                <f:selectItem itemLabel="Viudo/a"/>
+                                <f:selectItem itemLabel="Divorciado/a"/>
+                            </h:selectOneMenu>
+                            <h:outputText value="Correo*:" />
+                            <h:inputText value="#{personaBeans.p.email}" required="true" label="Email"/>
+                        </h:panelGrid> 
+                    </div>
+                    <div id="mitadDer">
+                        <p:growl id="growl" sticky="true"/> 
+                        <h:panelGrid columns="2" class="tabla">
+                            <h:outputText value="Sexo*:"/>
+                            <h:selectOneMenu value="#{personaBeans.p.sexo}" required="true" label="Sexo">
+                                <f:selectItem itemLabel="Varon"/>
+                                <f:selectItem itemLabel="Mujer"/>
+                            </h:selectOneMenu>
+                            <h:outputText value="Grupo sanguíneo*:"/>
+                            <h:inputText value="#{personaBeans.p.historiaclinica.grupoSanguineo}" required="true" label="Segundo Apellido"/>
+                            <h:outputText value="Telefono:"/>
+                            <h:inputText value="#{personaBeans.p.telefono}" label="Teléfono"/>
+                            <h:outputText value="Direccion:"/>
+                            <h:inputText value="#{personaBeans.p.direccion}" label="Dirección"/>
+                            <h:outputText value="Código postal:"/>
+                            <h:inputText value="#{personaBeans.p.codigoPostal}" label="Código Postal"/>
+                            <h:outputText value="Ciudad:"/>
+                            <h:inputText value="#{personaBeans.p.ciudad}" label="Ciudad"/>
+                            <h:outputText value="País:"/>
+                            <h:inputText value="#{personaBeans.p.pais}" label="País"/>
+                            <p:commandButton value="Crear Persona" actionListener="#{personaBeans.crear(action)}" update="growl"/>
+                        </h:panelGrid>
+                    </div>
+                </h:form>
+            </ui:define>
+    </ui:fragment>
+
     <ui:define name="contenido"> 
         <h:form>
+           
             <h2 class="Listado">Crear Persona</h2>
+             <ui:fragment rendered="#{loginController.tipoCrearPersona=='Persona'}">
             <div id="mitadIz">
                 <h:panelGrid columns="2" class="tabla" title="Crear Persona">
+                    
                     <h:outputText value="DNI*:"/>
                     <h:inputText value="#{personaBeans.p.DNI}" maxlength="9" required="true" label="DNI"/>
                     <h:outputText value="NSS*:"/>
@@ -55,9 +114,190 @@
                     <h:inputText value="#{personaBeans.p.ciudad}" label="Ciudad"/>
                     <h:outputText value="País:"/>
                     <h:inputText value="#{personaBeans.p.pais}" label="País"/>
+                    <h:outputText value="Password*:"/>
+                    <h:inputText value="#{personaBeans.p.password}" label="password"/>
                     <p:commandButton value="Crear Persona" actionListener="#{personaBeans.crear(action)}" update="growl"/>
                 </h:panelGrid>
             </div>
+            </ui:fragment>
+            <ui:fragment rendered="#{loginController.tipoCrearPersona=='Medico'}">
+                <div id="mitadIz">
+                <h:panelGrid columns="2" class="tabla" title="Crear Medico">
+                    
+                    <h:outputText value="DNI*:"/>
+                    <h:inputText value="#{MedicoBean.m.DNI}" maxlength="9" required="true" label="DNI"/>
+                    <h:outputText value="NSS*:"/>
+                    <h:inputText value="#{MedicoBean.m.numSegSocial}" maxlength="12" required="true" label="Número seguridad social"/>
+                    <h:outputText value="Nombre*:"/>
+                    <h:inputText value="#{MedicoBean.m.nombre}" required="true" label="Nombre"/>
+                    <h:outputText value="Primer apellido*:"/>
+                    <h:inputText value="#{MedicoBean.m.apellido1}" required="true" label="Primer Apellido"/>
+                    <h:outputText value="Segundo apellido*:"/>
+                    <h:inputText value="#{MedicoBean.m.apellido2}" required="true" label="Segundo Apellido"/>
+                    <h:outputText value="Fecha nacimiento (dd/mm/aaaa)*:"/>
+                    <h:inputText value="#{MedicoBean.m.fechaNacimiento}" required="true" label="Fecha nacimiento"/>
+                    <h:outputText value="Estado civil:"/>
+                    <h:selectOneMenu value="#{MedicoBean.m.estadoCivil}" label="Estado Civil">
+                        <f:selectItem itemLabel="Casado/a"/>
+                        <f:selectItem itemLabel="Soltero/a"/>
+                        <f:selectItem itemLabel="Viudo/a"/>
+                        <f:selectItem itemLabel="Divorciado/a"/>
+                    </h:selectOneMenu>
+                    <h:outputText value="Correo*:" />
+                    <h:inputText value="#{MedicoBean.m.email}" required="true" label="Email"/>
+                    <h:outputText value="Despacho*:" />
+                    <h:inputText value="#{MedicoBean.m.despacho}" required="true" label="Email"/>
+                </h:panelGrid> 
+            </div>
+            <div id="mitadDer">
+                <p:growl id="growl" sticky="true"/> 
+                <h:panelGrid columns="2" class="tabla">
+                    <h:outputText value="Sexo*:"/>
+                    <h:selectOneMenu value="#{pMedicoBean.m.sexo}" required="true" label="Sexo">
+                        <f:selectItem itemLabel="Varon" itemValue="Varon"/>
+                        <f:selectItem itemLabel="Mujer" itemValue="Mujer"/>
+                    </h:selectOneMenu>
+                     <h:outputText value="Grupo sanguíneo*:"/>
+                     <h:inputText value="#{MedicoBean.m.historiaclinica.grupoSanguineo}" required="true" label="Segundo Apellido"/>
+                    <h:outputText value="Telefono:"/>
+                    <h:inputText value="#{MedicoBean.m.telefono}" label="Teléfono"/>
+                    <h:outputText value="Direccion:"/>
+                    <h:inputText value="#{MedicoBean.m.direccion}" label="Dirección"/>
+                    <h:outputText value="Código postal:"/>
+                    <h:inputText value="#{MedicoBean.m.codigoPostal}" label="Código Postal"/>
+                    <h:outputText value="Ciudad:"/>
+                    <h:inputText value="#{MedicoBean.m.ciudad}" label="Ciudad"/>
+                    <h:outputText value="País:"/>
+                    <h:inputText value="#{MedicoBean.m.ciudad}" label="Ciudad"/>
+                    <h:outputText value="Precio hora:"/>
+                    <h:inputText value="#{MedicoBean.m.precioHora}" required="true" label="País"/>
+                    <h:outputText value="Especialidades:"/>
+                    <p:pickList id="pickList" value="#{enumeradosBean.listaEspecialidades}" var="especialidad" itemLabel="#{especialidad}" itemValue="#{especialidad}" />
+                    <p:commandButton id="especialidadSubmit" value="Submit" update="displayCities" oncomplete="PF('cityDialog').show()" style="margin-top:5px" />
+                    <h:outputText value="Password*:"/>
+                    <h:inputText value="#{MedicoBean.m.password}" required="true" label="password"/>
+                    <p:commandButton value="Crear Persona" actionListener="#{personaBeans.crear(action)}" update="growl"/>
+                </h:panelGrid>
+            </div>
+        </ui:fragment>
+            <ui:fragment rendered="#{loginController.tipoCrearPersona=='Enfermero'}">
+             <div id="mitadIz">
+                <h:panelGrid columns="2" class="tabla" title="Crear Enfermero">
+                    
+                    <h:outputText value="DNI*:"/>
+                    <h:inputText value="#{enfermeroBeans.enf.DNI}" maxlength="9" required="true" label="DNI"/>
+                    <h:outputText value="NSS*:"/>
+                    <h:inputText value="#{enfermeroBeans.enf.numSegSocial}" maxlength="12" required="true" label="Número seguridad social"/>
+                    <h:outputText value="Nombre*:"/>
+                    <h:inputText value="#{enfermeroBeans.enf.nombre}" required="true" label="Nombre"/>
+                    <h:outputText value="Primer apellido*:"/>
+                    <h:inputText value="#{enfermeroBeans.enf.apellido1}" required="true" label="Primer Apellido"/>
+                    <h:outputText value="Segundo apellido*:"/>
+                    <h:inputText value="#{enfermeroBeans.enf.apellido2}" required="true" label="Segundo Apellido"/>
+                    <h:outputText value="Fecha nacimiento (dd/mm/aaaa)*:"/>
+                    <h:inputText value="#{enfermeroBeans.enf.fechaNacimiento}" required="true" label="Fecha nacimiento"/>
+                    <h:outputText value="Estado civil:"/>
+                    <h:selectOneMenu value="#{enfermeroBeans.enf.estadoCivil}" label="Estado Civil">
+                        <f:selectItem itemLabel="Casado/a"/>
+                        <f:selectItem itemLabel="Soltero/a"/>
+                        <f:selectItem itemLabel="Viudo/a"/>
+                        <f:selectItem itemLabel="Divorciado/a"/>
+                    </h:selectOneMenu>
+                    <h:outputText value="Correo*:" />
+                    <h:inputText value="#{enfermeroBeans.enf.email}" required="true" label="Email"/>
+                    <h:outputText value="Departamento*:" />
+                    <h:inputText value="#{enfermeroBeans.enf.departamento}" required="true" label="Departamento"/>
+                </h:panelGrid> 
+            </div>
+            <div id="mitadDer">
+                <p:growl id="growl" sticky="true"/> 
+                <h:panelGrid columns="2" class="tabla">
+                    <h:outputText value="Sexo*:"/>
+                    <h:selectOneMenu value="#{enfermeroBeans.enf.sexo}" required="true" label="Sexo">
+                        <f:selectItem itemLabel="Varon" itemValue="Varon"/>
+                        <f:selectItem itemLabel="Mujer" itemValue="Mujer"/>
+                    </h:selectOneMenu>
+                     <h:outputText value="Grupo sanguíneo*:"/>
+                     <h:inputText value="#{enfermeroBeans.enf.historiaclinica.grupoSanguineo}" required="true" label="Segundo Apellido"/>
+                    <h:outputText value="Telefono:"/>
+                    <h:inputText value="#{enfermeroBeans.enf.telefono}" label="Teléfono"/>
+                    <h:outputText value="Direccion:"/>
+                    <h:inputText value="#{enfermeroBeans.enf.direccion}" label="Dirección"/>
+                    <h:outputText value="Código postal:"/>
+                    <h:inputText value="#{enfermeroBeans.enf.codigoPostal}" label="Código Postal"/>
+                    <h:outputText value="Ciudad:"/>
+                    <h:inputText value="#{enfermeroBeans.enf.ciudad}" label="Ciudad"/>
+                    <h:outputText value="País:"/>
+                    <h:inputText value="#{enfermeroBeans.enf.pais}" label="Ciudad"/>
+                    <h:outputText value="Precio hora:"/>
+                    <h:inputText value="#{enfermeroBeans.enf.precioHora}" required="true" label="precioHora"/>
+                    <h:outputText value="Salario:"/>
+                    <h:inputText value="#{enfermeroBeans.enf.salario}" required="true" label="salario"/>
+                    <h:outputText value="Password*:"/>
+                    <h:inputText value="#{enfermeroBeans.enf.password}" required="true" label="password"/>
+                    <p:commandButton value="Crear Persona" actionListener="#{personaBeans.crear(action)}" update="growl"/>
+                </h:panelGrid>
+            </div>
+            
+            </ui:fragment>
+             <ui:fragment rendered="#{loginController.tipoCrearPersona=='Administrativo'}">
+             <div id="mitadIz">
+                <h:panelGrid columns="2" class="tabla" title="Crear Enfermero">
+                    
+                    <h:outputText value="DNI*:"/>
+                    <h:inputText value="#{adminBean.adm.DNI}" maxlength="9" required="true" label="DNI"/>
+                    <h:outputText value="NSS*:"/>
+                    <h:inputText value="#{adminBean.adm.numSegSocial}" maxlength="12" required="true" label="Número seguridad social"/>
+                    <h:outputText value="Nombre*:"/>
+                    <h:inputText value="#{adminBean.adm.nombre}" required="true" label="Nombre"/>
+                    <h:outputText value="Primer apellido*:"/>
+                    <h:inputText value="#{adminBean.adm.apellido1}" required="true" label="Primer Apellido"/>
+                    <h:outputText value="Segundo apellido*:"/>
+                    <h:inputText value="#{adminBean.adm.apellido2}" required="true" label="Segundo Apellido"/>
+                    <h:outputText value="Fecha nacimiento (dd/mm/aaaa)*:"/>
+                    <h:inputText value="#{adminBean.adm.fechaNacimiento}" required="true" label="Fecha nacimiento"/>
+                    <h:outputText value="Estado civil:"/>
+                    <h:selectOneMenu value="#{adminBean.adm.estadoCivil}" label="Estado Civil">
+                        <f:selectItem itemLabel="Casado/a"/>
+                        <f:selectItem itemLabel="Soltero/a"/>
+                        <f:selectItem itemLabel="Viudo/a"/>
+                        <f:selectItem itemLabel="Divorciado/a"/>
+                    </h:selectOneMenu>
+                    <h:outputText value="Correo*:" />
+                    <h:inputText value="#{adminBean.adm.email}" required="true" label="Email"/>
+                     <h:outputText value="Despacho*:" />
+                     <h:inputText value="#{adminBean.adm.despacho}" required="true" label="Despacho"/>
+                </h:panelGrid> 
+            </div>
+            <div id="mitadDer">
+                <p:growl id="growl" sticky="true"/> 
+                <h:panelGrid columns="2" class="tabla">
+                    <h:outputText value="Sexo*:"/>
+                    <h:selectOneMenu value="#{adminBean.adm.sexo}" required="true" label="Sexo">
+                        <f:selectItem itemLabel="Varon" itemValue="Varon"/>
+                        <f:selectItem itemLabel="Mujer" itemValue="Mujer"/>
+                    </h:selectOneMenu>
+                     <h:outputText value="Grupo sanguíneo*:"/>
+                     <h:inputText value="#{adminBean.adm.historiaclinica.grupoSanguineo}" required="true" label="Segundo Apellido"/>
+                    <h:outputText value="Telefono:"/>
+                    <h:inputText value="#{adminBean.adm.telefono}" label="Teléfono"/>
+                    <h:outputText value="Direccion:"/>
+                    <h:inputText value="#{adminBean.adm.direccion}" label="Dirección"/>
+                    <h:outputText value="Código postal:"/>
+                    <h:inputText value="#{adminBean.adm.codigoPostal}" label="Código Postal"/>
+                    <h:outputText value="Ciudad:"/>
+                    <h:inputText value="#{adminBean.adm.ciudad}" label="Ciudad"/>
+                    <h:outputText value="País:"/>
+                    <h:inputText value="#{adminBean.adm.pais}" label="Ciudad"/>
+                    <h:outputText value="Password*:"/>
+                    <h:inputText value="#{adminBean.adm.password}" required="true" label="password"/>
+                    <p:commandButton value="Crear Persona" actionListener="#{adminBean.crearAdmin()}" update="growl"/>
+                </h:panelGrid>
+            </div>
+            
+            </ui:fragment>
         </h:form>
+   
     </ui:define>
+
 </ui:composition>

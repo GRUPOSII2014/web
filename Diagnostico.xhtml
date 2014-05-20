@@ -10,6 +10,27 @@
 
     <ui:define name="contenido">
         <ui:fragment rendered="#{diagnosticoBeans.inic()=='Inic'}">
+            <ui:fragment rendered="#{loginController.tipoUsuario == 'M'}">
+                <h:form>
+                    <div id="informacion">
+                        <h:panelGrid columns="2" class="tabla" width="100%">
+                            <f:facet name="header">
+                                <h:outputText value="Información Paciente" />
+                            </f:facet>
+                            <h:outputText value="Nombre:" />
+                            <h:outputText value="#{diagnosticoBeans.p1.nombre}" />
+                            <h:outputText value="Primer Apellido:" />
+                            <h:outputText value="#{diagnosticoBeans.p1.apellido1}" />
+                            <h:outputText value="Segundo Apellido:" />
+                            <h:outputText value="#{diagnosticoBeans.p1.apellido2}" />
+                            <h:outputText value="Sexo:" />
+                            <h:outputText value="#{diagnosticoBeans.p1.sexo}" />
+                            <h:outputText value="Segunda Opinion"/>
+                            <h:selectOneMenu class="listaInformes" value="#{diagnosticoBeans.var}" >
+                                <f:selectItem itemLabel="---" itemValue="0" />
+                                <f:selectItems value="#{diagnosticoBeans.p1.historiaclinica.informes}" var="inf" itemLabel="#{inf.fecha}"  itemValue="#{inf.id}"/>
+                            </h:selectOneMenu>
+
             <h:form>
                 <div id="informacion">
                    <h:panelGrid columns="2" class="tabla" width="100%">
@@ -39,12 +60,51 @@
                         <h:outputText value="Fecha: "/><p:calendar value="#{diagnosticoBeans.trata.fechaFinalizacion}" id="popupCal2" locale="es" label="Fecha" required="true"/>
                     </h:panelGrid>
 
-                </div>
-                <p:messages severity="error" autoUpdate="true" closable="true" />
-                <div class="descripciondiag">
-                    <center>
-                        <h3> <font style="font-size: 24px; font-weight: bold; color: Olive"> Diagnóstico</font></h3> 
-                        Diagnóstico
+
+                    </div>
+                    <p:messages severity="error" autoUpdate="true" closable="true" />
+                    <div class="descripciondiag">
+                        <center>
+                            <h3> <font style="font-size: 24px; font-weight: bold; color: Olive"> Diagnóstico</font></h3> 
+                            Diagnóstico
+
+
+                            <h:inputTextarea rows="4" cols="32" style="resize: none"  value="#{diagnosticoBeans.informe.diagnostico}" required="true" label="Diagnostico" requiredMessage="Es necesario un diagnostico"/> 
+                            Observaciones
+                            <h:inputTextarea rows="4" cols="32" style="resize: none"  value="#{diagnosticoBeans.informe.observaciones}"/>
+                            <h:commandButton class="botonenvio" value="Terminar Diagnóstico" type="submit" action="#{diagnosticoBeans.terminarDiagnostico()}"/>
+                        </center>
+                    </div>
+                </h:form>
+                <h:form>
+                    <div class="medicacion">
+                        <center><h3> <font style="font-size: 24px; font-weight: bold; color: Olive"> Medicación</font></h3> </center>
+                        <center><h3> Medicamentos</h3> </center>
+                        <center>
+                            <h:selectOneMenu class="listaMedicamentos" value="#{diagnosticoBeans.var}" >
+                                <f:selectItem itemLabel="---" itemValue="0" />
+                                <f:selectItems value="#{medicamentoBeans.ejb.medicamento}" var="med" itemLabel="#{med.nombre}" itemValue="#{med.id}"/>
+                            </h:selectOneMenu>
+                            Cantidad  <h:inputText value="#{diagnosticoBeans.cantidad}" maxlength="12"  required="true" style="width: 20px;" />
+                            <br />
+                            <h:commandButton class="botonenvio" value="Añadir" type="submit" action="#{diagnosticoBeans.anadirTratamiento()}" />
+                        </center>
+                        <div >
+                            <center><h3> Tratamientos Asignados</h3></center>
+                            <h:panelGroup id="tratamientos">
+                                <p:dataTable value="#{diagnosticoBeans.tratamientos}" var="tratamiento"  >
+                                    <p:column headerText="Nombre">
+                                        <h:outputText value="#{tratamiento.medicamento.nombre}"/>
+                                    </p:column>
+                                    <p:column headerText="Cantidad">
+                                        <h:outputText value="#{tratamiento.cantidad}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <h:commandButton value="Eliminar" action="#{diagnosticoBeans.eliminar(tratamiento.medicamento.id)}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:panelGroup>
+                        </div>
 
                         <h:inputTextarea rows="3" cols="32" style="resize: none"  value="#{diagnosticoBeans.informe.diagnostico}" required="true" label="Diagnostico" requiredMessage="Es necesario un diagnostico"/> 
                         Observaciones
@@ -83,9 +143,10 @@
                                 </p:column>
                             </p:dataTable>
                         </h:panelGroup>
+
                     </div>
-                </div>
-            </h:form>
+                </h:form>
+            </ui:fragment>
         </ui:fragment>
     </ui:define>
 </ui:composition>

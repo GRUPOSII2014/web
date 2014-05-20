@@ -5,68 +5,74 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="titulo">Creación de Tratamientos</ui:define>
-    <ui:define name="contenido">            
-        <h:form>
-            <div id="informacion2">
-                <h:panelGrid columns="2" class="tabla" width="100%">
-                    <h:outputText value="Nombre: "/>
-                    <h:inputText value="#{creacionTratamientoBeans.nombre}"/>
-                    <h:outputText value="Tipo: "/>
-                    <h:selectOneMenu value="#{creacionTratamientoBeans.tipo}">
-                        <f:selectItem itemLabel="Quimioterapia"/>
-                        <f:selectItem itemLabel="Radioterapia"/>
-                        <f:selectItem itemLabel="Osteopatía"/>
-                        <f:selectItem itemLabel="Vacuna"/>
-                    </h:selectOneMenu>
-                    <h:outputText value="Inicio: "/>
-                    <h:inputText value="#{creacionTratamientoBeans.fechaInicio}"/>
-                    <h:outputText value="Finalización: "/>
-                    <h:inputText value="#{creacionTratamientoBeans.fechaFinalizacion}"/>
-                    <h:outputText value="Descripcion: "/>
-                    <h:inputTextarea value="#{creacionTratamientoBeans.descripcion}"/>
-                </h:panelGrid>
-            </div>
-            <div id="alertas">
-                <h:panelGrid columns="2" class="tabla" width="100%" >
-                    <f:facet name="header">
-                        <h:outputLabel value="Datos Paciente"/>
-                    </f:facet>
-                    <h:outputText value="NSS: "/>
-                    <h:outputText value="#{creacionTratamientoBeans.persona.numSegSocial}"/>
-                    <h:outputText value="Nombre: "/>
-                    <h:outputText value="#{creacionTratamientoBeans.persona.nombre}"/>
-                    <h:outputText value="Primer apellido: "/>
-                    <h:outputText value="#{creacionTratamientoBeans.persona.apellido1}"/>
-                    <h:outputText value="Segundo apellido: "/>
-                    <h:outputText value="#{creacionTratamientoBeans.persona.apellido2}"/>
-                    <h:outputText value="Medicamentos: "/>
-                    <h:selectManyListbox value="#{medicamentoBeans.medicamentos}">
-                        <f:selectItem itemLabel="Ibuprofeno" itemValue="Ibuprofeno"/>
-                        <f:selectItem itemLabel="Lexatin" itemValue="Lexatin"/>
-                        <f:selectItem itemLabel="Maalox" itemValue="Maalox"/>
-                        <f:ajax render="lista"/>
-                    </h:selectManyListbox>    
-                </h:panelGrid>
-                <h:dataTable id="lista" class="tabla" var="m" value="#{medicamentoBeans.medicamentos}">
-                    <f:facet name="header">
-                        <h:outputText value="Medicamentos"/>
-                    </f:facet>
-                    <h:column>
-                        <h:outputText value="#{m}"/>
-                    </h:column>
-                    <h:column>
-                        <h:inputText size="3"/>
-                        <h:outputText value="unds"/>
-                    </h:column>
-                </h:dataTable>
-            </div>
-            <div id="mensajes">
-                <p align="center">
-                    <h:commandButton class="boton" value="Asignar Tratamiento" style="submit" action="#{creacionTratamientoBeans.crearTratamiento()}"/>
-                </p>
-            </div>
-        </h:form>
-    </ui:define>
+    <ui:fragment rendered ="#{loginController.tipoUsuario != 'P'}">
+        <ui:fragment rendered ="#{loginController.tipoUsuario != 'E'}">
+            <ui:fragment rendered="#{loginController.tipoUsuario != 'M'}">
+                <ui:define name="contenido">            
+                    <h:form>
+                        <div id="informacion2">
+                            <h:panelGrid columns="2" class="tabla" width="100%">
+                                <h:outputText value="Nombre: "/>
+                                <h:inputText value="#{creacionTratamientoBeans.nombre}"/>
+                                <h:outputText value="Tipo: "/>
+                                <h:selectOneMenu value="#{creacionTratamientoBeans.tipo}">
+                                    <f:selectItem itemLabel="Quimioterapia"/>
+                                    <f:selectItem itemLabel="Radioterapia"/>
+                                    <f:selectItem itemLabel="Osteopatía"/>
+                                    <f:selectItem itemLabel="Vacuna"/>
+                                </h:selectOneMenu>
+                                <h:outputText value="Inicio: "/>
+                                <h:inputText value="#{creacionTratamientoBeans.fechaInicio}"/>
+                                <h:outputText value="Finalización: "/>
+                                <h:inputText value="#{creacionTratamientoBeans.fechaFinalizacion}"/>
+                                <h:outputText value="Descripcion: "/>
+                                <h:inputTextarea value="#{creacionTratamientoBeans.descripcion}"/>
+                            </h:panelGrid>
+                        </div>
+                        <div id="alertas">
+                            <h:panelGrid columns="2" class="tabla" width="100%" >
+                                <f:facet name="header">
+                                    <h:outputLabel value="Datos Paciente"/>
+                                </f:facet>
+                                <h:outputText value="NSS: "/>
+                                <h:outputText value="#{creacionTratamientoBeans.persona.numSegSocial}"/>
+                                <h:outputText value="Nombre: "/>
+                                <h:outputText value="#{creacionTratamientoBeans.persona.nombre}"/>
+                                <h:outputText value="Primer apellido: "/>
+                                <h:outputText value="#{creacionTratamientoBeans.persona.apellido1}"/>
+                                <h:outputText value="Segundo apellido: "/>
+                                <h:outputText value="#{creacionTratamientoBeans.persona.apellido2}"/>
+                                <h:outputText value="Medicamentos: "/>
+                                <h:selectManyListbox value="#{medicamentoBeans.medicamentos}">
+                                    <f:selectItem itemLabel="Ibuprofeno" itemValue="Ibuprofeno"/>
+                                    <f:selectItem itemLabel="Lexatin" itemValue="Lexatin"/>
+                                    <f:selectItem itemLabel="Maalox" itemValue="Maalox"/>
+                                    <f:ajax render="lista"/>
+                                </h:selectManyListbox>    
+                            </h:panelGrid>
+                            <h:dataTable id="lista" class="tabla" var="m" value="#{medicamentoBeans.medicamentos}">
+                                <f:facet name="header">
+                                    <h:outputText value="Medicamentos"/>
+                                </f:facet>
+                                <h:column>
+                                    <h:outputText value="#{m}"/>
+                                </h:column>
+                                <h:column>
+                                    <h:inputText size="3"/>
+                                    <h:outputText value="unds"/>
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                        <div id="mensajes">
+                            <p align="center">
+                                <h:commandButton class="boton" value="Asignar Tratamiento" style="submit" action="#{creacionTratamientoBeans.crearTratamiento()}"/>
+                            </p>
+                        </div>
+                    </h:form>
+                </ui:define>
+            </ui:fragment>
+        </ui:fragment>
+    </ui:fragment>
 </ui:composition>
 
 
