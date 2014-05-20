@@ -45,5 +45,11 @@
                 <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>     
             </p:confirmDialog>
         </h:form>
+        <h:form>
+            <h:commandButton class="botonenvio" value="Crear Persona" action="#{todasPersonasBeans.creaPersona()}"/>
+            <h:commandButton class="botonenvio" value="Crear Medico" action="#{todasPersonasBeans.creaMedico()}"/>
+            <h:commandButton class="botonenvio" value="Crear Enfermero" action="#{todasPersonasBeans.creaEnfermero()}"/>
+            <h:commandButton class="botonenvio" value="Crear Administrativo" action="#{todasPersonasBeans.creaAdministrativo()}"/>
+        </h:form>
     </ui:define>
 </ui:composition>

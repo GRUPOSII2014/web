@@ -27,8 +27,12 @@
                         <h:outputText value="Segunda Opinion"/>
                         <h:selectOneMenu class="listaInformes" value="#{diagnosticoBeans.var}" >
                             <f:selectItem itemLabel="---" itemValue="0" />
-                            <f:selectItems value="#{diagnosticoBeans.p1.historiaclinica.informes}" var="inf" itemLabel="#{inf.fecha}" itemValue="#{inf.id}"/>
+                            <f:selectItems value="#{diagnosticoBeans.p1.historiaclinica.informes}" var="inf" itemLabel="#{inf.fecha}"  itemValue="#{inf.id}"/>
                         </h:selectOneMenu>
+                        <h:outputText value="Nombre Tratamiento"/>
+                        <h:inputText value="#{diagnosticoBeans.trata.nombre}" required="true"  style="width: 90px;" />
+                        <h:outputText value="Fecha: "/><p:calendar value="#{diagnosticoBeans.trata.fechaInicio}" id="popupCal1" locale="es" label="Fecha" required="true"/>
+                        <h:outputText value="Fecha: "/><p:calendar value="#{diagnosticoBeans.trata.fechaFinalizacion}" id="popupCal2" locale="es" label="Fecha" required="true"/>
                     </h:panelGrid>
 
                 </div>
@@ -41,6 +45,8 @@
                         <h:inputTextarea rows="4" cols="32" style="resize: none"  value="#{diagnosticoBeans.informe.diagnostico}" required="true" label="Diagnostico" requiredMessage="Es necesario un diagnostico"/> 
                         Observaciones
                         <h:inputTextarea rows="4" cols="32" style="resize: none"  value="#{diagnosticoBeans.informe.observaciones}"/>
+                        Descripción Tratamiento
+                        <h:inputTextarea rows="4" cols="32" style="resize: none"  value="#{diagnosticoBeans.trata.descripcion}"/>
                         <h:commandButton class="botonenvio" value="Terminar Diagnóstico" type="submit" action="#{diagnosticoBeans.terminarDiagnostico()}"/>
                     </center>
                 </div>
@@ -50,10 +56,9 @@
                     <center><h3> <font style="font-size: 24px; font-weight: bold; color: Olive"> Medicación</font></h3> </center>
                     <center><h3> Medicamentos</h3> </center>
                     <center>
-                        <h:selectOneMenu value="#{diagnosticoBeans.seleccionado}">
-                            <c:forEach begin="0" end="#{diagnosticoBeans.medicamentos.size()-1}" var="ind">
-                                <f:selectItem itemLabel="#{diagnosticoBeans.medicamentos.get(ind).nombre}" itemValue="#{ind}"/>
-                            </c:forEach>
+                        <h:selectOneMenu class="listaMedicamentos" value="#{diagnosticoBeans.var}" >
+                            <f:selectItem itemLabel="---" itemValue="0" />
+                            <f:selectItems value="#{medicamentoBeans.ejb.medicamento}" var="med" itemLabel="#{med.nombre}" itemValue="#{med.id}"/>
                         </h:selectOneMenu>
                         Cantidad  <h:inputText value="#{diagnosticoBeans.cantidad}" maxlength="12"  required="true" style="width: 20px;" />
                         <br />
