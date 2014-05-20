@@ -265,8 +265,8 @@
                     </h:selectOneMenu>
                     <h:outputText value="Correo*:" />
                     <h:inputText value="#{adminBean.adm.email}" required="true" label="Email"/>
-                    <h:outputText value="Departamento*:" />
-                    <h:inputText value="#{adminBean.adm.departamento}" required="true" label="Departamento"/>
+                     <h:outputText value="Despacho*:" />
+                     <h:inputText value="#{adminBean.adm.despacho}" required="true" label="Despacho"/>
                 </h:panelGrid> 
             </div>
             <div id="mitadDer">
@@ -289,10 +289,6 @@
                     <h:inputText value="#{adminBean.adm.ciudad}" label="Ciudad"/>
                     <h:outputText value="País:"/>
                     <h:inputText value="#{adminBean.adm.pais}" label="Ciudad"/>
-                    <h:outputText value="Precio hora:"/>
-                    <h:inputText value="#{adminBean.adm.precioHora}" required="true" label="precioHora"/>
-                    <h:outputText value="Salario:"/>
-                    <h:inputText value="#{adminBean.adm.salario}" required="true" label="salario"/>
                     <h:outputText value="Password*:"/>
                     <h:inputText value="#{adminBean.adm.password}" required="true" label="password"/>
                     <p:commandButton value="Crear Persona" actionListener="#{adminBean.crearAdmin()}" update="growl"/>
