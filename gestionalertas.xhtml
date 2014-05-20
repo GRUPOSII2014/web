@@ -5,8 +5,8 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="titulo">Médico - Gestión de Eventos y Alertas</ui:define>
-    <ui:fragment rendered="#{loginController.tipoUsuario='M'}">
         <ui:define name="contenido" >
+            <ui:fragment rendered="#{loginController.tipoUsuario='M'}">
             <p:growl id="growl" sticky="true" /> 
             <h:form>
                 <div id="informacion" style="width: 500px">
@@ -39,6 +39,6 @@
                     <center><h:commandButton class="botonenvio" value="Enviar" type="submit" action="#{eventosBean.creacion}"/></center>
                 </div>
             </h:form>
+            </ui:fragment>
         </ui:define>
-    </ui:fragment>
 </ui:composition>
