@@ -11,7 +11,7 @@
         <ui:fragment rendered="#{citaBeansBeans.inic()=='Inic'}">
             <p:tabView id="tabView"> 
                 <p:tab id="indsa" title="Diagnostico">
-                    <p:growl id="growl" sticky="true"  severity="error"/> 
+                    <p:growl id="growl" sticky="true"  severity="Info"/> 
                     <h:form id="form" >
                         <h:panelGrid columns="2" width="100%">
                             <h:outputText value="NSS: "/>
@@ -32,9 +32,10 @@
                                     <h:outputText value="#{citaBeansBeans.persona.apellido2}"/>
                                 </h:panelGrid>
                                 <h:panelGroup id="doctor">
-                                        <h:selectOneListbox value="#{citaBeansBeans.medicoBuscado}" rendered="#{citaBeansBeans.persona.medicoCabecera==null}">
-                                            <f:selectItems value="#{citaBeansBeans.medicosCabecera}" var="med" itemLabel="#{med.nombre} #{med.apellido1} #{med.apellido2}" itemValue="#{med}"/> 
-                                        </h:selectOneListbox>
+                                    <h:selectOneListbox value="#{citaBeansBeans.medicoBuscado}" rendered="#{citaBeansBeans.persona.medicoCabecera==null}">
+                                        <f:selectItems value="#{citaBeansBeans.medicosCabecera}" var="med" itemLabel="#{med.nombre} #{med.apellido1} #{med.apellido2}" itemValue="#{med}"/> 
+                                    </h:selectOneListbox>
+                                    <h:commandButton type="submit" rendered="#{citaBeansBeans.persona.medicoCabecera==null}" value="Asignar Medico" action="#{citaBeansBeans.asignaMedico()}"/>
                                         <h:panelGroup id="medicoCabecera">
                                             <h:panelGrid rendered="#{citaBeansBeans.persona.medicoCabecera!=null}" columns="2" class="tabla" width="100%" >
                                                 <f:facet name="header">
@@ -52,6 +53,7 @@
                                                 <h:outputText value="#{citaBeansBeans.dias}"/>
                                             </h:panelGrid>
                                         </h:panelGroup>
+                                    <h:commandButton rendered="#{citaBeansBeans.persona.medicoCabecera!=null}" value="Dame una cita" type="submit" actionListener="#{citaBeansBeans.crearCita}"/>
                                 </h:panelGroup>
                             </c:if>
                         </h:panelGroup>
@@ -134,7 +136,7 @@
                         </h:panelGrid>
                         <h:panelGroup id="paciente">
                             <h:panelGroup id="doctores">
-                                <f:ajax render="medicoCabecera">
+                                <f:ajax >
                                     <p:selectOneListbox id="basic" rendered="#{citaBeansBeans.enfermero==null and citaBeansBeans.persona!=null}"  value="#{citaBeansBeans.enfermero}" required="true">
                                         <c:forEach begin="0" end="#{citaBeansBeans.enfermeros.size()-1}" var="ind">
                                             <f:selectItem itemLabel="#{citaBeansBeans.enfermeros.get(ind).nombre},#{citaBeansBeans.enfermeros.get(ind).apellido1},#{citaBeansBeans.enfermeros.get(ind).apellido2}" itemValue="#{citaBeansBeans.enfermeros.get(ind)}"/>
