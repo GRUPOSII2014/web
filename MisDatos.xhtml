@@ -48,24 +48,24 @@
                                     <h:outputText value="#{misDatosControlerBeans.persona.medicoCabecera} #{misDatosControlerBeans.horarioMedicoCabecera()}"/>
                                 </h:panelGrid>
                             </ui:fragment>
-                            <ui:fragment rendered="#{misDatosControlerBeans.persona.disc=='M'}">
+                            <ui:fragment rendered="#{misDatosControlerBeans.queEs()=='M'}">
                                 <h:panelGrid columns="2" class="informacion">
                                     <h:outputLabel value="Especialidades: "/>
-                                    <h:dataTable value="#{MedicoBean.especialidades}" var="especialidad">
+                                    <h:dataTable value="#{misDatosControlerBeans.medico.especialidad}" var="especialidad">
                                         <h:column>
                                             <h:outputText value="#{especialidad.nombre}"/>
                                         </h:column>
                                     </h:dataTable>
                                     <h:outputLabel value="Departamento: "/>
-                                    <h:outputText value="#{MedicoBean.medico.departamento.nombre}"/>
+                                    <h:outputText value="#{misDatosControlerBeans.medico.departamento.nombre}"/>
                                     <h:outputLabel value="Despacho: "/>
-                                    <h:outputText value="#{MedicoBean.medico.despacho}"/>
+                                    <h:outputText value="#{misDatosControlerBeans.medico.despacho}"/>
                                     <h:outputLabel value="Activo: "/>
-                                    <h:outputText value="#{MedicoBean.medico.activo}"/>
+                                    <h:outputText value="#{misDatosControlerBeans.medico.activo}"/>
                                     <h:outputLabel value="Salario/Hora: "/>
-                                    <h:outputText value="#{MedicoBean.medico.precioHora}"/>
+                                    <h:outputText value="#{misDatosControlerBeans.medico.precioHora}"/>
                                     <h:outputLabel value="Salario Mensual: "/>
-                                    <h:outputText value="#{MedicoBean.medico.salario}"/> 
+                                    <h:outputText value="#{misDatosControlerBeans.medico.salario}"/> 
                                 </h:panelGrid>
                             </ui:fragment>
                         </div>
