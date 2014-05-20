@@ -9,20 +9,22 @@
     <ui:define name="titulo">Cambiar Contraseña</ui:define>
 
     <ui:define name="contenido">
-        <div id="izqui">
-            <h:form>
-                <p:growl id="growl" showDetail="true" sticky="true" severity="error" /> 
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="Contraseña Actual: "/>
-                    <h:inputSecret value="#{cambiarClaveBeans.actual}" label="Contraseña" requiredMessage="No has introducido tu contraseña actual" maxlength="12" required="true"/>
-                    <h:outputLabel value="Nueva Contraseña: "/>
-                    <h:inputSecret value="#{cambiarClaveBeans.nueva}" label="Nueva Contraseña" requiredMessage="No has introducido la contraseña nueva" maxlength="12" required="true"/>
-                    <h:outputLabel value="Repita Nueva Contraseña: "/>
-                    <h:inputSecret value="#{cambiarClaveBeans.nueva2}" label="Repite Nueva Contraseña" requiredMessage="No has repetido la contraseña nueva" maxlength="12" required="true"/>
-                    <p:commandButton value="Cambiar datos" actionListener="#{cambiarClaveBeans.doCambiarClave}" update="growl"/>  
-                </h:panelGrid>
-            </h:form>
-        </div>
+        <ui:fragment rendered="#{loginController.nss!=null}">
+            <div id="izqui">
+                <h:form>
+                    <p:growl id="growl" showDetail="true" sticky="true" severity="error" /> 
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Contraseña Actual: "/>
+                        <h:inputSecret value="#{cambiarClaveBeans.actual}" label="Contraseña" requiredMessage="No has introducido tu contraseña actual" maxlength="12" required="true"/>
+                        <h:outputLabel value="Nueva Contraseña: "/>
+                        <h:inputSecret value="#{cambiarClaveBeans.nueva}" label="Nueva Contraseña" requiredMessage="No has introducido la contraseña nueva" maxlength="12" required="true"/>
+                        <h:outputLabel value="Repita Nueva Contraseña: "/>
+                        <h:inputSecret value="#{cambiarClaveBeans.nueva2}" label="Repite Nueva Contraseña" requiredMessage="No has repetido la contraseña nueva" maxlength="12" required="true"/>
+                        <p:commandButton value="Cambiar datos" actionListener="#{cambiarClaveBeans.doCambiarClave}" update="growl"/>  
+                    </h:panelGrid>
+                </h:form>
+            </div>
+        </ui:fragment>
     </ui:define>
 </ui:composition>
 
