@@ -8,8 +8,7 @@
     <ui:define name="titulo">Contacto</ui:define>
     <ui:define name="contenido">
         <h:form>
-            <p:tabView>
-                
+            <p:tabView>                
                 <p:tab title="Crear Persona" rendered="#{loginController.tipoUsuario == 'H' || loginController.tipoUsuario == 'A'}">
                     <p:growl id="growl" sticky="true" showDetail="true" />
                     <div style="overflow: hidden">
@@ -63,6 +62,70 @@
                                 <h:outputText value="Password*:"/>
                                 <h:inputText value="#{personaBeans.p.password}" label="password"/>
                                 <h:commandButton type="submit" value="Crear Persona" actionListener="#{personaBeans.crearPersona}" />
+                                <h:commandButton type="reset" value="Resetear" />
+                            </h:panelGrid>
+                        </div>
+                    </div>
+                </p:tab>
+                <p:tab title="Crear Administrativo" rendered="#{loginController.tipoUsuario == 'A'}">
+                    <p:growl id="growl2" sticky="true" showDetail="true" />
+                    <div style="overflow: hidden">
+                        <h2>Crear Persona</h2>                    
+                        <div id="mitadIz">
+                            <h:panelGrid columns="2" class="tabla">
+                                <h:outputText value="NSS*:" />
+                                <h:inputText value="#{personaBeans.t.numSegSocial}" required="true" label="NSS" />
+                                <h:outputText value="DNI*:"/>
+                                <h:inputText value="#{personaBeans.t.DNI}" maxlength="9" required="true" label="DNI"/>
+                                <h:outputText value="Nombre*:"/>
+                                <h:inputText value="#{personaBeans.t.nombre}" required="true" label="Nombre"/>
+                                <h:outputText value="Primer apellido*:" />
+                                <h:inputText value="#{personaBeans.t.apellido1}" required="true" label="Primer Apellido"/>
+                                <h:outputText value="Segundo apellido*:" />
+                                <h:inputText value="#{personaBeans.t.apellido2}" required="true" label="Segundo Apellido"/>
+                                <h:outputText value="Fecha nacimiento (dd/mm/aaaa)*:"/>
+                                <h:inputText value="#{personaBeans.t.fechaNacimiento}" required="true" label="Fecha nacimiento">
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                                </h:inputText>
+                                <h:outputText value="Estado civil:"/>
+                                <h:selectOneMenu value="#{personaBeans.t.estadoCivil}" label="Estado Civil">
+                                    <f:selectItem itemLabel="Casado/a" itemValue="Casado/a"/>
+                                    <f:selectItem itemLabel="Soltero/a" itemValue="Soltero/a"/>
+                                    <f:selectItem itemLabel="Viudo/a" itemValue="Viudo/a"/>
+                                    <f:selectItem itemLabel="Divorciado/a" itemValue="Divorciado/a"/>
+                                </h:selectOneMenu>
+                                <h:outputText value="Correo*:" />
+                                <h:inputText value="#{personaBeans.t.email}" required="true" label="Email"/>
+                            </h:panelGrid> 
+                        </div>
+                        <div id="mitadDer">
+                            <h:panelGrid columns="2" class="tabla">
+                                <h:outputText value="Sexo*:"/>
+                                <h:selectOneMenu value="#{personaBeans.t.sexo}" required="true" label="Sexo">
+                                    <f:selectItem itemLabel="Varon" itemValue="Varon"/>
+                                    <f:selectItem itemLabel="Mujer" itemValue="Mujer"/>
+                                </h:selectOneMenu>
+                                <h:outputText value="Grupo sanguíneo*:"/>
+                                <h:inputText value="#{personaBeans.h.grupoSanguineo}" required="true" label="Segundo Apellido"/>
+                                <h:outputText value="Telefono:"/>
+                                <h:inputText value="#{personaBeans.t.telefono}" label="Teléfono"/>
+                                <h:outputText value="Direccion:"/>
+                                <h:inputText value="#{personaBeans.t.direccion}" label="Dirección"/>
+                                <h:outputText value="Código postal:"/>
+                                <h:inputText value="#{personaBeans.t.codigoPostal}" label="Código Postal"/>
+                                <h:outputText value="Ciudad:"/>
+                                <h:inputText value="#{personaBeans.t.ciudad}" label="Ciudad"/>
+                                <h:outputText value="País:"/>
+                                <h:inputText value="#{personaBeans.t.pais}" label="País"/>
+                                <h:outputText value="Password*:"/>
+                                <h:inputText value="#{personaBeans.t.password}" label="password"/>
+                                <h:outputText value="Departamento*:" />
+                                <h:selectOneMenu value="#{personaBeans.t.departamento}">
+                                    <f:selectItems value="#{personaBeans.todosDep()}" var="d" itemLabel="#{d.nombre}" itemValue="#{d}"/>
+                                </h:selectOneMenu>
+                                <h:outputText value="Horas de Trabajo*:" />
+                                <h:inputText value="#{personaBeans.t.horasTrabajo}" required="true" label="Precio Hora" />
+                                <h:commandButton type="submit" value="Crear Persona" actionListener="#{personaBeans.crearAdministrativo}" />
                                 <h:commandButton type="reset" value="Resetear" />
                             </h:panelGrid>
                         </div>

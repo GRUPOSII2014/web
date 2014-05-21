@@ -6,52 +6,43 @@
     <ui:define name="titulo">Todas Las Personas</ui:define>
     <ui:define name="contenido">
         <ui:fragment rendered = "#{loginController.tipoUsuario == 'A' || loginController.tipoUsuario == 'H'}">
-                <h:form id="personas">
-                    <p:dataTable styleClass="tabla" value="#{todasPersonasBeans.personas}" var="pers" paginator="true" id="dataTable" widgetVar="personasTable"
-                                 emptyMessage="No existen personas con ese criterio de busqueda" rowsPerPageLabel="25,50,100">
-                        <p:column headerText="NSS"  filterBy="numSegSocial" filterMatchMode="contains">
-                            <h:outputText value="#{pers.numSegSocial}"/>
-                        </p:column>
-                        <p:column headerText="Nombre" filterBy="nombre" filterMatchMode="contains">
-                            <h:outputText value="#{pers.nombre}"/>
-                        </p:column>
-                        <p:column headerText="Apellido"  filterBy="apellido1" filterMatchMode="contains">
-                            <h:outputText value="#{pers.apellido1}"/>
-                        </p:column>
-                        <p:column headerText="Apellido 2"  filterBy="apellido2" filterMatchMode="contains">
-                            <h:outputText value="#{pers.apellido2}"/>
-                        </p:column>
-                        <p:column headerText="DNI"  filterBy="DNI" filterMatchMode="contains">
-                            <h:outputText value="#{pers.DNI}"/>
-                        </p:column> 
-                        <p:column headerText="Sexo"  filterBy="sexo" filterMatchMode="contains">
-                            <h:outputText value="#{pers.sexo}"/>
-                        </p:column>
-                        <p:column headerText="Telefono"  filterBy="telefono" filterMatchMode="contains">
-                            <h:outputText value="#{pers.telefono}"/>
-                        </p:column>
-                        <p:column headerText="Nacimiento"  filterBy="fechaNacimiento" filterMatchMode="contains">
-                            <h:outputText value="#{pers.fechaNacimiento}"/>
-                        </p:column>
-                        <p:column headerText="Acciones">
-                            <p:growl id="messages" severity="info" showDetail="true"/>
-                            <p:commandButton alt="editar" image="ui-icon-pencil" action="#{todasPersonasBeans.editarPersona(pers)}"/>
-                            <p:commandButton alt="Eliminar" image="ui-icon-closethick" action="#{todasPersonasBeans.eliminarPersona(pers)}" actionListener="#{todasPersonasBeans.delete}" update="messages">
-                                <p:confirm header="Confirmation" message="¿Deseas eliminar esta persona?" icon="ui-icon-alert" />
-                            </p:commandButton>
-                        </p:column>
-                    </p:dataTable>
-                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
-                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
-                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>     
-                    </p:confirmDialog>
-                </h:form>
-                <h:form>
-                    <h:commandButton class="botonenvio" value="Crear Persona" action="#{todasPersonasBeans.creaPersona()}"/>
-                    <h:commandButton class="botonenvio" value="Crear Medico" action="#{todasPersonasBeans.creaMedico()}"/>
-                    <h:commandButton class="botonenvio" value="Crear Enfermero" action="#{todasPersonasBeans.creaEnfermero()}"/>
-                    <h:commandButton class="botonenvio" value="Crear Administrativo" action="#{todasPersonasBeans.creaAdministrativo()}"/>
-                </h:form>
+            <h:form id="personas">
+                <p:dataTable styleClass="tabla" value="#{todasPersonasBeans.personas}" var="pers" paginator="true" id="dataTable" widgetVar="personasTable"
+                             emptyMessage="No existen personas con ese criterio de busqueda" rowsPerPageLabel="25,50,100">
+                    <p:column headerText="NSS"  filterBy="numSegSocial" filterMatchMode="contains">
+                        <h:outputText value="#{pers.numSegSocial}"/>
+                    </p:column>
+                    <p:column headerText="Nombre" filterBy="nombre" filterMatchMode="contains">
+                        <h:outputText value="#{pers.nombre}"/>
+                    </p:column>
+                    <p:column headerText="Apellido"  filterBy="apellido1" filterMatchMode="contains">
+                        <h:outputText value="#{pers.apellido1}"/>
+                    </p:column>
+                    <p:column headerText="Apellido 2"  filterBy="apellido2" filterMatchMode="contains">
+                        <h:outputText value="#{pers.apellido2}"/>
+                    </p:column>
+                    <p:column headerText="DNI"  filterBy="DNI" filterMatchMode="contains">
+                        <h:outputText value="#{pers.DNI}"/>
+                    </p:column> 
+                    <p:column headerText="Sexo"  filterBy="sexo" filterMatchMode="contains">
+                        <h:outputText value="#{pers.sexo}"/>
+                    </p:column>
+                    <p:column headerText="Telefono"  filterBy="telefono" filterMatchMode="contains">
+                        <h:outputText value="#{pers.telefono}"/>
+                    </p:column>
+                    <p:column headerText="Nacimiento"  filterBy="fechaNacimiento" filterMatchMode="contains">
+                        <h:outputText value="#{pers.fechaNacimiento}"/>
+                    </p:column>
+                    <p:column headerText="Acciones">
+                        <p:growl id="messages" severity="info" showDetail="true"/>
+                        <p:commandButton alt="editar" image="ui-icon-pencil" action="#{todasPersonasBeans.editarPersona(pers)}"/>                                          
+                    </p:column>
+                </p:dataTable>
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+                    <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>     
+                </p:confirmDialog>
+            </h:form>          
         </ui:fragment>
     </ui:define>
 </ui:composition>
