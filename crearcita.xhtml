@@ -90,33 +90,6 @@
                         </div>
                     </h:form>
                 </p:tab>
-                <p:tab title="Crear urgencia">
-                    <h:form>
-                        <h:panelGrid columns="2" width="100%">
-                            <h:outputText value="NSS: "/>
-                            <h:inputText value="#{citaBeansBeans.nss}" label="Número de seguridad social" requiredMessage="Introduzca un nss" required="true"/>
-                            <h:commandButton type="submit" value="Buscar" actionListener="#{citaBeansBeans.buscaPersona}" />
-                        </h:panelGrid>
-                    </h:form>
-                    <h:form>
-                        <h:panelGroup id="paciente">
-                            <h:panelGrid rendered="#{citaBeansBeans.persona!=null and citaBeansBeans.nss!=null}" columns="2" class="tabla" width="100%">
-                                <f:facet name="header">
-                                    <h:outputLabel value="Información Paciente"/>
-                                </f:facet>
-                                <h:outputText value="Nombre: "/>
-                                <h:outputText value="#{citaBeansBeans.persona.nombre}"/>
-                                <h:outputText value="Primer apellido: "/>
-                                <h:outputText value="#{citaBeansBeans.persona.apellido1}"/>
-                                <h:outputText value="Segundo apellido: "/>
-                                <h:outputText value="#{citaBeansBeans.persona.apellido2}"/>
-                            </h:panelGrid>
-                        </h:panelGroup>
-                        <div id="creacion">
-                            <h:commandButton class="botonenvio" rendered="#{citaBeansBeans.persona!=null}" value="Dame una cita" type="submit" actionListener="#{citaBeansBeans.crearCitaU}"/>
-                        </div>
-                    </h:form>
-                </p:tab>
             </p:tabView>
     </ui:define>
 </ui:composition>
