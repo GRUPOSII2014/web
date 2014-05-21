@@ -41,10 +41,10 @@
                                     </h:column>
                                     <h:column>
                                         <h:form>
-                                            <ui:fragment rendered="#{loginControllerBeans.tipoUsuario == 'M'}">
+                                            <ui:fragment rendered="#{loginController.tipoUsuario == 'M'}">
                                                 <h:commandButton type="submit" value="Diagnostico"  action="#{trabajosBean.doDiagnostico(cita)}"/>
                                             </ui:fragment>
-                                            <ui:fragment rendered="#{loginControllerBeans.tipoUsuario == 'E'}">
+                                            <ui:fragment rendered="#{loginController.tipoUsuario == 'E'}">
                                                 <h:commandButton type="submit" value="Tratar" action="#{trabajosBean.doTratar(cita)}"/> 
                                             </ui:fragment>
                                         </h:form>
