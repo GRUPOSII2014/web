@@ -9,7 +9,7 @@
     <ui:define name="contenido">
         <ui:fragment rendered="#{loginController.tipoUsuario!='E'}">
             <ui:fragment rendered="#{loginController.tipoUsuario!='M'}">
-                <ui:fragment rendered="#{misDatosControlerBeans.inic()=='Inic'}">
+                <div onload="#{misDatosControlerBeans.inic()}">                
                     <div class="datos">
                         <div class="datosFijos">
                             <ui:fragment rendered="#{loginControllerBeans.tipoUsuario == 'A'}">
@@ -45,7 +45,7 @@
                                     <h:outputLabel value="Número seguridad Social: "/>
                                     <h:outputText value="#{misDatosControlerBeans.persona.numSegSocial}"/>
                                     <h:outputLabel value="Médico de cabecera: "/>
-                                    <h:outputText value="#{misDatosControlerBeans.persona.medicoCabecera} #{misDatosControlerBeans.horarioMedicoCabecera()}"/>
+                                    <h:outputText value="#{misDatosControlerBeans.persona.medicoCabecera}"/>
                                 </h:panelGrid>
                             </ui:fragment>
                             <ui:fragment rendered="#{misDatosControlerBeans.queEs()=='M'}">
@@ -94,9 +94,9 @@
                             </div>
                         </h:form>
                     </div>
+                        </div>
                 </ui:fragment>
             </ui:fragment>
-        </ui:fragment>
     </ui:define>
 </ui:composition>
 
