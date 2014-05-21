@@ -9,8 +9,9 @@
     <ui:define name="contenido">
         <h:form>
             <p:tabView>
-                <p:growl id="growl" sticky="true" showDetail="true"/>
+                
                 <p:tab title="Crear Persona" rendered="#{loginController.tipoUsuario == 'H' || loginController.tipoUsuario == 'A'}">
+                    <p:growl id="growl" sticky="true" showDetail="true" />
                     <div style="overflow: hidden">
                         <h2>Crear Persona</h2>                    
                         <div id="mitadIz">
@@ -61,7 +62,7 @@
                                 <h:inputText value="#{personaBeans.p.pais}" label="País"/>
                                 <h:outputText value="Password*:"/>
                                 <h:inputText value="#{personaBeans.p.password}" label="password"/>
-                                <h:commandButton type="submit" value="Crear Persona" action="#{personaBeans.crearPersona}" />
+                                <h:commandButton type="submit" value="Crear Persona" actionListener="#{personaBeans.crearPersona}" />
                                 <h:commandButton type="reset" value="Resetear" />
                             </h:panelGrid>
                         </div>
