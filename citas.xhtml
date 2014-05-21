@@ -13,14 +13,6 @@
                     <h:dataTable value="#{listaCitasBeans.citas}" var="cita" >
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Fecha" />
-                            </f:facet>
-                            <h:outputText value="#{cita.fecha}">
-                                <f:convertDateTime pattern="dd/MM/yyyy hh:mm" />
-                            </h:outputText>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="Tipo de cita" />
                             </f:facet>
                             <h:outputText value="#{cita.tipoCita}"/>
@@ -32,8 +24,7 @@
                 </h:form>
             </div>
             <h2 class="citas">Lista de Espera</h2>
-                <span><h:outputText value="#{listaCitasBeans.descripcion}"/></span>
-            </div>
+            <span class="textocitas"><h:outputText value="#{listaCitasBeans.descripcion}"/></span>
         </ui:fragment>
     </ui:define>
 </ui:composition>
