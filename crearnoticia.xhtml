@@ -19,7 +19,8 @@
                         <h:outputText value="Noticia" />
                         <h:inputTextarea required="true" value="#{noticiasBean.noticia}" rows="7" cols="40" label="Noticia" requiredMessage="Se requiere una descripción" />
                         <h:panelGroup>
-                            <h:commandButton class="envioContacto" value="Enviar" action="#{noticiasBean.doNoticia}" />
+                            <h:commandButton class="envioContacto" value="Enviar" type="submit" action="#{noticiasBean.doNoticia}" />
+                            <h:commandButton class="envioContacto" value="Reset" type="reset" />
                         </h:panelGroup>
                     </h:panelGrid>
                 </h:form>
