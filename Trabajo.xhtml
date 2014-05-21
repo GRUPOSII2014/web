@@ -8,49 +8,49 @@
     <ui:define name="titulo">Consultas</ui:define>
     <ui:define name="contenido">
         <ui:fragment rendered="#{loginController.tipoUsuario == 'M' or loginController.tipoUsuario == 'E'}">
-                <div class="Listado datagrid">
-                        <h2 class="citas">Citas</h2>
-                            <h:dataTable value="#{trabajosBean.listadoCitas((loginController.nss))}" var="cita">
-                                <div class="cita#{cita.atendido}}">
-                                    <h:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Nombre" />
-                                        </f:facet>
-                                        <h:outputText value="#{cita.persona.nombre}"/>
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Apellido1" />
-                                        </f:facet>
-                                        <h:outputText value="#{cita.persona.apellido1}"/>
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Apellido2" />
-                                        </f:facet>
-                                        <h:outputText value="#{cita.persona.apellido2}"/>
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Nss" />
-                                        </f:facet>
-                                        <h:outputText value="#{cita.persona.numSegSocial}"/>
-                                    </h:column>
-                                    <h:column>
-                                        <h:form>
-                                            <ui:fragment rendered="#{loginController.tipoUsuario == 'M'}">
-                                                <h:commandButton type="submit" value="Diagnostico"  action="#{trabajosBean.doDiagnostico(cita)}"/>
-                                            </ui:fragment>
-                                            <ui:fragment rendered="#{loginController.tipoUsuario == 'E'}">
-                                                <h:commandButton type="submit" value="Tratar" action="#{trabajosBean.doTratar(cita)}"/> 
-                                            </ui:fragment>
-                                        </h:form>
-                                    </h:column>
-                                </div>
-                            </h:dataTable>
+            <div class="Listado datagrid">
+                <h2 class="citas">Citas</h2>
+                <h:dataTable value="#{trabajosBean.listadoCitas((loginController.nss))}" var="cita">
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nombre" />
+                        </f:facet>
+                        <h:outputText value="#{cita.persona.nombre}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Apellido1" />
+                        </f:facet>
+                        <h:outputText value="#{cita.persona.apellido1}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Apellido2" />
+                        </f:facet>
+                        <h:outputText value="#{cita.persona.apellido2}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nss" />
+                        </f:facet>
+                        <h:outputText value="#{cita.persona.numSegSocial}"/>
+                    </h:column>
+                    <h:column>
+                        <h:form>
+                            <ui:fragment rendered="#{loginController.tipoUsuario == 'M'}">
+                                <h:commandButton type="submit" value="Diagnostico"  action="#{trabajosBean.doDiagnostico(cita)}"/>
+                            </ui:fragment>
+                            <ui:fragment rendered="#{loginController.tipoUsuario == 'E'}">
+                                <h:commandButton type="submit" value="Tratar" action="#{trabajosBean.doTratar(cita)}"/> 
+                            </ui:fragment>
                         </h:form>
-                </div>
-            </p:tabView>
+                    </h:column>
+
+                </h:dataTable>
+                
+            </div>
+
         </ui:fragment>
         <ui:fragment rendered="#{loginController.tipoUsuario == 'E' or loginController.tipoUsuario == 'H'}">
             <p class="error">No tiene privilegios para acceder a esta página</p>
