@@ -7,7 +7,8 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="titulo">Creación de Citas</ui:define>
-    <ui:define name="contenido">            
+    <ui:define name="contenido">
+        <ui:fragment rendered="#{loginController.tipoUsuario =='H'}">
             <p:tabView id="tabView"> 
                 <p:tab id="indsa" title="Diagnostico">
                     <p:growl id="growl" sticky="true" showDetail="true" severity="info"/> 
@@ -15,7 +16,7 @@
                         <h:panelGrid columns="2" width="100%">
                             <h:outputText value="NSS: "/>
                             <h:inputText value="#{citaBeansBeans.nss}" label="Número de seguridad social" requiredMessage="Introduzca un nss" required="true"/>
-                            <h:commandButton type="submit" value="Buscar" actionListener="#{citaBeansBeans.buscaPersona}" />
+                            <h:commandButton  class="botonlogin" type="submit" value="Buscar" actionListener="#{citaBeansBeans.buscaPersona}" />
                         </h:panelGrid>
                     </h:form>
                     <h:form>
@@ -35,7 +36,7 @@
                                 <h:selectOneListbox value="#{citaBeansBeans.medicoBuscado}" rendered="#{citaBeansBeans.persona!=null and citaBeansBeans.persona.medicoCabecera==null}" required="true">
                                     <f:selectItems value="#{citaBeansBeans.medicosCabecera}" var="med" itemLabel="#{med.nombre} #{med.apellido1} #{med.apellido2}" itemValue="#{med.numSegSocial}"/> 
                                 </h:selectOneListbox>
-                                <h:commandButton type="submit" rendered="#{citaBeansBeans.persona!=null and citaBeansBeans.persona.medicoCabecera==null}" value="asignar" action="#{citaBeansBeans.asignaMedico()}"/>
+                                <h:commandButton class="botonlogin" type="submit" rendered="#{citaBeansBeans.persona!=null and citaBeansBeans.persona.medicoCabecera==null}" value="asignar" action="#{citaBeansBeans.asignaMedico()}"/>
                                 <h:panelGroup id="medicoCabecera">
                                     <h:panelGrid rendered="#{citaBeansBeans.persona.medicoCabecera!=null}" columns="2" class="tabla" width="100%" >
                                         <f:facet name="header">
@@ -56,7 +57,7 @@
                             </h:panelGroup>
                         </h:panelGroup>
                         <div id="creacion">
-                            <h:commandButton class="botonenvio" rendered="#{citaBeansBeans.persona.medicoCabecera!=null}" value="Dame una cita" type="submit" actionListener="#{citaBeansBeans.crearCita}"/>
+                            <h:commandButton class="botonlogin" class="botonenvio" rendered="#{citaBeansBeans.persona.medicoCabecera!=null}" value="Dame una cita" type="submit" actionListener="#{citaBeansBeans.crearCita}"/>
                         </div>
                     </h:form>
                 </p:tab>
@@ -65,7 +66,7 @@
                         <h:panelGrid columns="2" width="100%">
                             <h:outputText value="NSS: "/>
                             <h:inputText value="#{citaBeansBeans.nss}" label="Número de seguridad social" requiredMessage="Introduzca un nss" required="true"/>
-                            <h:commandButton type="submit" value="Buscar" actionListener="#{citaBeansBeans.buscaPersona}" />
+                            <h:commandButton class="botonlogin" type="submit" value="Buscar" actionListener="#{citaBeansBeans.buscaPersona}" />
                         </h:panelGrid>
                     </h:form>
                     <h:form>
@@ -86,11 +87,15 @@
                             </h:selectOneListbox>
                         </h:panelGroup>
                         <div id="creacion">
-                            <h:commandButton class="botonenvio" rendered="#{citaBeansBeans.persona!=null}" value="Dame una cita" type="submit" actionListener="#{citaBeansBeans.crearCitaE}"/>
+                            <h:commandButton class="botonlogin" class="botonenvio" rendered="#{citaBeansBeans.persona!=null}" value="Dame una cita" type="submit" actionListener="#{citaBeansBeans.crearCitaE}"/>
                         </div>
                     </h:form>
                 </p:tab>
             </p:tabView>
+        </ui:fragment>
+        <ui:fragment rendered="#{loginController.tipoUsuario == 'H'}">
+            <p class="error">No tiene privilegios para acceder a esta página</p>
+        </ui:fragment>
     </ui:define>
 </ui:composition>
 

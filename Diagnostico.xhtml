@@ -8,10 +8,11 @@
 
     <ui:define name="titulo">Crear Diagnóstico</ui:define>
 
-    <div onload="#{diagnosticoBeans.inic()}">
-        <ui:define name="contenido">
+
+    <ui:define name="contenido">
+        <div onload="#{diagnosticoBeans.inic()}">
             <ui:fragment rendered="#{loginController.tipoUsuario == 'M'}">
-                <h:form>
+                <h:form onsubmit="#{diagnosticoBeans.mirarFechas()==1}">
                     <div id="informacion">
                         <h:panelGrid columns="2" class="tabla" width="100%">
                             <f:facet name="header">
@@ -87,6 +88,6 @@
                     </div>
                 </h:form>
             </ui:fragment>
-        </ui:define>
-    </div>
+        </div>
+    </ui:define>
 </ui:composition>
