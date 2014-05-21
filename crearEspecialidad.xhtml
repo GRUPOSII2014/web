@@ -4,7 +4,7 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <ui:define name="titulo">Crear Noticia</ui:define>
+    <ui:define name="titulo">Crear Especialidad</ui:define>
     <ui:define name="contenido">
         <ui:fragment rendered="#{loginController.tipoUsuario == 'A'}">
             <div style="margin: 10px; margin-left: 250px; padding: 10px; width: 500px;">
@@ -12,15 +12,14 @@
                 <h:form>
                     <h:panelGrid columns="2">
                         <f:facet name="header">
-                            Crear Noticias
+                            Crear Especialidad
                         </f:facet>
-                        <h:outputText value="Titulo" />
-                        <h:inputText required="true" value="#{noticiasBean.titulo}" label="Noticia" requiredMessage="Se requiere una descripción"/>
-                        <h:outputText value="Noticia" />
-                        <h:inputTextarea required="true" value="#{noticiasBean.noticia}" rows="7" cols="40" label="Noticia" requiredMessage="Se requiere una descripción" />
+                        <h:outputText value="Nombre*:" />
+                        <h:inputText required="true" value="#{crearEspecialidadBeans.nombre}" label="Nombre" requiredMessage="Se requiere un nombre"/>
+                        <h:outputText value="Descripcion*:" />
+                        <h:inputTextarea required="true" value="#{crearEspecialidadBeans.descripcion}" rows="7" cols="40" label="Descripcion" requiredMessage="Se requiere una descripción" />
                         <h:panelGroup>
-                            <h:commandButton class="envioContacto" value="Enviar" type="submit" action="#{noticiasBean.doNoticia}" />
-                            <h:commandButton class="envioContacto" value="Reset" type="reset" />
+                            <h:commandButton class="envioContacto" value="Crear Especialidad" action="#{crearEspecialidadBeans.crearEspecialidad()}" />
                         </h:panelGroup>
                     </h:panelGrid>
                 </h:form>

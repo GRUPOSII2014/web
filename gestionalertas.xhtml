@@ -5,8 +5,6 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="titulo">Médico - Gestión de Eventos y Alertas</ui:define>
-        <ui:define name="contenido" >
-            <ui:fragment rendered="#{loginController.tipoUsuario='M'}">
     <ui:define name="contenido" >
         <ui:fragment rendered="#{loginController.tipoUsuario=='M'}">
             <p:growl id="growl" sticky="true" /> 
@@ -18,7 +16,7 @@
                         </f:facet>
                         <h:outputText value="Asunto:" />
                         <h:inputText value="#{eventosBean.alerta.asunto}" label="Asunto" maxlength="12"  required="true"  style=" width: 300px;" />                                                                                                 
-                        <h:outputText value="Fecha: "/><p:calendar value="#{eventosBean.fecha}" id="popupCal" locale="es" label="Fecha" required="true"/>
+                        <h:outputText value="Fecha: "/><p:calendar value="#{eventosBean.alerta.fecha}" id="popupCal" locale="es" label="Fecha" required="true"/>
                         <h:outputText value="tipo: "/>
                         <f:ajax render="Receptor">
                             <p:selectOneListbox id="basic" value="#{eventosBean.tipo}" label="Tipo" required="true" requiredMessage="Has de seleccionar un tipo">  
@@ -41,8 +39,6 @@
                     <center><h:commandButton class="botonenvio" value="Enviar" type="submit" action="#{eventosBean.creacion}"/></center>
                 </div>
             </h:form>
-            </ui:fragment>
-        </ui:define>
         </ui:fragment>
-    </ui:define>    
+    </ui:define>
 </ui:composition>
