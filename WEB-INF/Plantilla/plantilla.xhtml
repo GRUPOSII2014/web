@@ -81,6 +81,7 @@
                             <li><h:link class="menuAdministracion" value="Principal" outcome="principal.xhtml" /></li>
                             <li><h:link class="menuAdministracion" value="Crear Cita" outcome="crearcita.xhtml" /></li>
                             <li><h:link class="menuAdministracion" value="Crear Persona" outcome="crearpersona.xhtml" /></li>
+                            <li><h:link class="menuAdministracion" value="Todas Persona" outcome="TodasPersonas.xhtml" /></li>
                             <li><h:link class="menuAdministracion" value="Ingreso" outcome="ingreso.xhtml" /></li>
                             <li><h:commandLink class="menuAdministracion" value="Cambiar Contraseña" action="#{principalControllerBeans.cambiaPass(loginController.nss)}" /></li>
                             <li><h:commandLink class="menuAdministracion" value="Salir" action="#{indexController.doLogout()}" /></li>
@@ -109,6 +110,7 @@
                         <ul id="menu">
                             <li><h:link class="menuMedico" value="Principal" outcome="principal.xhtml" /></li>
                             <li><h:commandLink class="menuMedico" value="Citas de hoy" action="#{principalControllerBeans.verMiTrabajo(loginController.nss)}" /></li>
+                            <li><h:link class="menuMedico" value="Trabajo" outcome="Trabajo.xhtml" /></li>
                             <li><h:link class="menuMedico" value="Eventos y Alertas" outcome="gestionalertas.xhtml" /></li>
                             <li><h:commandLink class="menuMedico" value="Cambiar Contraseña" action="#{principalControllerBeans.cambiaPass(loginController.nss)}" /></li>
                             <li><h:commandLink class="menuMedico" value="Salir" action="#{indexController.doLogout()}" /></li>
