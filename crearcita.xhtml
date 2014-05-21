@@ -57,7 +57,7 @@
                             </h:panelGroup>
                         </h:panelGroup>
                         <div id="creacion">
-                            <h:commandButton class="botonlogin" class="botonenvio" rendered="#{citaBeansBeans.persona.medicoCabecera!=null}" value="Dame una cita" type="submit" actionListener="#{citaBeansBeans.crearCita}"/>
+                            <h:commandButton class="botonlogin" rendered="#{citaBeansBeans.persona.medicoCabecera!=null}" value="Dame una cita" type="submit" actionListener="#{citaBeansBeans.crearCita}"/>
                         </div>
                     </h:form>
                 </p:tab>
@@ -87,13 +87,13 @@
                             </h:selectOneListbox>
                         </h:panelGroup>
                         <div id="creacion">
-                            <h:commandButton class="botonlogin" class="botonenvio" rendered="#{citaBeansBeans.persona!=null}" value="Dame una cita" type="submit" actionListener="#{citaBeansBeans.crearCitaE}"/>
+                            <h:commandButton class="botonlogin" rendered="#{citaBeansBeans.persona!=null}" value="Dame una cita" type="submit" actionListener="#{citaBeansBeans.crearCitaE}"/>
                         </div>
                     </h:form>
                 </p:tab>
             </p:tabView>
         </ui:fragment>
-        <ui:fragment rendered="#{loginController.tipoUsuario == 'H'}">
+        <ui:fragment rendered="#{loginController.tipoUsuario != 'H'}">
             <p class="error">No tiene privilegios para acceder a esta página</p>
         </ui:fragment>
     </ui:define>

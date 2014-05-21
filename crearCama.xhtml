@@ -11,16 +11,11 @@
                             <h:panelGrid columns="2" class="tabla" width="100%">
                                 <h:outputText value="Numero: "/>
                                 <h:inputText value="#{crearCama.c.num}"/>
-                                <h:outputText value="Estado: "/>
-                                <h:selectOneMenu value="#{crearCama.c.estado}">
-                                    <f:selectItems #{enumeradosBean.estadoCama}>
-                                </h:selectOneMenu>
                                 <h:outputText value="Habitacion: "/>
-                                <h:selectOneMenu value="#{crearCama.c.habitacion}">
-                                    <f:selectItems #{crearCama.todasHabitaciones()}>
+                                <h:selectOneMenu value="#{crearCama.habi}">
+                                    <f:selectItems value="#{crearCama.todasHabitaciones()}" var="ha" itemLabel="#{ha.num}" itemValue="#{ha.id}"/>
                                 </h:selectOneMenu>
-                                <p:commandButton value="Crear cama" actionListener="#{crearCama.crearCama}"/>
-                                
+                                <h:commandButton class="botonenvio" value="Crear cama" type="submit" action="#{crearCama.crearCama()}"/>    
                             </h:panelGrid>
                         </div>
                         

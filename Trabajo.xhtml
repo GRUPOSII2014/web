@@ -52,7 +52,7 @@
             </div>
 
         </ui:fragment>
-        <ui:fragment rendered="#{loginController.tipoUsuario == 'E' or loginController.tipoUsuario == 'H'}">
+        <ui:fragment rendered="#{loginController.tipoUsuario == 'P' or loginController.tipoUsuario == 'H' or loginController.tipoUsuario == 'A'}">
             <p class="error">No tiene privilegios para acceder a esta página</p>
         </ui:fragment>
     </ui:define>

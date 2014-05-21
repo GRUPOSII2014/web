@@ -6,7 +6,7 @@
     <ui:define name="titulo">Tratamiento</ui:define>
     <ui:define name="contenido">  
 
-        <ui:fragment rendered="#{loginController.tipoUsuario='M'}">
+        <ui:fragment rendered="#{loginController.tipoUsuario=='E'}">
             <div id="informacion">
                 <h:panelGrid columns="2" class="tabla" width="100%">
                     <f:facet name="header">
@@ -72,6 +72,9 @@
                 </h:form>
             </div>
 
+        </ui:fragment>
+        <ui:fragment rendered="#{loginController.tipoUsuario!='E'}">
+            <p class="error">No tiene privilegios para acceder a esta vista</p>
         </ui:fragment>
     </ui:define>
 </ui:composition>

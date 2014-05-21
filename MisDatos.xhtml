@@ -13,7 +13,7 @@
                 <div onload="#{misDatosControlerBeans.inic()}">                
                     <div class="datos">
                         <div class="datosFijos">
-                            <ui:fragment rendered="#{loginControllerBeans.tipoUsuario == 'A' or loginControllerBeans.tipoUsuario == 'H'}">
+                            <ui:fragment rendered="#{loginController.tipoUsuario == 'A' or loginController.tipoUsuario == 'H'}">
                                 <h:panelGrid columns="2" class="informacion">
                                     <h:outputLabel value="Nombre: "/>
                                     <h:inputText value="#{misDatosControlerBeans.persona.nombre}"/>

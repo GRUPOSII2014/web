@@ -26,7 +26,7 @@
             <h2 class="citas">Lista de Espera</h2>
             <span class="textocitas"><h:outputText value="#{listaCitasBeans.descripcion}"/></span>
         </ui:fragment>
-        <ui:fragment rendered="#{loginController.tipoUsuario!='E'}">
+        <ui:fragment rendered="#{loginController.tipoUsuario!='P'}">
             <p class="error">No tiene privilegios para entrar a esta vista</p>
         </ui:fragment>
     </ui:define>

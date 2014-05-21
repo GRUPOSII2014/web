@@ -9,15 +9,13 @@
         <ui:fragment rendered="#{loginController.tipoUsuario=='A'}">
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputText value="Id: "/>
-                    <h:inputText value="#{plantaBean.id}"/>
                     <h:outputText value="Número: "/>
-                    <h:inputText value="#{plantaBean.numero}"/>
+                    <h:inputText value="#{plantaBean.planta.num}"/>
                     <h:outputText value="Nombre: "/>
-                    <h:inputText value="#{plantaBean.nombre}"/>
+                    <h:inputText value="#{plantaBean.planta.nombre}"/>
                     <h:outputText value="Hospital: "/>
                     <h:selectOneMenu value="#{plantaBean.hospital}">
-                        <f:selectItems value="#{plantaBean.getHospitales()}" itemLabel="#{plantaBean.hospitales}"/>
+                        <f:selectItems value="#{plantaBean.getHospitales()}" var="hospital" itemLabel="#{hospital.nombre}" itemValue="#{hospital.id}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
                 <h:commandButton class="botonenvio" value="Crear Planta" action="#{plantaBean.crearPlanta()}"/>

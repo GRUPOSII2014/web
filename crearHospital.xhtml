@@ -19,18 +19,6 @@
                     <h:inputText value="#{crearHospitalBean.ciudad}"/>
                     <h:outputText value="Localización: "/>
                     <h:inputText value="#{crearHospitalBean.localizacion}"/>
-                    <h:outputText value="Hora de Apertura: "/>
-                    <h:selectOneMenu value="#{crearHospitalBean.horaApertura}">
-                        <f:selectItem itemLabel="9.00" itemValue="9"/>
-                        <f:selectItem itemLabel="10.00" itemValue="10"/>
-                        <f:selectItem itemLabel="11.00" itemValue="11"/>
-                    </h:selectOneMenu>
-                    <h:outputText value="Hora de Cierre: "/>
-                    <h:selectOneMenu value="#{crearHospitalBean.horaCierre}">
-                        <f:selectItem itemLabel="20.00" itemValue="20"/>
-                        <f:selectItem itemLabel="21.00" itemValue="21"/>
-                        <f:selectItem itemLabel="22.00" itemValue="22"/>
-                    </h:selectOneMenu>
                     <h:commandButton class="botonenvio" value="Crear Hospital" action="#{crearHospitalBean.crearHospital()}"/>
                 </h:panelGrid>
             </h:form>

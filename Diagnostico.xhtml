@@ -12,7 +12,7 @@
     <ui:define name="contenido">
         <div onload="#{diagnosticoBeans.inic()}">
             <ui:fragment rendered="#{loginController.tipoUsuario == 'M'}">
-                <h:form onsubmit="#{diagnosticoBeans.mirarFechas()==1}">
+                <h:form>
                     <div id="informacion">
                         <h:panelGrid columns="2" class="tabla" width="100%">
                             <f:facet name="header">
@@ -35,7 +35,7 @@
                             <h:inputText value="#{diagnosticoBeans.trata.nombre}" required="true"  style="width: 90px;" />
                             <h:outputText value="Tipo Tratamiento"/>
                             <h:selectOneMenu class="listaTratamiento" value="#{diagnosticoBeans.var2}" >                
-                                <f:selectItems value="#{enumeradosBean.tipoTratamiento}"/>
+                                <f:selectItems value="#{enumeradosBean.tipoTratamiento}" var="trat" itemLabel="#{trat}" itemValue="#{trat}"/>
                             </h:selectOneMenu>
                             <h:outputText value="Fecha Inicio: "/><p:calendar value="#{diagnosticoBeans.trata.fechaInicio}" id="popupCal1" locale="es" label="Fecha" required="true"/>
                             <h:outputText value="Fecha Fin: "/><p:calendar value="#{diagnosticoBeans.trata.fechaFinalizacion}" id="popupCal2" locale="es" label="Fecha" required="true"/>
