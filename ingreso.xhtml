@@ -6,7 +6,6 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="titulo">Ingreso Paciente</ui:define>
-<<<<<<< HEAD
     <ui:fragment rendered="#{ingresoBeans.inic() == 'inic'}">
         <ui:fragment rendered="#{loginController.tipoUsuario != 'M'}">
             <ui:fragment rendered="#{loginController.tipoUsuario != 'E'}">
@@ -18,7 +17,7 @@
                                 <h:panelGrid columns="3">
                                     <h:outputText value="NSS: "/>
                                     <h:inputText value="#{ingresoBeans.nss}" required="true" label="Número seguridad social" requiredMessage="No has introducido un nss"/>
-                                    <h:commandButton type="submit" value="Buscar" action="#{ingresoBeans.buscaPersona()}"/>
+                                    <h:commandButton type="submit" value="Buscar" actionListener="#{ingresoBeans.buscaPersona()}"/>
                                 </h:panelGrid>
                                 <h:panelGroup id="persona" >
                                     <h:panelGroup rendered="#{ingresoBeans.persona!=null}">
@@ -38,7 +37,7 @@
                             </div>
                             <div id="alertas">
                                 <h:panelGrid rendered="#{ingresoBeans.persona!=null}" columns="2" class="tabla" width="100%" >
-=======
+
 
     <ui:define name="contenido">
         <ui:fragment rendered="#{ingresoBeans.inic() != 'inc'}">
@@ -54,7 +53,6 @@
                         <h:panelGroup id="persona" >
                             <h:panelGroup rendered="#{ingresoBeans.persona!=null}">
                                 <h:panelGrid columns="2" class="tabla" width="100%">
->>>>>>> c7ff828b0bcc1fb9414c086ef0965cfec53b1a6c
                                     <f:facet name="header">
                                         <h:outputLabel value="Información Paciente"/>
                                     </f:facet>
