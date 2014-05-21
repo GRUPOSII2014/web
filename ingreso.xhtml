@@ -6,40 +6,7 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="titulo">Ingreso Paciente</ui:define>
-        <ui:fragment rendered="#{loginController.tipoUsuario != 'M'}">
-            <ui:fragment rendered="#{loginController.tipoUsuario != 'E'}">
-                <ui:fragment rendered="#{loginController.tipoUsuario != 'P'}">
-                    <ui:define name="contenido">
-                        <h:form>
-                            <div id="informacion">
-                                <p:messages severity="error" autoUpdate="true" closable="true" />
-                                <h:panelGrid columns="3">
-                                    <h:outputText value="NSS: "/>
-                                    <h:inputText value="#{ingresoBeans.nss}" required="true" label="Número seguridad social" requiredMessage="No has introducido un nss"/>
-                                    <h:commandButton type="submit" value="Buscar" actionListener="#{ingresoBeans.buscaPersona()}"/>
-                                </h:panelGrid>
-                                <h:panelGroup id="persona" >
-                                    <h:panelGroup rendered="#{ingresoBeans.persona!=null}">
-                                        <h:panelGrid columns="2" class="tabla" width="100%">
-                                            <f:facet name="header">
-                                                <h:outputLabel value="Información Paciente"/>
-                                            </f:facet>
-                                            <h:outputText value="Nombre: "/>
-                                            <h:outputText value="#{ingresoBeans.persona.nombre}"/>
-                                            <h:outputText value="Primer apellido: "/>
-                                            <h:outputText value="#{ingresoBeans.persona.apellido1}"/>
-                                            <h:outputText value="Segundo apellido: "/>
-                                            <h:outputText value="#{ingresoBeans.persona.apellido2}"/>
-                                        </h:panelGrid>
-                                    </h:panelGroup>
-                                </h:panelGroup>
-                            </div>
-                            <div id="alertas">
-                                <h:panelGrid rendered="#{ingresoBeans.persona!=null}" columns="2" class="tabla" width="100%" >
-
-
     <ui:define name="contenido">
-        <ui:fragment rendered="#{ingresoBeans.inic() != 'inc'}">
             <ui:fragment rendered="#{loginController.tipoUsuario == 'H'}">
                 <h:form>
                     <div id="informacion">
@@ -47,7 +14,7 @@
                         <h:panelGrid columns="3">
                             <h:outputText value="NSS: "/>
                             <h:inputText value="#{ingresoBeans.nss}" required="true" label="Número seguridad social" requiredMessage="No has introducido un nss"/>
-                            <h:commandButton type="submit" value="Buscar" action="#{ingresoBeans.buscaPersona()}"/>
+                            <h:commandButton type="submit" value="Buscar" actionListener="#{ingresoBeans.buscaPersona()}"/>
                         </h:panelGrid>
                         <h:panelGroup id="persona" >
                             <h:panelGroup rendered="#{ingresoBeans.persona!=null}">
