@@ -17,9 +17,10 @@
                         <h:outputText value="Nombre*:" />
                         <h:inputText required="true" value="#{crearEspecialidadBeans.nombre}" label="Nombre" requiredMessage="Se requiere un nombre"/>
                         <h:outputText value="Descripcion*:" />
-                        <h:inputTextarea required="true" value="#{crearEspecialidadBeans.descripcion}" rows="7" cols="40" label="Descripcion" requiredMessage="Se requiere una descripción" />
+                        <h:inputTextarea required="true" value="#{crearEspecialidadBeans.descripcion}" rows="7" cols="40" label="Descripcion" style="resize: none" requiredMessage="Se requiere una descripción" />
                         <h:panelGroup>
                             <h:commandButton class="envioContacto" value="Crear Especialidad" action="#{crearEspecialidadBeans.crearEspecialidad()}" />
+                            <h:commandButton class="envioContacto" value="Vaciar campos" type="reset" />
                         </h:panelGroup>
                     </h:panelGrid>
                 </h:form>

@@ -5,25 +5,36 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="titulo">Crear Departamento</ui:define>
-                <ui:define name="contenido">            
-                    <h:form>
-                        <div id="informacion2">
-                            <h:panelGrid columns="2" class="tabla" width="40%">
-                                <h:outputText value="Nombre: "/>
-                                <h:inputText value="#{crearDepartamentoBeans.d.nombre}" required="true" requiredMessage="Es necesario establecer un nombre"/>
-                                <h:outputText value="Descripcion: "/>
-                                <h:inputTextarea rows="3" cols="16" style="resize: none"  value="#{crearDepartamentoBeans.d.descripcion}" required="true" label="Descripcion" requiredMessage="Es necesario una descripcion"/> 
-                                <h:outputText value="Activo: "/>
-                                <h:inputText value="#{crearDepartamentoBeans.d.activo}" required="true" requiredMessage="Es necesario establecer si el departamento es activo"/>
-                                <h:outputText value="Hospital: "/>
-                                <h:selectOneMenu class="listaHospitales" value="#{crearDepartamentoBeans.d.hospital}" >
-                                    <f:selectItems value="#{crearDepartamentoBeans.hospitales}" var="hos" itemLabel="#{hos.nombre}" itemValue="#{hos.id}"/>
-                                </h:selectOneMenu>
-                                <h:outputText value="Jefe Departamento: "/>
-                                <h:inputText value="#{crearDepartamentoBeans.d.jefe}"/>
-                                <p:commandButton value="Crear Departamento" actionListener="#{crearDepartamentoBeans.crearDepartamento()}"/>
-                            </h:panelGrid>
-                        </div>
-                    </h:form>
-                </ui:define>
+    <ui:define name="contenido">
+        <ui:fragment rendered="#{loginController.tipoUsuario == 'A'}">
+            <div style="margin: 10px; margin-left: 250px; padding: 10px; width: 500px;">
+                <p:growl id="growl" showDetail="true" sticky="true" severity="error" />
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <f:facet name="header">
+                            Crear Departamento
+                        </f:facet>
+                        <h:outputText value="Nombre*:" />
+                        <h:inputText required="true" value="#{crearDepartamentoBeans.nombre}" label="Nombre" requiredMessage="Se requiere un nombre"/>
+                        <h:outputText value="Descripcion*:" />
+                        <h:inputTextarea required="true" value="#{crearDepartamentoBeans.descripcion}" rows="7" cols="40" label="Descripcion" style="resize: none" requiredMessage="Se requiere una descripción" />
+                        <h:outputText value="Hospital" />
+                        <p:selectOneMenu id="basi" value="#{crearDepartamentoBeans.var}" label="Tipo" required="true">  
+                            <f:selectItems value="#{crearDepartamentoBeans.hos}" var = "hosp" itemLabel="#{hosp.nombre}" itemValue="#{hosp.id}" />
+                        </p:selectOneMenu>
+                        <h:outputText value="Activo" />
+                        <p:selectOneMenu id="basic" value="#{crearDepartamentoBeans.active}" label="Tipo" required="true">  
+                                <f:selectItem itemLabel="Activado" itemValue="1" />  
+                                <f:selectItem itemLabel="Desactivado" itemValue="0" />                             
+                        </p:selectOneMenu>
+                        
+                        <h:panelGroup>
+                            <h:commandButton class="envioContacto" value="Crear Departamento" action="#{crearDepartamentoBeans.crearDepartamento()}" />
+                            <h:commandButton class="envioContacto" value="Vaciar campos" type="reset" />
+                        </h:panelGroup>
+                    </h:panelGrid>
+                </h:form>
+            </div>
+        </ui:fragment>
+    </ui:define>
 </ui:composition>
