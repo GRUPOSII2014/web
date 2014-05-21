@@ -15,12 +15,6 @@
                         <h:form>
                             <h:dataTable  value="#{trabajosBean.listadoCitas((loginController.nss))}" var="cita">
                                 <div class="cita#{cita.atendido}}">
-                                    <!--<h:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Hora" />
-                                        </f:facet>
-                                        <h:outputText value="#{cita.fecha}"/>
-                                    </h:column>-->
                                     <h:column>
                                         <f:facet name="header">
                                             <h:outputText value="Nombre" />
@@ -47,12 +41,12 @@
                                     </h:column>
                                     <h:column>
                                         <h:form>
-                                            <c:if test="#{loginControllerBeans.tipoUsuario == 'M'}">
+                                            <ui:fragment rendered="#{loginControllerBeans.tipoUsuario == 'M'}">
                                                 <h:commandButton type="submit" value="Diagnostico"  action="#{trabajosBean.doDiagnostico(cita)}"/>
-                                            </c:if>
-                                            <c:if test="#{loginControllerBeans.tipoUsuario == 'E'}">
+                                            </ui:fragment>
+                                            <ui:fragment rendered="#{loginControllerBeans.tipoUsuario == 'E'}">
                                                 <h:commandButton type="submit" value="Tratar" action="#{trabajosBean.doTratar(cita)}"/> 
-                                            </c:if>
+                                            </ui:fragment>
                                         </h:form>
                                     </h:column>
                                 </div>
@@ -63,13 +57,7 @@
                         <h2 class="citas">Urgencias</h2>
                         <h:form>
                             <h:dataTable value="#{trabajosBean.listadoUrgencias(loginController.nss)}" var="urg">
-                                <div class="urgencia#{urg.estado}}">
-                                    <h:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Hora" />
-                                        </f:facet>
-                                        <h:outputText value="#{urg.fecha}"/>
-                                    </h:column>
+                                <div>
                                     <h:column>
                                         <f:facet name="header">
                                             <h:outputText value="Nombre" />
@@ -96,29 +84,17 @@
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">
-                                            <h:outputText value="Estado" />
-                                        </f:facet>
-                                        <h:outputText value="#{urg.estado}"/>
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">
-                                            <h:outputText value="Tipo" />
-                                        </f:facet>
-                                        <h:outputText value="#{urg.tipo}"/>
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">
                                             <h:outputText value="Observaciones" />
                                         </f:facet>
                                         <h:outputText value="#{urg.observaciones}"/>
                                     </h:column>
                                     <h:column>
-                                        <c:if test="#{loginControllerBeans.tipoUsuario=='M'}">
+                                        <ui:fragment rendered="#{loginControllerBeans.tipoUsuario=='M'}">
                                             <h:commandButton type="submit" value="Diagnostico"  action="#{trabajosBean.doDiagnosticoUrgencia(urg)}"/>
-                                        </c:if>
-                                        <c:if test="#{loginControllerBeans.tipoUsuario == 'E'}">
+                                        </ui:fragment>
+                                        <ui:fragment rendered="#{loginControllerBeans.tipoUsuario == 'E'}">
                                             <h:commandButton type="submit" value="Tratar" action="#{trabajosBean.doTratarUrgencia(urg)}"/> 
-                                        </c:if>
+                                        </ui:fragment>
                                     </h:column>
                                 </div>
                             </h:dataTable>
