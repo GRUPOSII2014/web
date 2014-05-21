@@ -80,7 +80,7 @@
                         <ul id="menu">
                             <li><h:link class="menuAdministracion" value="Principal" outcome="principal.xhtml" /></li>
                             <li><h:link class="menuAdministracion" value="Crear Cita" outcome="crearcita.xhtml" /></li>
-                            <li><h:link class="menuAdministracion" value="Crear Persona" outcome="Crearpersona.xhtml" /></li>
+                            <li><h:link class="menuAdministracion" value="Crear Persona" outcome="crearpersona.xhtml" /></li>
                             <li><h:link class="menuAdministracion" value="Ingreso" outcome="ingreso.xhtml" /></li>
                             <li><h:commandLink class="menuAdministracion" value="Cambiar Contraseña" action="#{principalControllerBeans.cambiaPass(loginController.nss)}" /></li>
                             <li><h:commandLink class="menuAdministracion" value="Salir" action="#{indexController.doLogout()}" /></li>
@@ -123,7 +123,7 @@
                     <ui:fragment rendered="#{loginController.tipoUsuario == 'A'}">
                         <ul id="menu">
                             <li><h:link class="menuPaciente" value="Principal" outcome="principal.xhtml" /></li>
-                            <li><h:link class="menuPaciente" value="Crear Persona" outcome="Crearpersona.xhtml" /></li>
+                            <li><h:link class="menuPaciente" value="Crear Persona" outcome="crearpersona.xhtml" /></li>
                             <li><h:link class="menuPaciente" value="Crear Hospital" outcome="crearHospital.xhtml" /></li>
                             <li><h:link class="menuPaciente" value="Crear Planta" outcome="crearPlanta.xhtml" /></li>
                             <li><h:link class="menuPaciente" value="Crear Habitaciones" outcome="crearHabitacion.xhtml" /></li>

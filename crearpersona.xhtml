@@ -31,10 +31,10 @@
                                 </h:inputText>
                                 <h:outputText value="Estado civil:"/>
                                 <h:selectOneMenu value="#{personaBeans.p.estadoCivil}" label="Estado Civil">
-                                    <f:selectItem itemLabel="Casado/a"/>
-                                    <f:selectItem itemLabel="Soltero/a"/>
-                                    <f:selectItem itemLabel="Viudo/a"/>
-                                    <f:selectItem itemLabel="Divorciado/a"/>
+                                    <f:selectItem itemLabel="Casado/a" itemValue="Casado/a"/>
+                                    <f:selectItem itemLabel="Soltero/a" itemValue="Soltero/a"/>
+                                    <f:selectItem itemLabel="Viudo/a" itemValue="Viudo/a"/>
+                                    <f:selectItem itemLabel="Divorciado/a" itemValue="Divorciado/a"/>
                                 </h:selectOneMenu>
                                 <h:outputText value="Correo*:" />
                                 <h:inputText value="#{personaBeans.p.email}" required="true" label="Email"/>
@@ -42,6 +42,25 @@
                         </div>
                         <div id="mitadDer">
                             <h:panelGrid columns="2" class="tabla">
+                                <h:outputText value="Sexo*:"/>
+                                <h:selectOneMenu value="#{personaBeans.p.sexo}" required="true" label="Sexo">
+                                    <f:selectItem itemLabel="Varon" itemValue="Varon"/>
+                                    <f:selectItem itemLabel="Mujer" itemValue="Mujer"/>
+                                </h:selectOneMenu>
+                                <h:outputText value="Grupo sanguíneo*:"/>
+                                <h:inputText value="#{personaBeans.h.grupoSanguineo}" required="true" label="Segundo Apellido"/>
+                                <h:outputText value="Telefono:"/>
+                                <h:inputText value="#{personaBeans.p.telefono}" label="Teléfono"/>
+                                <h:outputText value="Direccion:"/>
+                                <h:inputText value="#{personaBeans.p.direccion}" label="Dirección"/>
+                                <h:outputText value="Código postal:"/>
+                                <h:inputText value="#{personaBeans.p.codigoPostal}" label="Código Postal"/>
+                                <h:outputText value="Ciudad:"/>
+                                <h:inputText value="#{personaBeans.p.ciudad}" label="Ciudad"/>
+                                <h:outputText value="País:"/>
+                                <h:inputText value="#{personaBeans.p.pais}" label="País"/>
+                                <h:outputText value="Password*:"/>
+                                <h:inputText value="#{personaBeans.p.password}" label="password"/>
                                 <h:commandButton type="submit" value="Crear Persona" action="#{personaBeans.crearPersona}" />
                                 <h:commandButton type="reset" value="Resetear" />
                             </h:panelGrid>
