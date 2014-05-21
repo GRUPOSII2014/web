@@ -6,7 +6,7 @@
     <ui:define name="titulo">Citas</ui:define>
     <ui:define name="contenido">
         <ui:fragment rendered="#{loginController.nss!=null}">
-            <div class="Listado datagrid">
+            <div class="Listado datagrid" onload="#{listaCitasBeans.inic()}">
                 <h2 class="citas">Citas</h2>
                 <h:form>
                     <h:dataTable value="#{listaCitasBeans.citas}" var="cita" >
