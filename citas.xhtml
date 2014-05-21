@@ -6,7 +6,7 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="titulo">Citas</ui:define>
     <ui:define name="contenido">
-        <ui:fragment rendered="#{loginController.nss!=null}">
+        <ui:fragment rendered="#{loginController.nss!=null and loginController.tipoUsuario=='P'}">
             <div class="Listado datagrid" onload="#{listaCitasBeans.inic()}">
                 <h2 class="citas">Citas</h2>
                 <h:form>
@@ -25,6 +25,9 @@
             </div>
             <h2 class="citas">Lista de Espera</h2>
             <span class="textocitas"><h:outputText value="#{listaCitasBeans.descripcion}"/></span>
+        </ui:fragment>
+        <ui:fragment rendered="#{loginController.tipoUsuario!='E'}">
+            <p class="error">No tiene privilegios para entrar a esta vista</p>
         </ui:fragment>
     </ui:define>
 </ui:composition>
