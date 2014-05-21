@@ -8,37 +8,37 @@
 
     <ui:define name="titulo">Crear Diagnóstico</ui:define>
 
-    <ui:define name="contenido">
-        <ui:fragment rendered="#{diagnosticoBeans.inic()=='Inic'}">
+    <div onload="#{diagnosticoBeans.inic()}">
+        <ui:define name="contenido">
             <ui:fragment rendered="#{loginController.tipoUsuario == 'M'}">
-            <h:form>
-                <div id="informacion">
-                   <h:panelGrid columns="2" class="tabla" width="100%">
-                        <f:facet name="header">
-                            <h:outputText value="Información Paciente" />
-                        </f:facet>
-                        <h:outputText value="Nombre:" />
-                        <h:outputText value="#{diagnosticoBeans.p1.nombre}" />
-                        <h:outputText value="Primer Apellido:" />
-                        <h:outputText value="#{diagnosticoBeans.p1.apellido1}" />
-                        <h:outputText value="Segundo Apellido:" />
-                        <h:outputText value="#{diagnosticoBeans.p1.apellido2}" />
-                        <h:outputText value="Sexo:" />
-                        <h:outputText value="#{diagnosticoBeans.p1.sexo}" />
-                        <h:outputText value="Segunda Opinion"/>
-                        <h:selectOneMenu class="listaInformes" value="#{diagnosticoBeans.var}" >
-                            <f:selectItem itemLabel="---" itemValue="0" />
-                            <f:selectItems value="#{diagnosticoBeans.p1.historiaclinica.informes}" var="inf" itemLabel="#{inf.fecha}" itemValue="#{inf.id}"/>
-                        </h:selectOneMenu>
-                        <h:outputText value="Nombre Tratamiento"/>
-                        <h:inputText value="#{diagnosticoBeans.trata.nombre}" required="true"  style="width: 90px;" />
-                        <h:outputText value="Tipo Tratamiento"/>
-                        <h:selectOneMenu class="listaTratamiento" value="#{diagnosticoBeans.var2}" >                
-                            <f:selectItems value="#{enumeradosBean.tipoTratamiento}"/>
-                        </h:selectOneMenu>
-                        <h:outputText value="Fecha Inicio: "/><p:calendar value="#{diagnosticoBeans.trata.fechaInicio}" id="popupCal1" locale="es" label="Fecha" required="true"/>
-                        <h:outputText value="Fecha Fin: "/><p:calendar value="#{diagnosticoBeans.trata.fechaFinalizacion}" id="popupCal2" locale="es" label="Fecha" required="true"/>
-                    </h:panelGrid>
+                <h:form>
+                    <div id="informacion">
+                        <h:panelGrid columns="2" class="tabla" width="100%">
+                            <f:facet name="header">
+                                <h:outputText value="Información Paciente" />
+                            </f:facet>
+                            <h:outputText value="Nombre:" />
+                            <h:outputText value="#{diagnosticoBeans.p1.nombre}" />
+                            <h:outputText value="Primer Apellido:" />
+                            <h:outputText value="#{diagnosticoBeans.p1.apellido1}" />
+                            <h:outputText value="Segundo Apellido:" />
+                            <h:outputText value="#{diagnosticoBeans.p1.apellido2}" />
+                            <h:outputText value="Sexo:" />
+                            <h:outputText value="#{diagnosticoBeans.p1.sexo}" />
+                            <h:outputText value="Segunda Opinion"/>
+                            <h:selectOneMenu class="listaInformes" value="#{diagnosticoBeans.var}" >
+                                <f:selectItem itemLabel="---" itemValue="0" />
+                                <f:selectItems value="#{diagnosticoBeans.p1.historiaclinica.informes}" var="inf" itemLabel="#{inf.fecha}" itemValue="#{inf.id}"/>
+                            </h:selectOneMenu>
+                            <h:outputText value="Nombre Tratamiento"/>
+                            <h:inputText value="#{diagnosticoBeans.trata.nombre}" required="true"  style="width: 90px;" />
+                            <h:outputText value="Tipo Tratamiento"/>
+                            <h:selectOneMenu class="listaTratamiento" value="#{diagnosticoBeans.var2}" >                
+                                <f:selectItems value="#{enumeradosBean.tipoTratamiento}"/>
+                            </h:selectOneMenu>
+                            <h:outputText value="Fecha Inicio: "/><p:calendar value="#{diagnosticoBeans.trata.fechaInicio}" id="popupCal1" locale="es" label="Fecha" required="true"/>
+                            <h:outputText value="Fecha Fin: "/><p:calendar value="#{diagnosticoBeans.trata.fechaFinalizacion}" id="popupCal2" locale="es" label="Fecha" required="true"/>
+                        </h:panelGrid>
                     </div>
                     <p:messages severity="error" autoUpdate="true" closable="true" />
                     <div class="descripciondiag">
@@ -68,25 +68,25 @@
                             <br />
                             <h:commandButton class="botonenvio" value="Añadir" type="submit" action="#{diagnosticoBeans.anadirTratamiento()}" />
                         </center>
-                    <div>
-                        <center><h3> Tratamientos Asignados</h3></center>
-                        <h:panelGroup id="tratamientos">
-                            <p:dataTable value="#{diagnosticoBeans.tratamientos}" var="tratamiento"  >
-                                <p:column headerText="Nombre">
-                                    <h:outputText value="#{tratamiento.medicamento.nombre}"/>
-                                </p:column>
-                                <p:column headerText="Cantidad">
-                                    <h:outputText value="#{tratamiento.cantidad}"/>
-                                </p:column>
-                                <p:column>
-                                    <h:commandButton value="Eliminar" action="#{diagnosticoBeans.eliminar(tratamiento.medicamento.id)}"/>
-                                </p:column>
-                            </p:dataTable>
-                        </h:panelGroup>
+                        <div>
+                            <center><h3> Tratamientos Asignados</h3></center>
+                            <h:panelGroup id="tratamientos">
+                                <p:dataTable value="#{diagnosticoBeans.tratamientos}" var="tratamiento"  >
+                                    <p:column headerText="Nombre">
+                                        <h:outputText value="#{tratamiento.medicamento.nombre}"/>
+                                    </p:column>
+                                    <p:column headerText="Cantidad">
+                                        <h:outputText value="#{tratamiento.cantidad}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <h:commandButton value="Eliminar" action="#{diagnosticoBeans.eliminar(tratamiento.medicamento.id)}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:panelGroup>
+                        </div>
                     </div>
-                </div>
                 </h:form>
             </ui:fragment>
-        </ui:fragment>
-    </ui:define>
+        </ui:define>
+    </div>
 </ui:composition>
