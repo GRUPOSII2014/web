@@ -6,10 +6,10 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="titulo">Contacto</ui:define>
-    <ui:define name="contenido">
-        <h:form>
+    <ui:define name="contenido">       
             <p:tabView>                
                 <p:tab title="Crear Persona" rendered="#{loginController.tipoUsuario == 'H' || loginController.tipoUsuario == 'A'}">
+                     <h:form>
                     <p:growl id="growl" sticky="true" showDetail="true" />
                     <div style="overflow: hidden">
                         <h2>Crear Persona</h2>                    
@@ -66,8 +66,10 @@
                             </h:panelGrid>
                         </div>
                     </div>
+                     </h:form>
                 </p:tab>
                 <p:tab title="Crear Administrativo" rendered="#{loginController.tipoUsuario == 'A'}">
+                    <h:form>
                     <p:growl id="growl2" sticky="true" showDetail="true" />
                     <div style="overflow: hidden">
                         <h2>Crear Persona</h2>                    
@@ -120,9 +122,9 @@
                                 <h:outputText value="Password*:"/>
                                 <h:inputText value="#{personaBeans.t.password}" label="password"/>
                                 <h:outputText value="Departamento*:" />
-                                <h:selectOneMenu value="#{personaBeans.t.departamento}">
+                                <!--<h:selectOneMenu value="#{personaBeans.t.departamento}">
                                     <f:selectItems value="#{personaBeans.todosDep()}" var="d" itemLabel="#{d.nombre}" itemValue="#{d}"/>
-                                </h:selectOneMenu>
+                                </h:selectOneMenu>-->
                                 <h:outputText value="Horas de Trabajo*:" />
                                 <h:inputText value="#{personaBeans.t.horasTrabajo}" required="true" label="Precio Hora" />
                                 <h:commandButton type="submit" value="Crear Persona" actionListener="#{personaBeans.crearAdministrativo}" />
@@ -130,8 +132,9 @@
                             </h:panelGrid>
                         </div>
                     </div>
+                    </h:form>
                 </p:tab>
             </p:tabView>
-        </h:form>
+        
     </ui:define>
 </ui:composition>
