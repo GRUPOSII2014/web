@@ -1,4 +1,4 @@
-<ui:composition template="WEB-INF/Plantilla/plantilla.xhtml" 
+<ui:composition template="WEB-INF/Plantilla/plantilla2.xhtml" 
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -8,185 +8,116 @@
 
     <ui:define name="titulo">Creación de Citas</ui:define>
     <ui:define name="contenido">            
-        <ui:fragment rendered="#{citaBeansBeans.inic()=='Inic'}">
             <p:tabView id="tabView"> 
                 <p:tab id="indsa" title="Diagnostico">
                     <p:growl id="growl" sticky="true" showDetail="true" severity="info"/> 
-        <h:form id="form" >
-            <h:panelGrid columns="2" width="100%">
-                <h:outputText value="NSS: "/>
-                <h:inputText value="#{citaBeansBeans.nss}" label="Número de seguridad social" requiredMessage="Introduzca un nss" required="true"/>
-                <h:commandButton type="submit" value="Buscar" actionListener="#{citaBeansBeans.buscaPersona}" />
-            </h:panelGrid>
-        </h:form>
-        <h:form id="form2">
-            <h:panelGroup id="paciente" rendered="#{citaBeansBeans.persona!=null}">
-                <h:panelGrid columns="2" class="tabla" width="100%">
-                    <f:facet name="header">
-                        <h:outputLabel value="Información Paciente"/>
-                    </f:facet>
-                    <h:outputText value="Nombre: "/>
-                    <h:outputText value="#{citaBeansBeans.persona.nombre}"/>
-                    <h:outputText value="Primer apellido: "/>
-                    <h:outputText value="#{citaBeansBeans.persona.apellido1}"/>
-                    <h:outputText value="Segundo apellido: "/>
-                    <h:outputText value="#{citaBeansBeans.persona.apellido2}"/>
-                </h:panelGrid>
-                <h:panelGroup id="doctor">
-                    <h:selectOneListbox value="#{citaBeansBeans.medicoBuscado}" rendered="#{citaBeansBeans.persona!=null and citaBeansBeans.persona.medicoCabecera==null}" required="true">
-                        <f:selectItems value="#{citaBeansBeans.medicosCabecera}" var="med" itemLabel="#{med.nombre} #{med.apellido1} #{med.apellido2}" itemValue="#{med.numSegSocial}"/> 
-                    </h:selectOneListbox>
-                    <h:commandButton type="submit" rendered="#{citaBeansBeans.persona!=null and citaBeansBeans.persona.medicoCabecera==null}" value="asignar" action="#{citaBeansBeans.asignaMedico()}"/>
-                    <h:panelGroup id="medicoCabecera">
-                        <h:panelGrid rendered="#{citaBeansBeans.persona.medicoCabecera!=null}" columns="2" class="tabla" width="100%" >
-                            <f:facet name="header">
-                                <h:outputLabel value="Doctor"/>
-                            </f:facet>
-                            <h:outputLabel value="Nombre: "/>
-                            <h:outputText value="#{citaBeansBeans.persona.medicoCabecera.nombre}"/>
-                            <h:outputLabel value="Primer Apellido: "/>
-                            <h:outputText value="#{citaBeansBeans.persona.medicoCabecera.apellido1}"/>
-                            <h:outputLabel value="Segundo Apellido: "/>
-                            <h:outputText value="#{citaBeansBeans.persona.medicoCabecera.apellido2}"/>
-                            <h:outputText value="Departamento: "/>
-                            <h:outputText value="#{citaBeansBeans.persona.medicoCabecera.departamento.nombre}"/>
-                            <h:outputText value="Horario"/>
-                            <h:outputText value="#{citaBeansBeans.dias}"/>
-                        </h:panelGrid>
-                    </h:panelGroup>
-                    <h:commandButton rendered="#{citaBeansBeans.persona.medicoCabecera!=null}" value="Dame una cita" type="submit" actionListener="#{citaBeansBeans.crearCita}"/>
-                </h:panelGroup>
-            </h:panelGroup>
-        </h:form>
-                </p:tab>
-                <p:tab title="Enfermeria">
-                    <h:form id="formu" >
+                    <h:form>
                         <h:panelGrid columns="2" width="100%">
                             <h:outputText value="NSS: "/>
-                            <h:inputText value="#{citaBeansBeans.nss}" required="true"/>
-                            <h:outputText value="Fecha: "/>
-                            <p:calendar value="#{citaBeansBeans.fecha}" id="popupCal" locale="es" required="true" requiredMessage="Seleccione un dia" label="Dia"/>
-                            <h:commandButton type="submit" value="Buscar" action="#{citaBeansBeans.buscaPersonaE()}" />
+                            <h:inputText value="#{citaBeansBeans.nss}" label="Número de seguridad social" requiredMessage="Introduzca un nss" required="true"/>
+                            <h:commandButton type="submit" value="Buscar" actionListener="#{citaBeansBeans.buscaPersona}" />
                         </h:panelGrid>
-
-                        <h:panelGroup id="paciente">
-                            <h:panelGroup id="doctores">
-                                <f:ajax render="pacientew">
-                                    <p:selectOneListbox id="basic" rendered="#{citaBeansBeans.enfermero==null and citaBeansBeans.persona!=null}"  value="#{citaBeansBeans.enfermero}" required="true">
-                                        <c:forEach begin="0" end="#{citaBeansBeans.enfermeros.size()-1}" var="ind">
-                                            <f:selectItem itemLabel="#{citaBeansBeans.enfermeros.get(ind).nombre},#{citaBeansBeans.enfermeros.get(ind).apellido1},#{citaBeansBeans.enfermeros.get(ind).apellido2}" itemValue="#{citaBeansBeans.enfermeros.get(ind)}"/>
-                                        </c:forEach>
-                                    </p:selectOneListbox>
-                                </f:ajax>
+                    </h:form>
+                    <h:form>
+                        <h:panelGroup id="paciente" rendered="#{citaBeansBeans.persona!=null}">
+                            <h:panelGrid columns="2" class="tabla" width="100%">
+                                <f:facet name="header">
+                                    <h:outputLabel value="Información Paciente"/>
+                                </f:facet>
+                                <h:outputText value="Nombre: "/>
+                                <h:outputText value="#{citaBeansBeans.persona.nombre}"/>
+                                <h:outputText value="Primer apellido: "/>
+                                <h:outputText value="#{citaBeansBeans.persona.apellido1}"/>
+                                <h:outputText value="Segundo apellido: "/>
+                                <h:outputText value="#{citaBeansBeans.persona.apellido2}"/>
+                            </h:panelGrid>
+                            <h:panelGroup id="doctor">
+                                <h:selectOneListbox value="#{citaBeansBeans.medicoBuscado}" rendered="#{citaBeansBeans.persona!=null and citaBeansBeans.persona.medicoCabecera==null}" required="true">
+                                    <f:selectItems value="#{citaBeansBeans.medicosCabecera}" var="med" itemLabel="#{med.nombre} #{med.apellido1} #{med.apellido2}" itemValue="#{med.numSegSocial}"/> 
+                                </h:selectOneListbox>
+                                <h:commandButton type="submit" rendered="#{citaBeansBeans.persona!=null and citaBeansBeans.persona.medicoCabecera==null}" value="asignar" action="#{citaBeansBeans.asignaMedico()}"/>
+                                <h:panelGroup id="medicoCabecera">
+                                    <h:panelGrid rendered="#{citaBeansBeans.persona.medicoCabecera!=null}" columns="2" class="tabla" width="100%" >
+                                        <f:facet name="header">
+                                            <h:outputLabel value="Doctor"/>
+                                        </f:facet>
+                                        <h:outputLabel value="Nombre: "/>
+                                        <h:outputText value="#{citaBeansBeans.persona.medicoCabecera.nombre}"/>
+                                        <h:outputLabel value="Primer Apellido: "/>
+                                        <h:outputText value="#{citaBeansBeans.persona.medicoCabecera.apellido1}"/>
+                                        <h:outputLabel value="Segundo Apellido: "/>
+                                        <h:outputText value="#{citaBeansBeans.persona.medicoCabecera.apellido2}"/>
+                                        <h:outputText value="Departamento: "/>
+                                        <h:outputText value="#{citaBeansBeans.persona.medicoCabecera.departamento.nombre}"/>
+                                        <h:outputText value="Horario"/>
+                                        <h:outputText value="#{citaBeansBeans.dias}"/>
+                                    </h:panelGrid>
+                                </h:panelGroup>
                             </h:panelGroup>
-                            <c:if test="#{citaBeansBeans.nss!=null}">
-                                <h:panelGrid rendered="#{citaBeansBeans.persona!=null}" columns="2" class="tabla" width="100%">
-                                    <f:facet name="header">
-                                        <h:outputLabel value="Información Paciente"/>
-                                    </f:facet>
-                                    <h:outputText value="Nombre: "/>
-                                    <h:outputText value="#{citaBeansBeans.persona.nombre}"/>
-                                    <h:outputText value="Primer apellido: "/>
-                                    <h:outputText value="#{citaBeansBeans.persona.apellido1}"/>
-                                    <h:outputText value="Segundo apellido: "/>
-                                    <h:outputText value="#{citaBeansBeans.persona.apellido2}"/>
-                                </h:panelGrid>
-                                <h:panelGroup  id="pacientew">
-                                    <h:panelGroup id="doctor2">
-                                        <h:panelGroup>
-                                            <h:panelGrid rendered="#{citaBeansBeans.enfermero!=null}" columns="2" class="tabla" width="100%" >
-                                                <f:facet name="header">
-                                                    <h:outputLabel value="Enfermero"/>
-                                                </f:facet>
-                                                <h:outputLabel value="Nombre: "/>
-                                                <h:outputText value="#{citaBeansBeans.enfermero.nombre}"/>
-                                                <h:outputLabel value="Primer Apellido: "/>
-                                                <h:outputText value="#{citaBeansBeans.enfermero.apellido1}"/>
-                                                <h:outputLabel value="Segundo Apellido: "/>
-                                                <h:outputText value="#{citaBeansBeans.enfermero.apellido2}"/>
-                                                <h:outputText value="Departamento: "/>
-                                                <h:outputText value="#{citaBeansBeans.enfermero.departamento.nombre}"/>
-                                            </h:panelGrid>
-                                        </h:panelGroup>
-                                    </h:panelGroup>
-                                </h:panelGroup>
-                                <h:panelGroup id="horasdisponibles" >
-                                    <p:selectOneListbox rendered="#{citaBeansBeans.horas.size()!=null}" id="basic2" value="#{citaBeansBeans.horas}" required="true" requiredMessage="Seleccione una hora" label="Hora de la cita">  
-                                        <c:forEach  begin="0" end="#{citaBeansBeans.horas.size()-1}" var="ind">
-                                            <f:selectItem  itemLabel="#{citaBeansBeans.horas.get(ind)}" itemValue="#{citaBeansBeans.horas.get(ind)}"/>
-                                        </c:forEach>
-                                    </p:selectOneListbox>
-                                </h:panelGroup>
-                            </c:if>
                         </h:panelGroup>
                         <div id="creacion">
-                            <h:commandButton class="botonenvio" value="Crear cita" style="submit" action="#{citaBeansBeans.crearCitaE()}"/>
+                            <h:commandButton class="botonenvio" rendered="#{citaBeansBeans.persona.medicoCabecera!=null}" value="Dame una cita" type="submit" actionListener="#{citaBeansBeans.crearCita}"/>
+                        </div>
+                    </h:form>
+                </p:tab>
+                <p:tab title="Enfermeria">
+                    <h:form>
+                        <h:panelGrid columns="2" width="100%">
+                            <h:outputText value="NSS: "/>
+                            <h:inputText value="#{citaBeansBeans.nss}" label="Número de seguridad social" requiredMessage="Introduzca un nss" required="true"/>
+                            <h:commandButton type="submit" value="Buscar" actionListener="#{citaBeansBeans.buscaPersona}" />
+                        </h:panelGrid>
+                    </h:form>
+                    <h:form>
+                        <h:panelGroup id="paciente">
+                            <h:panelGrid rendered="#{citaBeansBeans.persona!=null and citaBeansBeans.nss!=null}" columns="2" class="tabla" width="100%">
+                                <f:facet name="header">
+                                    <h:outputLabel value="Información Paciente"/>
+                                </f:facet>
+                                <h:outputText value="Nombre: "/>
+                                <h:outputText value="#{citaBeansBeans.persona.nombre}"/>
+                                <h:outputText value="Primer apellido: "/>
+                                <h:outputText value="#{citaBeansBeans.persona.apellido1}"/>
+                                <h:outputText value="Segundo apellido: "/>
+                                <h:outputText value="#{citaBeansBeans.persona.apellido2}"/>
+                            </h:panelGrid>
+                            <h:selectOneListbox value="#{citaBeansBeans.idEnfer}" rendered="#{citaBeansBeans.persona!=null}">
+                                <f:selectItems value="#{citaBeansBeans.enfermeros}" var="enfer" itemLabel="#{enfer.nombre} #{enfer.apellido1} #{enfer.apellido2}" itemValue="#{enfer.numSegSocial}"/> 
+                            </h:selectOneListbox>
+                        </h:panelGroup>
+                        <div id="creacion">
+                            <h:commandButton class="botonenvio" rendered="#{citaBeansBeans.persona!=null}" value="Dame una cita" type="submit" actionListener="#{citaBeansBeans.crearCitaE}"/>
                         </div>
                     </h:form>
                 </p:tab>
                 <p:tab title="Crear urgencia">
-                    <h:form id="formul" >
+                    <h:form>
                         <h:panelGrid columns="2" width="100%">
                             <h:outputText value="NSS: "/>
-                            <h:inputText value="#{citaBeansBeans.nss}" required="true"/>
-                            <h:commandButton type="submit" value="Buscar" action="#{citaBeansBeans.buscaPersona()}" />
+                            <h:inputText value="#{citaBeansBeans.nss}" label="Número de seguridad social" requiredMessage="Introduzca un nss" required="true"/>
+                            <h:commandButton type="submit" value="Buscar" actionListener="#{citaBeansBeans.buscaPersona}" />
                         </h:panelGrid>
+                    </h:form>
+                    <h:form>
                         <h:panelGroup id="paciente">
-                            <h:panelGroup id="doctores">
-                                <f:ajax >
-                                    <p:selectOneListbox id="basic" rendered="#{citaBeansBeans.enfermero==null and citaBeansBeans.persona!=null}"  value="#{citaBeansBeans.enfermero}" required="true">
-                                        <c:forEach begin="0" end="#{citaBeansBeans.enfermeros.size()-1}" var="ind">
-                                            <f:selectItem itemLabel="#{citaBeansBeans.enfermeros.get(ind).nombre},#{citaBeansBeans.enfermeros.get(ind).apellido1},#{citaBeansBeans.enfermeros.get(ind).apellido2}" itemValue="#{citaBeansBeans.enfermeros.get(ind)}"/>
-                                        </c:forEach>
-                                    </p:selectOneListbox>
-                                </f:ajax>
-                                <c:if test="#{citaBeansBeans.nss!=null}">
-                                    <h:panelGrid rendered="#{citaBeansBeans.persona!=null}" columns="2" class="tabla" width="100%">
-                                        <f:facet name="header">
-                                            <h:outputLabel value="Información Paciente"/>
-                                        </f:facet>
-                                        <h:outputText value="Nombre: "/>
-                                        <h:outputText value="#{citaBeansBeans.persona.nombre}"/>
-                                        <h:outputText value="Primer apellido: "/>
-                                        <h:outputText value="#{citaBeansBeans.persona.apellido1}"/>
-                                        <h:outputText value="Segundo apellido: "/>
-                                        <h:outputText value="#{citaBeansBeans.persona.apellido2}"/>
-                                    </h:panelGrid>
-                                    <h:panelGroup  id="pacientew">
-                                        <h:panelGroup id="doctor2">
-                                            <h:panelGroup>
-                                                <h:panelGrid rendered="#{citaBeansBeans.enfermero!=null}" columns="2" class="tabla" width="100%" >
-                                                    <f:facet name="header">
-                                                        <h:outputLabel value="Enfermero"/>
-                                                    </f:facet>
-                                                    <h:outputLabel value="Nombre: "/>
-                                                    <h:outputText value="#{citaBeansBeans.enfermero.nombre}"/>
-                                                    <h:outputLabel value="Primer Apellido: "/>
-                                                    <h:outputText value="#{citaBeansBeans.enfermero.apellido1}"/>
-                                                    <h:outputLabel value="Segundo Apellido: "/>
-                                                    <h:outputText value="#{citaBeansBeans.enfermero.apellido2}"/>
-                                                    <h:outputText value="Departamento: "/>
-                                                    <h:outputText value="#{citaBeansBeans.enfermero.departamento.nombre}"/>
-                                                    <h:outputText value="Estado:"/>
-                                                    <h:selectOneMenu value="#{citaBeansBeans.urgencia.estado}">
-                                                        <f:selectItems value="#{enumeradosBean.estadoUrgencia}"/>
-                                                    </h:selectOneMenu>
-                                                    <h:panelGrid columns="3"  width="100%" class="tabla" >
-                                                        <h:outputText value="Observaciones:"/>
-                                                        <h:inputTextarea rows="5" cols="65" value="#{citaBeansBeans.urgencia.observaciones}" style="resize: none"/>
-                                                        <h:commandButton class="botonenvio" value="Crear urgencia" style="submit" action="#{citaBeansBeans.crearUrgencia()}"/>
-                                                    </h:panelGrid>
-                                                </h:panelGrid>
-                                            </h:panelGroup>
-                                        </h:panelGroup>
-                                    </h:panelGroup>
-                                </c:if>
-                            </h:panelGroup>
+                            <h:panelGrid rendered="#{citaBeansBeans.persona!=null and citaBeansBeans.nss!=null}" columns="2" class="tabla" width="100%">
+                                <f:facet name="header">
+                                    <h:outputLabel value="Información Paciente"/>
+                                </f:facet>
+                                <h:outputText value="Nombre: "/>
+                                <h:outputText value="#{citaBeansBeans.persona.nombre}"/>
+                                <h:outputText value="Primer apellido: "/>
+                                <h:outputText value="#{citaBeansBeans.persona.apellido1}"/>
+                                <h:outputText value="Segundo apellido: "/>
+                                <h:outputText value="#{citaBeansBeans.persona.apellido2}"/>
+                            </h:panelGrid>
                         </h:panelGroup>
+                        <div id="creacion">
+                            <h:commandButton class="botonenvio" rendered="#{citaBeansBeans.persona!=null}" value="Dame una cita" type="submit" actionListener="#{citaBeansBeans.crearCitaU}"/>
+                        </div>
                     </h:form>
                 </p:tab>
             </p:tabView>
-        </ui:fragment>
     </ui:define>
 </ui:composition>
 
