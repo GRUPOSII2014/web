@@ -12,7 +12,7 @@
         <ui:fragment rendered="#{loginController.nss!=null}">
             <div id="izqui">
                 <h:form>
-                    <p:growl id="growl" showDetail="true" sticky="true" severity="error" /> 
+                    <p:growl id="growl" showDetail="true" sticky="true" severity="info" /> 
                     <h:panelGrid columns="2">
                         <h:outputLabel value="Contraseña Actual: "/>
                         <h:inputSecret value="#{cambiarClaveBeans.actual}" label="Contraseña" requiredMessage="No has introducido tu contraseña actual" maxlength="12" required="true"/>
