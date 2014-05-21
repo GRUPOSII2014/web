@@ -6,7 +6,6 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="titulo">Ingreso Paciente</ui:define>
-    <ui:fragment rendered="#{ingresoBeans.inic() == 'inic'}">
         <ui:fragment rendered="#{loginController.tipoUsuario != 'M'}">
             <ui:fragment rendered="#{loginController.tipoUsuario != 'E'}">
                 <ui:fragment rendered="#{loginController.tipoUsuario != 'P'}">
@@ -89,7 +88,6 @@
             </ui:fragment>
             <ui:fragment rendered="#{loginController.tipoUsuario!='H'}">
                 <p class="error">No tienes Privilegios para acceder a esta zona</p>
-            </ui:fragment>
         </ui:fragment>
     </ui:define>
 
