@@ -7,7 +7,7 @@
     <ui:define name="contenido">  
 
         <ui:fragment rendered="#{loginController.tipoUsuario=='E'}">
-            <div id="informacion">
+            <div id="informacion" onload="#{tratamientoBeans.inic()}">
                 <h:panelGrid columns="2" class="tabla" width="100%">
                     <f:facet name="header">
                         <h:outputText value="Informacion del paciente"/>
@@ -66,7 +66,7 @@
                 <h:form>
                     <h:panelGrid columns="3" >
                         <h:outputText value="Observaciones:"/>
-                        <h:inputTextarea rows="5" cols="80" value="#{tratamientoBeans.tratamiento.observaciones}" style="  resize: none" required="true"/>
+                        <h:inputTextarea rows="5" cols="80" value="#{tratamientoBeans.obs}" style="resize: none"/>
                         <h:commandButton class="botonenvio" value="Terminar tratamiento" action="#{tratamientoBeans.terminarTratamiento()}"/>
                     </h:panelGrid>
                 </h:form>
