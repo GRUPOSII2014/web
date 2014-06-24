@@ -33,6 +33,9 @@
                     <p:column headerText="Nacimiento"  filterBy="fechaNacimiento" filterMatchMode="contains">
                         <h:outputText value="#{pers.fechaNacimiento}"/>
                     </p:column>
+                    <p:column headerText="Tipo"  filterBy="disc" filterMatchMode="contains">
+                        <h:outputText value="#{pers.disc}"/>
+                    </p:column>
                     <p:column headerText="Acciones">
                         <p:growl id="messages" severity="info" showDetail="true"/>
                         <p:commandButton alt="editar" image="ui-icon-pencil" action="#{todasPersonasBeans.editarPersona(pers)}"/>                                          
