@@ -7,15 +7,16 @@
     <ui:define name="contenido">
         <ui:fragment rendered="#{loginController.tipoUsuario=='A'}">
             <h:form>
-                <h:panelGrid columns="2">
+                <h:panelGrid columns="2" style="margin: 10px; margin-left: 250px; padding: 10px; width: 500px;">
                     <h:outputText value="Número: "/>
                     <h:inputText value="#{habitacionBean.habitacion.num}"/>
                     <h:outputText value="Planta: "/>
                     <h:selectOneMenu value="#{habitacionBean.planta}">
-                        <f:selectItems value="#{habitacionBean.plantas}" var="planta" itemLabel="#{planta.nombre}" itemValue="#{planta.id}"/>
+                        <f:selectItems value="#{habitacionBean.plantas}" var="planta" itemLabel="#{planta.nombre} -- #{planta.hospital.nombre}" itemValue="#{planta.id}"/>
                     </h:selectOneMenu>
+                    <h:commandButton class="envioContacto" value="Crear Habitación" action="#{habitacionBean.crearHabitacion()}"/>
                 </h:panelGrid>
-                <h:commandButton class="botonenvio" value="Crear Habitación" action="#{habitacionBean.crearHabitacion()}"/>
+                
             </h:form>
         </ui:fragment>
     </ui:define>

@@ -8,7 +8,7 @@
     <ui:define name="contenido">
         <ui:fragment rendered="#{loginController.tipoUsuario=='A'}">
             <h:form>
-                <h:panelGrid columns="2">
+                <h:panelGrid columns="2" style="margin: 10px; margin-left: 250px; padding: 10px; width: 500px;">
                     <h:outputText value="Nombre: "/>
                     <h:inputText value="#{crearHospitalBean.nombre}"/>
                     <h:outputText value="Dirección: "/>
@@ -19,7 +19,7 @@
                     <h:inputText value="#{crearHospitalBean.ciudad}"/>
                     <h:outputText value="Localización: "/>
                     <h:inputText value="#{crearHospitalBean.localizacion}"/>
-                    <h:commandButton class="botonenvio" value="Crear Hospital" action="#{crearHospitalBean.crearHospital()}"/>
+                    <h:commandButton class="envioContacto" value="Crear Hospital" action="#{crearHospitalBean.crearHospital()}"/>
                 </h:panelGrid>
             </h:form>
         </ui:fragment>
